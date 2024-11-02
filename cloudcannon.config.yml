@@ -2,39 +2,38 @@ source: src
 paths:
   uploads: assets/uploads/:title
   static: ''
-  collections: ''
-  data: _data
-  layouts: _includes
-  includes: _includes
 data_config:
-  fonts: true
-  authors: true
-  blogTags: true
-  reviews: true
-  blog: true
-  happenings: true
+  fonts:
+    path: _data/fonts.json
+  authors:
+    path: _data/authors.json
+  blogTags:
+    path: _data/blogTags.json
+  reviews:
+    path: _data/reviews.yml
+  blog:
+    path: _data/blog.json
+  happenings:
+    path: _data/happenings.yml
 collections_config_override: true
 collections_config:
   data:
     path: _data
-    output: false
     icon: settings
+    disable_url: true
     disable_add: false
     disable_add_folder: false
     disable_file_actions: false
   pages:
     path: pages
     output: true
-    url: dist/pages
-    filter:
-      exclude:
-        - robots.njk
-        - rss.njk
-        - sitemap.njk
-        - tags.md
-        - pages.json
-        - 404.md
-    parse_branch_index: null
+    glob:
+      - '!robots.njk'
+      - '!rss.njk'
+      - '!sitemap.njk'
+      - '!tags.md'
+      - '!pages.json'
+      - '!404.md'
     name: Pages
     description: All your pages
     icon: description
@@ -108,10 +107,8 @@ collections_config:
   blog:
     path: posts
     output: true
-    url: dist/blog
-    filter:
-      exclude:
-        - posts.json
+    glob:
+      - '!posts.json'
     _enabled_editors:
       - content
     _inputs:
@@ -168,11 +165,9 @@ collections_config:
   happenings:
     path: happenings
     output: true
-    url: dist/happenings
     icon: event
-    filter:
-      exclude:
-        - happenings.json
+    glob:
+      - '!happenings.json'
     _enabled_editors:
       - content
       - visual
@@ -210,16 +205,14 @@ collections_config:
   services:
     path: services
     output: true
-    url: dist/services
     name: Services
     description: All your services
     icon: design_services
     documentation: null
     preview:
       gallery: design_services
-    filter:
-      exclude:
-        - services.json
+    glob:
+      - '!services.json'
     _inputs:
       title:
         label: Page Title

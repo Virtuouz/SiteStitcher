@@ -1,4 +1,12 @@
 .c-lightBox {
+        picture{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .thumbnails{
+
     picture{
         width: 100%;
         height: 100%;
@@ -6,6 +14,7 @@
         align-items: center;
         justify-content: center;
         
+    }
     }
 
 }

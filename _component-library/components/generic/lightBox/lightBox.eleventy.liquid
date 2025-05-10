@@ -2,7 +2,7 @@
 {% assign subTrack = id | replace: "-", "" | append: "sub" %}
 
 {% capture thumbImageClasses %}
-h-full w-auto max-w-full object-contain aspect-square cursor-pointer {{theme.image_rounding}} 
+ w-auto max-w-full max-h-full object-contain  cursor-pointer {{theme.image_rounding}} 
   {% endcapture %}
 <dialog id="modal-{{id}}" class="c-lightBox fixed top-0 z-[900] h-full max-h-screen w-full p-4 opacity-0 open:bg-slate-950 open:bg-opacity-60 open:backdrop-blur-lg sm:p-10 overflow-hidden">
 
@@ -43,7 +43,7 @@ h-full w-auto max-w-full object-contain aspect-square cursor-pointer {{theme.ima
         <ul class="glide__slides h-full flex items-center justify-center">
           {% for image in images %}
             <li class="glide__slide max-h-full max-w-full flex items-center justify-center">
-              {% bookshop "generic/image" bind: image class: "h-full w-auto max-w-full object-contain" %}
+              {% bookshop "generic/image" bind: image class: "max-h-full w-full max-w-full object-contain" %}
             </li>
           {% endfor %}
         </ul>
@@ -52,7 +52,7 @@ h-full w-auto max-w-full object-contain aspect-square cursor-pointer {{theme.ima
 
     {% if images.size >= 5 %}
       <!-- Thumbnail Carousel -->
-      <div class="h-24 sm:h-32 mt-2 relative {{subTrack}}">
+      <div class="h-24 sm:h-32 mt-2 relative {{subTrack}} thumbnails">
 
       <div class="w-full flex absolute top-1/2 justify-center">
         <div class="pointer-events-none w-[97%]  z-10 flex justify-between  opacity-70" data-glide-el="controls">

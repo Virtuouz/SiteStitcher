@@ -97,7 +97,6 @@ const imageShortcode = async (
   const imageAttributes = {
     class: cls,
     alt,
-    _: "on load js requestAnimationFrame (() => requestAnimationFrame(() => {return})) end then set my @style to ''",
     style: imageHashes[Image.getHash(inputFilePath)],
     sizes: sizes || "100vw",
     loading: "lazy",

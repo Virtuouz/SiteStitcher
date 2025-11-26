@@ -6,15 +6,13 @@
 
 
 
-<section data-editable="array-item" class="c-servicesSection componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+<section data-editable="array-item" data-id="{{_bookshop_name}}" class="c-servicesSection componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
 <div class="basecontainer w-full">
   
     {% if content.sectionId %}
       {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
     {% endif %}
-    <editable-text data-prop="content.heading">
     {% if content.heading %} {% bookshop {{content.heading._bookshop_name}} bind: content.heading %} {% endif %}
-  </editable-text>
     {% if env_bookshop_live and content.showNote %}
       <div class="mb-20">{% bookshop "generic/notification" heading: "Tabs in live editing" text: "Trying to click through your services tabs will not work while editing" %}
         </div>

@@ -2,6 +2,7 @@
 spec:
   structures:
     - hero_blocks
+    - content_blocks
   label: "Full Screen Image Hero"
   description: Provide concise information at the top of the page to engage website visitors
   icon: feed

@@ -312,7 +312,7 @@ module.exports = async function (eleventyConfig) {
     if (!state.src || !state.src.includes("bookshop-live")) return;
 
     // remove bookshop live markers (meta/name/end, etc.)
-    state.src = state.src.replace(/<!--\s*bookshop-live[\s\s]*?-->/g, "");
+    state.src = state.src.replace(/<!--\s*bookshop-live[\s\S]*?-->/g, "");
 
     // clean up extra blank lines left behind (prevents paragraph breaks)
     state.src = state.src.replace(/\n{3,}/g, "\n\n");

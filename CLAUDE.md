@@ -109,6 +109,38 @@ Defined in `.eleventy.js`:
 - `happenings` / `upcomingHappenings` / `pastHappenings` - Events
 - `listings` - Marketplace listings
 
+### Internationalization (Rosey)
+
+Off by default, behind the `ROSEY_ENABLED` env var. With it unset, the build output is
+byte-identical to a site without Rosey. Locales are configured in `rosey/rcc.yaml` and ship
+as an empty list.
+
+Pipeline: `npm run eleventy` (tags content) then `npm run rosey` (`utils/rosey.js` runs
+`rosey generate` → `rosey-cloudcannon-connector generate` → `rosey build
+--default-language-at-root`). English stays at `/`, locales are served from `/<locale>/`.
+Editors translate via the CloudCannon **Translations** collection
+(`src/rosey-translations/`).
+
+**Every new component that renders text must be tagged.** Use the filters in
+`src/filters/rosey-filters.js` — all return `""` when the flag is off, so tagging never
+changes default output:
+
+| Filter | Use for | Example |
+|---|---|---|
+| `roseyTag` | text that is the element's only content | `<h2{{ text \| roseyTag }}>{{ text }}</h2>` |
+| `roseyWrap` | text sharing an element with sibling markup (icon, control) | `<a>{% icon %}{{ text \| roseyWrap }}</a>` |
+| `roseyMarkdown` | blocks rendered through `markdownify` (gives editors a rich-text input) | `<div{{ text \| roseyMarkdown }}>{{ text \| markdownify }}</div>` |
+| `roseyAttrs` | translatable attributes | `<img alt="{{ alt }}"{{ alt \| roseyAttrs: "alt" }}>` |
+| `roseyNs` | opening a namespace | `{{ "common" \| roseyNs: true }}` |
+
+Prefer `roseyWrap` over an `{% if rosey.enabled %}` block: `{% render %}` gives partials an
+isolated scope where `rosey.enabled` is invisible, but filters always resolve.
+
+Namespacing: `<main>` in `base.html` opens a per-page namespace from the page title, so
+identical copy on two pages stays independently translatable. Site chrome (header, footer)
+uses the `common` namespace so it is translated once — `namespace_pages` in `rosey/rcc.yaml`.
+Do not tag editor placeholder strings ("Add content to this section"); they are not site copy.
+
 ## Technology Preferences
 
 - **Interactivity/Logic:** Use [hyperscript](https://hyperscript.org) where possible. If hyperscript would be cumbersome or require workarounds, use vanilla JavaScript instead.

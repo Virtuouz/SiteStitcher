@@ -67,7 +67,7 @@
   {% endif %}
 {% endfor %}
 
-<footer
+<footer{{ "common" | roseyNs: true }}
   class="cs-w-full pt-40 bg-{{site.footer_color_group}}-backgroundcolor flex flex-col items-center justify-center text-{{site.footer_color_group}}-textcolor"
 >
   <div class="basecontainer w-full">
@@ -87,7 +87,7 @@
           <li class="hover:underline after:absolute after:content-['|'] after:scale-150 relative before:content-[' '] after:left-[-11px] after:text-lg">
             <a 
               data-umami-event="{{socialLink.label}}-socialLink-footer"
-              href="{{ socialLink.linkUrl }}" target="_blank">{{socialLink.label}}</a>
+              href="{{ socialLink.linkUrl }}" target="_blank"{{ socialLink.label | roseyTag }}>{{socialLink.label}}</a>
           </li>
           {% endfor %}
         </ul>
@@ -97,7 +97,7 @@
       <div class="flex flex-wrap gap-10 justify-around w-full text-base">
 {% if groupedLinks != "" %}
   <div class="flex flex-col min-w-[200px]">
-    <p class="font-bold opacity-90 ">Links</p>
+    <p class="font-bold opacity-90 "{{ "Links" | roseyTag }}>Links</p>
     <ul class="mt-2 flex flex-col gap-1">
       {{ groupedLinks }}
     </ul>
@@ -120,22 +120,22 @@
       <li class="hover:underline after:absolute after:content-['|'] after:scale-150 relative before:content-[' '] after:left-[-11px] after:text-lg">
         <a 
           data-umami-event="TermsAndConditions-footer"
-          href="{{ site.termsAndConditionsUrl }}" target="_blank">Terms & Conditions</a>
+          href="{{ site.termsAndConditionsUrl }}" target="_blank"{{ "Terms & Conditions" | roseyTag }}>Terms & Conditions</a>
       </li>
       {% endif %}
       {% if site.privacyPolicyUrl and site.privacyPolicyUrl != "" %}
       <li class="hover:underline after:absolute after:content-['|'] after:scale-150 relative before:content-[' '] after:left-[-11px] after:text-lg">
         <a 
           data-umami-event="PrivacyPolicy-footer"
-          href="{{ site.privacyPolicyUrl }}" target="_blank">Privacy Policy</a>
+          href="{{ site.privacyPolicyUrl }}" target="_blank"{{ "Privacy Policy" | roseyTag }}>Privacy Policy</a>
       </li>
       {% endif %}
     </ul>
     <p class="text-center text-sm" data-type="neutral">
-      Powered by Vynxlabs. Like it?
+      {{ "Powered by Vynxlabs. Like it?" | roseyWrap }}
       <a 
         data-umami-event="vynxlabs-link-footer"
-        href="https://vynxlabs.com/" class="underline">Let's build one for you!</a>
+        href="https://vynxlabs.com/" class="underline"{{ "Let's build one for you!" | roseyTag }}>Let's build one for you!</a>
     </p>
   </div>
 </footer>

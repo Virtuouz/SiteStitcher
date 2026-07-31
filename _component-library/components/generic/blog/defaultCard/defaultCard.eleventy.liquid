@@ -16,7 +16,7 @@ w-full {{theme.image_rounding}} transition-all duration-300 scale-100 hover:scal
 <div class="w-full ">
   <div class="flex justify-between text-sm opacity-70">
     <div class="">
-      <p>Written by</p>
+      <p{{ "Written by" | roseyTag }}>Written by</p>
       <p>{{ author }}</p>
     </div>
     <div class="text-right">
@@ -35,7 +35,7 @@ w-full {{theme.image_rounding}} transition-all duration-300 scale-100 hover:scal
         <li class="hover:underline after:absolute after:content-['·'] after:scale-150  after:left-2 relative before:content-[' '] after:left-[-10px] after:text-lg ">
         <a 
         data-umami-event="{{tag | slug}}-{{blogTitle}}-{{page.url}}-tags"
-        class="font-bold" href="/tag/{{ tag | slug }}/">{{ tag | capitalize | replace: ' ', '' }}</a>
+        class="font-bold" href="/tag/{{ tag | slug }}/"{{ tag | roseyTag }}>{{ tag | capitalize | replace: ' ', '' }}</a>
       </li>
     {% endif %}
     {% endfor %}
@@ -43,6 +43,6 @@ w-full {{theme.image_rounding}} transition-all duration-300 scale-100 hover:scal
   <h2 class="hover:underline text-2xl">
     <a 
     data-umami-event="{{blogTitle}}-{{page.url}}-blogCardHeading"
-    href="{{url}}">{{ blogTitle }}</a>
+    href="{{url}}"{{ blogTitle | roseyTag }}>{{ blogTitle }}</a>
   </h2>
 </div>

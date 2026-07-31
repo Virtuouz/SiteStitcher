@@ -37,11 +37,11 @@
   <a href="{{ listingUrl }}" class="block relative">
     {% if tagToUse and tagToUse != '' %}
 
-      <div class="z-10 absolute top-5 right-5 inline-block px-2 py-0.5 text-xs font-medium border-2 rounded-full transition {{tagClasses}} ">{{ tagToUse }}</div>
+      <div class="z-10 absolute top-5 right-5 inline-block px-2 py-0.5 text-xs font-medium border-2 rounded-full transition {{tagClasses}} "{{ tagToUse | roseyTag }}>{{ tagToUse }}</div>
     {% endif %}
       {% if expires  %}
         <div class="absolute bottom-5 right-5 p-2 z-10 bg-white text-slate-800 {{theme.container_rounding}}">
-          <p >Expires at:</p>
+          <p {{ "Expires at:" | roseyTag }}>Expires at:</p>
                 <time
           _="on load
           set happeningDate to Date.parse('{{listingExpiration | date: "%Y-%m-%dT%H:%M:%S%z"}}')
@@ -66,7 +66,7 @@
   <div class="p-4 flex-1 h-full flex flex-col justify-between">
     <div>
       <a href="{{ listingUrl }}" class="hover:underline">
-          <h5 class="font-bold text-lg mt-1">{{ listingTitle }}</h5>
+          <h5 class="font-bold text-lg mt-1"{{ listingTitle | roseyTag }}>{{ listingTitle }}</h5>
       </a>
       <ul class=" flex flex-wrap gap-x-4 overflow-hidden opacity-70">
         {% for tag in listingTags %}
@@ -75,13 +75,13 @@
               <a
                 data-umami-event="{{tag | slug}}-{{listingTitle}}-{{page.url}}-tags"
                 class="font-bold text-sm"
-                href="/tag/{{ tag | slug }}/">{{ tag | capitalize }}</a>
+                href="/tag/{{ tag | slug }}/"{{ tag | roseyTag }}>{{ tag | capitalize }}</a>
             </li>
           {% endif %}
         {% endfor %}
       </ul>
       <div class="text-base mt-4">{% if keyInformation and keyInformation != ''  %}{% bookshop "generic/textBlock" text: keyInformation %}{% endif %}</div>
     </div>
-    <a class="underline" href="{{ listingUrl }}">Learn more</a>
+    <a class="underline" href="{{ listingUrl }}"{{ "Learn more" | roseyTag }}>Learn more</a>
   </div>
 </li>

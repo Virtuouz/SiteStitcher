@@ -21,7 +21,7 @@ logo for {{site.name}}
 
 <div id="navbar" class="fixed left-0 top-0 z-[850] w-full transition-all duration-300">
   {% include "partials/banner.html" %}
-  <nav
+  <nav{{ "common" | roseyNs: true }}
   
     class=" transition-all duration-300  h-auto md:h-auto w-full bg-{{site.nav_color_group}}-backgroundcolor bg-opacity-70 text-{{site.nav_color_group}}-textcolor  backdrop-blur-sm flex "
   >
@@ -80,7 +80,7 @@ logo for {{site.name}}
   
       "
         >
-          <span class="sr-only">Open main menu</span>
+          <span class="sr-only"{{ "Open main menu" | roseyTag }}>Open main menu</span>
           <div class="logic-x hidden">{% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "x-mark" iconType: "outline" iconSize: 'small' roundedBorder: false themeColor: true %}</div>
           <div class="logic-hamburger">{% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "bars-4" iconType: "outline" iconSize: 'small' roundedBorder: false themeColor: true %}</div>
   
@@ -157,7 +157,9 @@ logo for {{site.name}}
         >
           {% for entry in navPages %} {% render "partials/render-nav.html",
           entry: entry, color_group: site.nav_color_group, level:level, blogPosts: collections.blog, page:page, parentType: entry._menuType, themeRounding: theme.container_rounding %} {% endfor %}
-        </ul>
+        </ul>{% comment %}Guarded rather than left to the component: an unguarded
+        {% raw %}{% bookshop %}{% endraw %} call still emits bookshop-live comment
+        markers even when the component renders nothing.{% endcomment %}{% if rosey.enabled %}{% bookshop "generic/languageSwitcher" %}{% endif %}
       </div>
     {% endif %}
     </div>

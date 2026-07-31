@@ -2,7 +2,11 @@
   node_bundler = "esbuild"
 [build]
   publish = "dist"
-  command = "npm run eleventy"
+  command = "npm run eleventy && npm run rosey"
+  [build.environment]
+  # Rosey internationalization. Set to "true" to tag content during the build
+  # and emit per-locale copies of the site. Locales live in rosey/rcc.yaml.
+  ROSEY_ENABLED = "false"
 [[plugins]]
 package = "netlify-plugin-cache"
   [plugins.inputs]

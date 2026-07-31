@@ -42,7 +42,7 @@
       <img
         class="w-full h-full {{ positionClass | strip }}"
         src="{{ imagePath }}"
-        alt="{{ imageAlt }}"
+        alt="{{ imageAlt }}"{{ imageAlt | roseyAttrs: "alt" }}
         loading="lazy"
       >
     </picture>

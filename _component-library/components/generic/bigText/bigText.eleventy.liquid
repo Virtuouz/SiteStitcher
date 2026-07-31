@@ -25,7 +25,7 @@
     {% endif %}
     <div id="{{"bigtext-" | uuidFilter}}" class="w-full leading-none"
     data-minfontsize="{{styles.minFontSize}}"
-    data-maxfontsize="{{styles.maxFontSize}}"
+    data-maxfontsize="{{styles.maxFontSize}}"{{ content.headline | roseyMarkdown }}
     >
     {{content.headline | markdownify}}
     </div>

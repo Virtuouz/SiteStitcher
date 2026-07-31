@@ -29,7 +29,7 @@
             <li class="hover:underline after:absolute after:content-['·'] after:scale-150  after:left-2 relative before:content-[' '] after:left-[-10px] after:text-lg ">
               <a 
               data-umami-event="{{tag | slug}}-{{happeningTitle}}-{{page.url}}-tags"
-              class="font-bold" href="/tag/{{ tag | slug }}/">{{ tag | capitalize | replace: ' ', '' }}</a>
+              class="font-bold" href="/tag/{{ tag | slug }}/"{{ tag | roseyTag }}>{{ tag | capitalize | replace: ' ', '' }}</a>
             </li>
           {% endif %}
         {% endfor %}
@@ -37,7 +37,7 @@
       <h3 class="hover:underline font-bold text-3xl">
         <a 
         data-umami-event="{{happeningTitle}}-{{page.url}}-happeningCardHeading"
-        href="{{url}}">{{ eventTitle }}</a>
+        href="{{url}}"{{ eventTitle | roseyTag }}>{{ eventTitle }}</a>
       </h3>
       <time
         {% if cancelled != true %}
@@ -57,8 +57,8 @@
           
           
         
-      <p class="mt-2">{{ summaryShort }}</p>
-      <a class="hover:underline text-[#5FB6E0]" href="{{url}}">Read more</a>
+      <p class="mt-2"{{ summaryShort | roseyTag }}>{{ summaryShort }}</p>
+      <a class="hover:underline text-[#5FB6E0]" href="{{url}}"{{ "Read more" | roseyTag }}>Read more</a>
     </div>
 
   </div>

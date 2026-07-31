@@ -4,4 +4,7 @@ eleventyExcludeFromCollections: true
 templateEngineOverride: njk
 layout:
 ---
-<?xml version="1.0" encoding="utf-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{% for page in collections.all %}{% if not page.data.disableSitemap %}<url><loc>{{ site.url }}{{ page.url | url }}</loc><lastmod>{{ page.date.toISOString() }}</lastmod></url>{% endif %}{% endfor %}</urlset>
+{#- Rosey copies non-HTML assets verbatim rather than per locale, so alternate
+    entries are emitted here at build time, and only for HTML pages - there is
+    no /<locale>/feed.xml to point at. -#}
+<?xml version="1.0" encoding="utf-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"{% if rosey.enabled and rosey.locales.length %} xmlns:xhtml="http://www.w3.org/1999/xhtml"{% endif %}>{% for page in collections.all %}{% if not page.data.disableSitemap %}{% set localised = rosey.enabled and rosey.locales.length and page.outputPath and page.outputPath.endsWith(".html") %}{% set alternates %}{% if localised %}<xhtml:link rel="alternate" hreflang="{{ rosey.defaultLocale }}" href="{{ site.url }}{{ page.url | url }}"/>{% for locale in rosey.locales %}<xhtml:link rel="alternate" hreflang="{{ locale }}" href="{{ site.url }}/{{ locale }}{{ page.url | url }}"/>{% endfor %}{% endif %}{% endset %}<url><loc>{{ site.url }}{{ page.url | url }}</loc><lastmod>{{ page.date.toISOString() }}</lastmod>{{ alternates | safe }}</url>{% if localised %}{% for locale in rosey.locales %}<url><loc>{{ site.url }}/{{ locale }}{{ page.url | url }}</loc><lastmod>{{ page.date.toISOString() }}</lastmod>{{ alternates | safe }}</url>{% endfor %}{% endif %}{% endif %}{% endfor %}</urlset>

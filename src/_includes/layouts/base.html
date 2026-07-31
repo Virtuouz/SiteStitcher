@@ -45,7 +45,9 @@
       set :maincontent to the #main-content
       set :maincontent.style.marginTop to :height.height+"px"
       log :height.height
-      end'
+      end'{% comment %}Rosey: scopes every key in the page body to this page, so
+      identical copy on two pages gets two independently editable translations.
+      Site chrome uses the "common" namespace instead - see rosey/rcc.yaml.{% endcomment %}{{ title | roseyNs }}
     >
       {% bookshop_include "hero" hero: hero %} {% bookshop_include "page"
       content_blocks: content_blocks %} {% block content %}{% endblock %}

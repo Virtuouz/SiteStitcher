@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const Image = require("@11ty/eleventy-img");
 const path = require("path");
 const dateFilter = require("./src/filters/date-filter.js");
@@ -24,6 +26,7 @@ const docsModeFilter = require("./src/filters/docsDarkMode-filter.js");
 const jsonPathFilter = require("./src/filters/jsonPath-filter.js");
 const mime = require("mime-types");
 const sanitizeRssFilter = require("./src/filters/sanitizeRss-filter.js");
+const roseyFilters = require("./src/filters/rosey-filters.js");
 
 const rssPlugin = require("@11ty/eleventy-plugin-rss");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
@@ -484,6 +487,17 @@ module.exports = async function (eleventyConfig) {
   );
   eleventyConfig.addFilter("getMimeType", (path) => mime.lookup(path));
   eleventyConfig.addFilter("sanitizeRss", sanitizeRssFilter);
+
+  // Rosey i18n. All no-ops unless ROSEY_ENABLED === "true".
+  eleventyConfig.addFilter("roseyTag", roseyFilters.roseyTag);
+  eleventyConfig.addFilter("roseyWrap", roseyFilters.roseyWrap);
+  eleventyConfig.addFilter("roseyNs", roseyFilters.roseyNs);
+  eleventyConfig.addFilter("roseyMarkdown", roseyFilters.roseyMarkdown);
+  eleventyConfig.addFilter("roseyAttrs", roseyFilters.roseyAttrs);
+
+  // Editor-facing Rosey translation files live under src/ so they resolve
+  // against `source: src` in cloudcannon.config.yml. They are not site input.
+  eleventyConfig.ignores.add("src/rosey-translations/**");
 
   // Load and flatten tokens
   const tokens = loadTokens();

@@ -21,11 +21,11 @@
             {% endcapture %}
       {% assign heading = heading | ymlify %}
       {% bookshop "generic/heading" bind: heading %}
-      <p class="text-sm opacity-70">{{ content.shortDescription }}</p>
+      <p class="text-sm opacity-70"{{ content.shortDescription | roseyTag }}>{{ content.shortDescription }}</p>
     </div>
     <div class="mt-10">
-      <p class="text-3xl">{{ content.price }}</p>
-      <p class="opacity-70">{{ content.priceDescription }}</p>
+      <p class="text-3xl"{{ content.price | roseyTag }}>{{ content.price }}</p>
+      <p class="opacity-70"{{ content.priceDescription | roseyTag }}>{{ content.priceDescription }}</p>
     </div>
     <div class="c-pricingCard mt-10 border-t-2  pt-10">
       {% if content.description %}

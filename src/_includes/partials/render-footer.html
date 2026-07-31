@@ -2,7 +2,7 @@
 
 {% if entry.links.size > 0 %}
   <div class="pl-3 flex flex-col min-w-[200px] self-start">
-    <p class="font-bold opacity-90">{{ entry.title }}</p>
+    <p class="font-bold opacity-90"{{ entry.title | roseyTag }}>{{ entry.title }}</p>
     <ul class="mt-2 flex flex-col gap-1 ">
       {% for child in entry.links %}
         {% render "partials/render-footer.html", entry:child, level: level, page:page %}
@@ -15,7 +15,7 @@
           data-umami-event="{{entry.title}}-footer"
           {{ entry.url | linkFilter: page.url }}
           class=" data-[state=active]:link hover:text-sopris-green block rounded pt-0 pb-2 pl-3 pr-4  transition-colors hover:bg-gray-700 dark:border-gray-700  md:hover:bg-transparent md:dark:hover:bg-transparent"
-          href="{{ entry.url }}">
+          href="{{ entry.url }}"{{ entry.title | roseyTag }}>
           {{ entry.title }}
         </a>
       </li>

@@ -113,7 +113,7 @@
                       end
                     "
                   >
-                    <div class="text-lg font-semibold">{{ item.heading }}</div>
+                    <div class="text-lg font-semibold"{{ item.heading | roseyTag }}>{{ item.heading }}</div>
                     <span class="transition-all duration-300 ease-in-out {% if opened %} rotate-45 {% endif %}">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus h-5 w-5 flex-shrink-0 transition-transform duration-300 group-[.active]:rotate-45">
                         <path d="M5 12h14"/>

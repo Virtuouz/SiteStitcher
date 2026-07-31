@@ -1,0 +1,35 @@
+{%- comment -%}
+  Language Switcher
+
+  Renders nothing unless Rosey is enabled (ROSEY_ENABLED=true) and at least one
+  locale is configured in rosey/rcc.yaml.
+
+  Every link carries data-rosey-ignore. Rosey rewrites root-relative hrefs to the
+  current locale when it builds each locale's copy of the site; without the
+  ignore, each link would be rewritten to point at the locale you are already in
+  and the switcher would do nothing.
+
+  The default locale is served from the site root because utils/rosey.js builds
+  with --default-language-at-root, so its link is page.url unprefixed.
+{%- endcomment -%}
+
+{%- if rosey.enabled and rosey.locales.size > 0 -%}
+  <div class="c-languageSwitcher flex items-center gap-2 text-sm" role="group" aria-label="Language">
+    <a
+      href="{{ page.url }}"
+      data-rosey-ignore
+      hreflang="{{ rosey.defaultLocale }}"
+      lang="{{ rosey.defaultLocale }}"
+      class="c-languageSwitcher__link uppercase hover:underline"
+    >{{ rosey.defaultLocale }}</a>
+    {%- for locale in rosey.locales -%}
+      <a
+        href="/{{ locale }}{{ page.url }}"
+        data-rosey-ignore
+        hreflang="{{ locale }}"
+        lang="{{ locale }}"
+        class="c-languageSwitcher__link uppercase hover:underline"
+      >{{ locale }}</a>
+    {%- endfor -%}
+  </div>
+{%- endif -%}

@@ -9,7 +9,7 @@
       {% if checked %}
       checked{% endif %}
       {% if required %}
-      required{% endif %} />{{ label }}{% if required %}
+      required{% endif %} />{{ label | roseyWrap }}{% if required %}
       *{% endif %}
   </label>
 </div>

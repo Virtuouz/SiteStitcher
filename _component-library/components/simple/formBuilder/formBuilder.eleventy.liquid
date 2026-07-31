@@ -53,7 +53,7 @@
             <a
               data-umami-event="TermsAndConditions-footer"
               href="{{ site.termsAndConditionsUrl }}"
-              target="_blank">Terms & Conditions</a>
+              target="_blank"{{ "Terms & Conditions" | roseyTag }}>Terms & Conditions</a>
           </li>
         {% endif %}
         {% if site.privacyPolicyUrl and site.privacyPolicyUrl != "" %}
@@ -61,7 +61,7 @@
             <a
               data-umami-event="PrivacyPolicy-footer"
               href="{{ site.privacyPolicyUrl }}"
-              target="_blank">Privacy Policy</a>
+              target="_blank"{{ "Privacy Policy" | roseyTag }}>Privacy Policy</a>
           </li>
         {% endif %}
       </ul>

@@ -132,21 +132,21 @@
                         <div class="flex gap-x-10 ">
                           <div>
                             <p id="{{"days-" |  append: dateUUID}}" class="">-·-</p>
-                            <p class="opacity-80 font-bold text-lg">Days</p>
+                            <p class="opacity-80 font-bold text-lg"{{ "Days" | roseyTag }}>Days</p>
                           </div>
                           <div>
                             <p id="{{"hours-" |  append: dateUUID}}" class="">-·-</p>
-                            <p class="opacity-80 font-bold text-lg">Hours</p>
+                            <p class="opacity-80 font-bold text-lg"{{ "Hours" | roseyTag }}>Hours</p>
                           </div>
                         </div>
                         <div class="flex gap-x-10">
                           <div>
                             <p id="{{"minutes-" |  append: dateUUID}}" class="">-·-</p>
-                            <p class="opacity-80 font-bold text-lg">Minutes</p>
+                            <p class="opacity-80 font-bold text-lg"{{ "Minutes" | roseyTag }}>Minutes</p>
                           </div>
                           <div>
                             <p id="{{"seconds-" |  append: dateUUID}}" class="">-·-</p>
-                            <p class="opacity-80 font-bold text-lg">seconds</p>
+                            <p class="opacity-80 font-bold text-lg"{{ "seconds" | roseyTag }}>seconds</p>
                           </div>
                         </div>
                       {% endif %}
@@ -159,7 +159,7 @@
               <div class="mt-20">{% bookshop "generic/heading" bind: headingHappening %}</div>
               <div class="flex justify-between w-full items-end flex-wrap mt-20  gap-2 sm:gap-4">
                 <div>
-                  <p class="uppercase font-bold text-2xl sm:text-4xl opacity-70">{{ contents.whenLabel | default: "When:" }}</p>
+                  <p class="uppercase font-bold text-2xl sm:text-4xl opacity-70"{{ contents.whenLabel | default: "When:" | roseyTag }}>{{ contents.whenLabel | default: "When:" }}</p>
                   <p
                     {% if entry.data.cancelled != true %}
                     _="on load
@@ -188,7 +188,7 @@
                     {% endif %}
                     class="text-3xl sm:text-5xl font-bold opacity-90">
                     {% if entry.data.cancelled %}
-                      CANCELLED
+                      {{ "CANCELLED" | roseyWrap }}
                     {% else %}
                       {% if contents.dateFormat == "dd/mm/yyyy" %}
                         {{ entry.data.happeningDate | date: "%d/%m/%Y" }}
@@ -206,7 +206,7 @@
                     {% for tag in entry.data.tags %}
                       {% if tag != 'undefined' %}
                         <li class="hover:underline after:absolute after:content-['·'] after:scale-150  after:left-2 relative before:content-[' '] after:left-[-10px] after:text-lg ">
-                          <a class="font-bold" href="/tag/{{ tag | slug }}/">{{ tag | capitalize | replace: ' ', '' }}</a>
+                          <a class="font-bold" href="/tag/{{ tag | slug }}/"{{ tag | roseyTag }}>{{ tag | capitalize | replace: ' ', '' }}</a>
                         </li>
                       {% endif %}
                     {% endfor %}
@@ -215,7 +215,7 @@
                 <a
                   data-umami-event="{{entry.data.title}}-upcomingHappening-{{page.url}}-link"
                   class="text-3xl sm:text-5xl font-bold opacity-80 underline transition-all hover:scale-105"
-                  href="{{entry.url}}">{{ contents.learnMoreText | default: "Learn more" }}</a>
+                  href="{{entry.url}}"{{ contents.learnMoreText | default: "Learn more" | roseyTag }}>{{ contents.learnMoreText | default: "Learn more" }}</a>
               </div>
             </section>
           </div>

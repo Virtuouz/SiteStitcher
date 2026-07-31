@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
 
 npx @bookshop/generate
+
+# Rosey i18n. No-ops unless ROSEY_ENABLED=true. See utils/rosey.js.
+npm run rosey

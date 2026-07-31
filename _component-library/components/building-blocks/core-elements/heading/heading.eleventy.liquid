@@ -41,7 +41,11 @@
   {%- if content.iconName and content.iconPosition == "before" -%}
     {% bookshop "building-blocks/core-elements/icon" name: content.iconName size: "md" background: false %}
   {%- endif -%}
-  {{ text }}
+  {%- comment -%}
+    Rosey wraps the text so the translation key captures only the copy, not the
+    sibling icon markup. The span only exists when Rosey is on.
+  {%- endcomment -%}
+  {{ text | roseyWrap }}
   {%- if content.iconName and content.iconPosition == "after" -%}
     {% bookshop "building-blocks/core-elements/icon" name: content.iconName size: "md" background: false %}
   {%- endif -%}

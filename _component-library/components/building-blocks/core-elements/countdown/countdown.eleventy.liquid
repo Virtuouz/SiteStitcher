@@ -133,7 +133,7 @@
   {%- if content.completionText and content.completionText != '' -%}
     <p
       id="{{ 'completion-' | append: uuid }}"
-      class="c-countdown__completion hidden font-bold {{ completionClass | strip }}"
+      class="c-countdown__completion hidden font-bold {{ completionClass | strip }}"{{ content.completionText | roseyTag }}
     >{{ content.completionText }}</p>
     
       
@@ -147,7 +147,7 @@
       <div class="c-countdown__segment flex flex-col  {% if variant == 'boxed' %} {{ boxedSegmentClass | strip }}{% elsif variant == 'separated' %}{{separatorClass |strip}}{% endif %}">
         <span id="{{ 'val-days-' | append: uuid }}" class="c-countdown__value {{ valueClass | strip }} font-bold tabular-nums">--</span>
         {%- if showLabels -%}
-          <span class="c-countdown__label {{ labelClass | strip }} uppercase tracking-wider opacity-80">Days</span>
+          <span class="c-countdown__label {{ labelClass | strip }} uppercase tracking-wider opacity-80"{{ "Days" | roseyTag }}>Days</span>
         {%- endif -%}
       </div>
     {%- endif -%}
@@ -156,7 +156,7 @@
       <div class="c-countdown__segment flex flex-col  {% if variant == 'boxed' %} {{ boxedSegmentClass | strip }}{% elsif variant == 'separated' %}{{separatorClass |strip}}{% endif %}">
         <span id="{{ 'val-hours-' | append: uuid }}" class="c-countdown__value {{ valueClass | strip }} font-bold tabular-nums">--</span>
         {%- if showLabels -%}
-          <span class="c-countdown__label {{ labelClass | strip }} uppercase tracking-wider opacity-80">Hours</span>
+          <span class="c-countdown__label {{ labelClass | strip }} uppercase tracking-wider opacity-80"{{ "Hours" | roseyTag }}>Hours</span>
         {%- endif -%}
       </div>
     {%- endif -%}
@@ -165,7 +165,7 @@
       <div class="c-countdown__segment flex flex-col  {% if variant == 'boxed' %} {{ boxedSegmentClass | strip }}{% elsif variant == 'separated' %}{{separatorClass |strip}}{% endif %}">
         <span id="{{ 'val-min-' | append: uuid }}" class="c-countdown__value {{ valueClass | strip }} font-bold tabular-nums">--</span>
         {%- if showLabels -%}
-          <span class="c-countdown__label {{ labelClass | strip }} uppercase tracking-wider opacity-80">Minutes</span>
+          <span class="c-countdown__label {{ labelClass | strip }} uppercase tracking-wider opacity-80"{{ "Minutes" | roseyTag }}>Minutes</span>
         {%- endif -%}
       </div>
     {%- endif -%}
@@ -174,7 +174,7 @@
       <div class="c-countdown__segment flex flex-col  {% if variant == 'boxed' %} {{ boxedSegmentClass | strip }}{% elsif variant == 'separated' %}{{separatorClass |strip}}{% endif %}">
         <span id="{{ 'val-sec-' | append: uuid }}" class="c-countdown__value {{ valueClass | strip }} font-bold tabular-nums">--</span>
         {%- if showLabels -%}
-          <span class="c-countdown__label {{ labelClass | strip }} uppercase tracking-wider opacity-80">Seconds</span>
+          <span class="c-countdown__label {{ labelClass | strip }} uppercase tracking-wider opacity-80"{{ "Seconds" | roseyTag }}>Seconds</span>
         {%- endif -%}
       </div>
     {%- endif -%}

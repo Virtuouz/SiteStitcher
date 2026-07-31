@@ -30,7 +30,7 @@
 
 <div class="c-counter flex items-center gap-1 {{ alignClass | strip }} {{ sizeClass | strip }} font-bold">
   {%- if content.prefix -%}
-    <span class="c-counter__prefix">{{ content.prefix }}</span>
+    <span class="c-counter__prefix"{{ content.prefix | roseyTag }}>{{ content.prefix }}</span>
   {%- endif -%}
   <span
     class="c-counter__number"
@@ -40,7 +40,7 @@
     aria-live="off"
   >{{ targetNumber }}</span>
   {%- if content.suffix -%}
-    <span class="c-counter__suffix">{{ content.suffix }}</span>
+    <span class="c-counter__suffix"{{ content.suffix | roseyTag }}>{{ content.suffix }}</span>
   {%- endif -%}
 </div>
 

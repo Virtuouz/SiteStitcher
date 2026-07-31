@@ -27,7 +27,7 @@ blogPosts.size > 0 %}
   data-umami-event="{{entry.title}}-navbar"
   {{entry.url | linkFilter: page.url}}
     class="data-[state=active]:link data-[state=active]:decoration-{{color_group}}-accentcolor  block rounded py-2 pl-3 pr-4   transition-colors   md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
-    href="{{ entry.url }}"
+    href="{{ entry.url }}"{{ entry.title | roseyTag }}
     >{{ entry.title }}</a
   >
 </li>
@@ -37,7 +37,7 @@ blogPosts.size > 0 %}
   data-umami-event="{{entry.title}}-navbar"
   {{entry.url | linkFilter: page.url}}
     class="data-[state=active]:link data-[state=active]:decoration-{{color_group}}-accentcolor font-normal underline md:no-underline  block rounded py-2 pl-3 pr-4 md:w-max   transition-colors   md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
-    href="{{ entry.url }}"
+    href="{{ entry.url }}"{{ entry.title | roseyTag }}
     >{{ entry.title }}</a
   >
 </li>
@@ -76,7 +76,7 @@ blogPosts.size > 0 %}
       submenu.classList.remove('md:scale-y-100');
       submenu.classList.add('md:invisible');
       end then set opened to false
-      " 
+      "{{ entry.title | roseyTag }} 
         >{{ entry.title }}</button
       >
     </li>
@@ -168,7 +168,7 @@ blogPosts.size > 0 %}
 
 {% if entry.links.size > 0 and  parentType == "megaSub"%}
     <li class="data-[state=active]:link data-[state=active]:decoration-{{color_group}}-accentcolor w-max block rounded mt-2 py-2 pl-3 pr-4 font-bold  transition-colors   md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent" >
-    {{ entry.title }}
+    {{ entry.title | roseyWrap }}
   
   <ul id="{{ entry.title | append: navUUID | slugify }}" class="    transition-all md:duration-300 origin-top   ml-3  md:ml-0 md:p-2 md:pr-6  md:z-10  w-max   border-l-2 border-{{color_group}}-textcolor md:bg-{{color_group}}-backgroundcolor bg-opacity-70  focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
     {% for child in entry.links %} 
@@ -215,7 +215,7 @@ blogPosts.size > 0 %}
       submenu.classList.remove('md:scale-y-100');
       submenu.classList.add('md:invisible');
       end then set opened to false
-      " 
+      "{{ entry.title | roseyTag }} 
         >{{ entry.title }}</button
       >
     </li>

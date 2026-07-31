@@ -4,7 +4,7 @@
       {% if pagination.href.previous %}
         <a 
         data-umami-event="previous-{{page.url}}-blogPagination"
-        class="hover:underline" href="{{ pagination.href.previous }}{{ paginationNumber }}">
+        class="hover:underline" href="{{ pagination.href.previous }}{{ paginationNumber }}"{{ paginationPrevText | default: "Previous" | roseyTag }}>
           {% if paginationPrevText %}
             {{ paginationPrevText }}
           {% else %}
@@ -15,7 +15,7 @@
       {% if pagination.href.next %}
         <a 
         data-umami-event="Next-{{page.url}}-blogPagination"
-        class="hover:underline" href="{{ pagination.href.next }}{{ paginationAnchor }}">
+        class="hover:underline" href="{{ pagination.href.next }}{{ paginationAnchor }}"{{ paginationNextText | default: "Next" | roseyTag }}>
           {% if paginationNextText %}
             {{ paginationNextText }}
           {% else %}

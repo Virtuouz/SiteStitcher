@@ -41,7 +41,7 @@
           <div>
           <div class="text-{{styles.color_group}}-highcontrast-{{styles.topColorFromGroup}}color mt-5 flex flex-wrap justify-around gap-2 text-sm">
             {% for benefit in content.benefits %}
-              <p>{{ benefit }}</p>
+              <p{{ benefit | roseyTag }}>{{ benefit }}</p>
             {% endfor %}
         </div>
         {% capture imageClasses %}

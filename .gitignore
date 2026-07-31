@@ -21,3 +21,11 @@ src/images/favicon
 dist
 .unlighthouse
 _component-library/componentRegistry.json
+
+# Rosey - regenerated from dist/ on every build.
+# rosey/rcc.yaml, rosey/locales/ and src/rosey-translations/ ARE tracked;
+# they hold the translations themselves.
+rosey/base.json
+rosey/base.urls.json
+rosey/checks.json
+untranslated_site

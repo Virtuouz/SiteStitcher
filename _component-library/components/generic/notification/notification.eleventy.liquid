@@ -1,7 +1,7 @@
 <div class="bg-cyan-100 border border-cyan-700 p-4 flex">
     {% bookshop "generic/heroLibraryIcon" hero_library_icon_name:"information-circle" icon_type:"solid" icon_size:"small" rounded_border:false color:"#DE4E63" %}
     <div class="  text-left">
-        {% if heading %}<p class="text-2xl text-cyan-900">{{ heading }}</p>{% endif %}
-        {% if text %}<p class="text-base text-slate-900">{{ text }}</p>{% endif %}
+        {% if heading %}<p class="text-2xl text-cyan-900"{{ heading | roseyTag }}>{{ heading }}</p>{% endif %}
+        {% if text %}<p class="text-base text-slate-900"{{ text | roseyTag }}>{{ text }}</p>{% endif %}
     </div>
 </div>

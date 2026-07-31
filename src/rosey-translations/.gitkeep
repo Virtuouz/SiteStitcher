@@ -1,0 +1,4 @@
+Editor-facing Rosey translation files land here, one directory per locale, once
+a locale is added to rosey/rcc.yaml and ROSEY_ENABLED=true. Tracked in git so
+the CloudCannon "Translations" collection resolves before the first locale
+exists.

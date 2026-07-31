@@ -12,7 +12,7 @@
 {%- endcapture -%}
 
 {%- if content.text -%}
-  <div class="c-text cs-docs cs-docs--{{ color_group | default: 'primary' }} w-full {{ alignClass | strip }}">
+  <div class="c-text cs-docs cs-docs--{{ color_group | default: 'primary' }} w-full {{ alignClass | strip }}"{{ content.text | roseyMarkdown }}>
     {%- if env_bookshop_live -%}
       {{ content.text | markdownify }}
     {%- else -%}

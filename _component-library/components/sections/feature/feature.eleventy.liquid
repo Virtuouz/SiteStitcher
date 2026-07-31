@@ -37,7 +37,7 @@
                                 {% if item.icon %}
                                     <span class="material-symbols-outlined text-{{styles.color_group}}-primarycolor">{{item.icon}}</span>
                                 {% endif %}
-                                <span>{{item.text}}</span>
+                                <span{{ item.text | roseyTag }}>{{item.text}}</span>
                             </li>
                         {% endfor %}
                     </ul>
@@ -59,7 +59,7 @@
                                 {% if item.icon %}
                                     <span class="material-symbols-outlined text-4xl text-{{styles.color_group}}-primarycolor">{{item.icon}}</span>
                                 {% endif %}
-                                <span class="font-medium">{{item.text}}</span>
+                                <span class="font-medium"{{ item.text | roseyTag }}>{{item.text}}</span>
                             </li>
                         {% endfor %}
                     </ul>
@@ -82,7 +82,7 @@
                                     {% if item.icon %}
                                         <span class="material-symbols-outlined text-{{styles.color_group}}-primarycolor">{{item.icon}}</span>
                                     {% endif %}
-                                    <span>{{item.text}}</span>
+                                    <span{{ item.text | roseyTag }}>{{item.text}}</span>
                                 </li>
                             {% endfor %}
                         </ul>

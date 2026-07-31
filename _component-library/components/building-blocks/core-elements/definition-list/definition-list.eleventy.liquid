@@ -23,8 +23,8 @@
   <dl class="{{ listClass | strip }}">
     {%- for item in content.items -%}
       <div class="c-definition-list__item">
-        <dt class="c-definition-list__term {{ weightClass | strip }}">{{ item.term }}</dt>
-        <dd class="c-definition-list__definition">{{ item.definition }}</dd>
+        <dt class="c-definition-list__term {{ weightClass | strip }}"{{ item.term | roseyTag }}>{{ item.term }}</dt>
+        <dd class="c-definition-list__definition"{{ item.definition | roseyTag }}>{{ item.definition }}</dd>
       </div>
     {%- endfor -%}
   </dl>

@@ -45,11 +45,11 @@ href="{{ listingUrl }}">{% endif %}
     
     {% if tagToUse and tagToUse != '' %}
 
-      <div class="z-10 absolute top-5 right-5 inline-block px-2 py-0.5 text-xs font-medium border-2 rounded-full transition {{tagClasses}} ">{{ tagToUse }}</div>
+      <div class="z-10 absolute top-5 right-5 inline-block px-2 py-0.5 text-xs font-medium border-2 rounded-full transition {{tagClasses}} "{{ tagToUse | roseyTag }}>{{ tagToUse }}</div>
     {% endif %}
       {% if expires  %}
         <div class="absolute bottom-5 right-5 p-2 z-10 bg-white text-slate-800 {{theme.container_rounding}}">
-          <p >Expires at:</p>
+          <p {{ "Expires at:" | roseyTag }}>Expires at:</p>
                 <time
           _="on load
           set happeningDate to Date.parse('{{listingExpiration | date: "%Y-%m-%dT%H:%M:%S%z"}}')
@@ -77,8 +77,8 @@ href="{{ listingUrl }}">{% endif %}
       {% endif %}
 
       <div class="p-3 bg-{{color_group}}-{{colorFromGroup}}color bg-opacity-90 text-{{color_group}}-highcontrast-{{colorFromGroup}}color {{theme.container_rounding}} shadow-[0px_2px_8px_0px_rgba(0,0,0,0.15)] text-center">
-        <h3 class="text-[1.375rem] font-bold opacity-85 px-4{% if listingUrl and listingUrl != '' %} hover:underline {% endif %}">{{ listingTitle }}</h3>
-        <p class="opacity-75">{{ keyInformation }}</p>
+        <h3 class="text-[1.375rem] font-bold opacity-85 px-4{% if listingUrl and listingUrl != '' %} hover:underline {% endif %}"{{ listingTitle | roseyTag }}>{{ listingTitle }}</h3>
+        <p class="opacity-75"{{ keyInformation | roseyTag }}>{{ keyInformation }}</p>
       </div>
     </div>
   {% endif %}

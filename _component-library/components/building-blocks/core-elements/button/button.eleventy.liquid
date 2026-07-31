@@ -41,7 +41,9 @@
   {%- endif -%}
 
   {%- unless content.hideText -%}
-    {{ content.text | default: "Button" }}
+    {%- assign buttonText = content.text | default: "Button" -%}
+    {%- comment -%}Wrapped so the key captures the label, not the sibling icon.{%- endcomment -%}
+    {{ buttonText | roseyWrap }}
   {%- endunless -%}
 
   {%- if content.iconName and content.iconPosition == "after" -%}

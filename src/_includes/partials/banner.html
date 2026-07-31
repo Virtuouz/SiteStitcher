@@ -16,7 +16,7 @@
                 set localStorage.banner_{{ banner.id | slug | remove: '-' }} to true
                 add .hidden to me
             end">
-                <div>{{ banner.html }}</div>
+                <div{{ banner.html | roseyMarkdown }}>{{ banner.html }}</div>
                 <button class="absolute top-2 -right-5 sm:-right-8" id="banner_button_{{ banner.id | slug | remove: '-' }}">{% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"x-mark" iconType:"solid" iconSize:'small' roundedBorder:false classOverride: iconClass %}</button>
             </header>
         </div>

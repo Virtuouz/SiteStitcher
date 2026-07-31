@@ -1,8 +1,8 @@
 <div class="c-videoEmbed w-full {% if thumbOnly %} h-full {% endif %}">
   {% if platform == 'youtube' %}
     <lite-youtube {% if thumbOnly %} thumbOnly class=" object-cover object-center w-full h-full" {% endif %} videoid="{{videoId}}" style="background-image: url('https://i.ytimg.com/vi/{{videoId}}/hqdefault.jpg');">
-  <a href="https://youtube.com/watch?v={{videoId}}" class="lty-playbtn" title="Play Video">
-    <span class="lyt-visually-hidden">Play Video: Crayon Physics Deluxe - Trailer HD</span>
+  <a href="https://youtube.com/watch?v={{videoId}}" class="lty-playbtn" title="Play Video"{{ "Play Video" | roseyAttrs: "title" }}>
+    <span class="lyt-visually-hidden"{{ "Play Video: Crayon Physics Deluxe - Trailer HD" | roseyTag }}>Play Video: Crayon Physics Deluxe - Trailer HD</span>
   </a>
 </lite-youtube>
     {% elsif platform == 'vimeo' %}

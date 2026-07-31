@@ -7,6 +7,14 @@
       {
         "key": "CLOUDCANNON_ENV",
         "value": "cloudcannon"
+      },
+      {
+        "key": "ROSEY_ENABLED",
+        "value": "false"
+      },
+      {
+        "key": "CLOUDCANNON_SYNC_PATHS",
+        "value": "/rosey/,/src/rosey-translations/"
       }
     ],
     "node_version":"file",

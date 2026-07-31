@@ -1,9 +1,9 @@
 {% if text and env_bookshop_live %}
-    <div  class="c-textBlock w-full">    
+    <div  class="c-textBlock w-full"{{ text | roseyMarkdown }}>    
         {{ text | markdownify  }}
     </div>
 {% elsif text %}
-<div class="c-textBlock w-full">    
+<div class="c-textBlock w-full"{{ text | roseyMarkdown }}>    
         {{ text | renderContent | markdownify  }}
     </div>
 {% endif %}

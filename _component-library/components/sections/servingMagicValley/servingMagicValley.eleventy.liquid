@@ -11,51 +11,51 @@
   {% endif %}
     <section class="basecontainer w-full">{% bookshop "generic/headingHorizontal" bind: content.heading %}
         <div class="flex justify-between items-center mt-40 flex-wrap min-[700px]:flex-nowrap gap-8">
-            <h3 class=" text-7xl md:text-8xl lg:text-9xl xl:text-[200px] font-bold h-auto">Twin Falls</h3>
+            <h3 class=" text-7xl md:text-8xl lg:text-9xl xl:text-[200px] font-bold h-auto"{{ "Twin Falls" | roseyTag }}>Twin Falls</h3>
             <div class="min-[700px]:flex-1 min-w-[300px] max-w-[500px]">{% bookshop "generic/image" imagePath: "/assets/images/locations/perrine.jpg" imageAlt: "Side view of the Twin Falls Idaho Perrine Bridge"  class: imageclasses %}</div>
         </div>
         <div class="flex flex-row-reverse justify-between items-center mt-40 flex-wrap min-[700px]:flex-nowrap gap-8 ">
-            <h3 class=" text-7xl md:text-8xl lg:text-9xl xl:text-[200px] font-bold h-auto">Jerome</h3>
+            <h3 class=" text-7xl md:text-8xl lg:text-9xl xl:text-[200px] font-bold h-auto"{{ "Jerome" | roseyTag }}>Jerome</h3>
             <div class="min-[700px]:flex-1 min-w-[300px] max-w-[500px]">{% bookshop "generic/image" imagePath: "/assets/images/locations/jerome.jpg" imageAlt: "Mermaid Cove near Jerome Idaho"  class: imageclasses %}</div>
         </div>
         <div class="flex justify-between items-center mt-40 flex-wrap min-[700px]:flex-nowrap gap-8">
-            <h3 class=" text-7xl md:text-8xl lg:text-9xl xl:text-[200px] font-bold h-auto">Burley</h3>
+            <h3 class=" text-7xl md:text-8xl lg:text-9xl xl:text-[200px] font-bold h-auto"{{ "Burley" | roseyTag }}>Burley</h3>
             <div class="min-[700px]:flex-1 min-w-[300px] max-w-[500px]">{% bookshop "generic/image" imagePath: "/assets/images/locations/burley.jpg" imageAlt: "Aerial view of Burleys annual Spudman Triathalon"  class: imageclasses %}</div>
         </div>
         <div class="flex flex-row-reverse justify-between items-center mt-40 flex-wrap min-[700px]:flex-nowrap gap-8 ">
-            <h3 class=" text-7xl md:text-8xl lg:text-9xl xl:text-[200px] font-bold h-auto">Buhl</h3>
+            <h3 class=" text-7xl md:text-8xl lg:text-9xl xl:text-[200px] font-bold h-auto"{{ "Buhl" | roseyTag }}>Buhl</h3>
             <div class="min-[700px]:flex-1 min-w-[300px] max-w-[500px]">{% bookshop "generic/image" imagePath: "/assets/images/locations/buhl.png" imageAlt: "Famous Balancing Rock near Buhl Idaho"  class: imageclasses %}</div>
         </div>
         <div class="flex justify-between items-center mt-40 flex-wrap min-[700px]:flex-nowrap gap-8">
-            <h3 class=" text-7xl md:text-8xl lg:text-9xl xl:text-[200px] font-bold h-auto">Gooding</h3>
+            <h3 class=" text-7xl md:text-8xl lg:text-9xl xl:text-[200px] font-bold h-auto"{{ "Gooding" | roseyTag }}>Gooding</h3>
             <div class="min-[700px]:flex-1 min-w-[300px] max-w-[500px]">{% bookshop "generic/image" imagePath: "/assets/images/locations/gooding.jpg" imageAlt: "Night time shot of Little City of Rocks outside of Gooding Idaho"  class: imageclasses %}</div>
         </div>
         <div class="text-center">
-            <p class="lg:text-9xl md:text-8xl text-6xl  mt-40 font-bold">
+            <p class="lg:text-9xl md:text-8xl text-6xl  mt-40 font-bold"{{ "And the rest of the" | roseyTag }}>
                 And the rest of the
             </p>
-            <p class="lg:text-[200px] md:text-9xl text-7xl leading-[1] font-bold">Magic Valley</p>
+            <p class="lg:text-[200px] md:text-9xl text-7xl leading-[1] font-bold"{{ "Magic Valley" | roseyTag }}>Magic Valley</p>
         </div>
         <div class="flex justify-center items-center mt-12">
             <ul class="grid lg:grid-cols-6 md:grid-cols-3 grid-cols-2  text-3xl gap-4 text-{{styles.color_group}}-secondarycolor">
-                <li>Bliss</li>
-                <li>Buhl</li>
-                <li>Burley</li>
-                <li>Castleford</li>
-                <li>Filer</li>
-                <li>Glens Ferry</li>
-                <li>Gooding</li>
-                <li>Hagerman</li>
-                <li>Hailey</li>
-                <li>Hansen</li>
-                <li>Hazleton</li>
-                <li>Heyburn</li>
-                <li>Hollister</li>
-                <li>Jerome</li>
-                <li>Kimberly</li>
-                <li>Rupert</li>
-                <li>Twin Falls</li>
-                <li>Wendell</li>
+                <li{{ "Bliss" | roseyTag }}>Bliss</li>
+                <li{{ "Buhl" | roseyTag }}>Buhl</li>
+                <li{{ "Burley" | roseyTag }}>Burley</li>
+                <li{{ "Castleford" | roseyTag }}>Castleford</li>
+                <li{{ "Filer" | roseyTag }}>Filer</li>
+                <li{{ "Glens Ferry" | roseyTag }}>Glens Ferry</li>
+                <li{{ "Gooding" | roseyTag }}>Gooding</li>
+                <li{{ "Hagerman" | roseyTag }}>Hagerman</li>
+                <li{{ "Hailey" | roseyTag }}>Hailey</li>
+                <li{{ "Hansen" | roseyTag }}>Hansen</li>
+                <li{{ "Hazleton" | roseyTag }}>Hazleton</li>
+                <li{{ "Heyburn" | roseyTag }}>Heyburn</li>
+                <li{{ "Hollister" | roseyTag }}>Hollister</li>
+                <li{{ "Jerome" | roseyTag }}>Jerome</li>
+                <li{{ "Kimberly" | roseyTag }}>Kimberly</li>
+                <li{{ "Rupert" | roseyTag }}>Rupert</li>
+                <li{{ "Twin Falls" | roseyTag }}>Twin Falls</li>
+                <li{{ "Wendell" | roseyTag }}>Wendell</li>
             </ul>
         </div>
     </section>

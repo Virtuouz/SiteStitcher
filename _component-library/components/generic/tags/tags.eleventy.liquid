@@ -22,7 +22,7 @@
   bg-red-100 text-red-700 border-red-700 hover:bg-red-200
   {% else %}
     {{tag | tagColorFilter: blacklist}} 
-{% endif %} ">
+{% endif %} "{{ tag | roseyTag }}>
         {{ tag }}</a>
     {% endif %}
   {% endfor %}

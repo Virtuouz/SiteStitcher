@@ -4,7 +4,7 @@
 <details {% if accordion.opened %}open{% endif %} >
 
   <summary>
-    <span class="details-marker"></span>{{accordion.title}}</summary>
+    <span class="details-marker"></span>{{ accordion.title | roseyWrap }}</summary>
   <div class="details-content">
     {% for editorial_block in accordion.editorials %}
         

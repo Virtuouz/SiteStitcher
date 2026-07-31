@@ -87,12 +87,12 @@
 {% block content %}
 
 <div class=" mt-40">
-  <h1 data-editable="text" data-prop="title" class=" text-3xl sm:text-5xl font-semibold md:text-8xl" >{{title}}</h1>
+  <h1 data-editable="text" data-prop="title" class=" text-3xl sm:text-5xl font-semibold md:text-8xl"{{ title | roseyTag }} >{{title}}</h1>
   {% bookshop "generic/image" bind: image class: blogImageClasses  %}
   <div class="flex gap-2 mt-4">
     {% bookshop "generic/image" imagePath: blogAuthor.imagePath imageAlt: blogAuthor.name  class: "rounded object-cover aspect-square w-20 "  %}
     <div class="flex flex-col justify-between">
-      <p>written by {{blogAuthor.name}}</p>
+      <p>{{ "written by" | roseyWrap }} {{blogAuthor.name}}</p>
       <time class="" datetime="{{ blogDate | date: "%Y-%m-%d" }}">{{ blogDate | date: "%B %d, %Y" }}</time>
     </div>
   </div>
@@ -169,7 +169,7 @@
             end
           "
         >
-          <span class="text-sm opacity-80">On This Page</span>
+          <span class="text-sm opacity-80"{{ "On This Page" | roseyTag }}>On This Page</span>
           <span id="toc-dropdown-arrow" class="transition-transform duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -225,7 +225,7 @@
       {% if tocExists %}
       <aside class="hidden xl:block w-72 shrink-0"> 
         <div class="sticky overflow-y-auto max-h-[80vh] top-24 flex flex-col gap-4">
-          <p class="text-sm font-semibold opacity-75">On this page</p>
+          <p class="text-sm font-semibold opacity-75"{{ "On this page" | roseyTag }}>On this page</p>
           <div class="opacity-80 text-sm">
             {{ bookshopTOC }}
             {{ contentTOC }}

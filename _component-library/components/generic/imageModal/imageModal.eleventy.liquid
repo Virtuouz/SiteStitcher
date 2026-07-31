@@ -25,7 +25,7 @@ transition #modal-{{id}} opacity to 1 over 0.2s
 <dialog id="modal-{{id}}" class="fixed top-0 z-[920] h-full w-full overflow-scroll p-4 opacity-0 open:bg-slate-950 open:bg-opacity-60 open:backdrop-blur-lg sm:p-10">
   <div class="flex flex-col gap-10">
     <button
-      aria-label="Close image"
+      aria-label="Close image"{{ "Close image" | roseyAttrs: "aria-label" }}
       class="sticky top-0 self-end font-bold text-white opacity-60"
       _="
           on click

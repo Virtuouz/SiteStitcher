@@ -29,3 +29,11 @@ rosey/base.json
 rosey/base.urls.json
 rosey/checks.json
 untranslated_site
+
+# Rosey build artefacts. The locale files in src/rosey/locales/ ARE committed —
+# they hold the translations — but these are regenerated on every build.
+src/rosey/base.json
+src/rosey/base.urls.json
+src/rosey/checks.json
+src/rosey/.last-build-locales.json
+_untranslated_site/

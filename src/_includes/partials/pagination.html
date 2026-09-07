@@ -3,11 +3,11 @@
 <footer>
   <nav class="">
     {% if pagination.href.previous %}
-    <a class="text" href="{{ pagination.href.previous }}{{ paginationNumber }}"{{ paginationPrevText | default: "Previous" | roseyTag }}
+    <a class="text" href="{{ pagination.href.previous }}{{ paginationNumber }}"{{ "common" | roseyRoot }}{{ paginationPrevText | default: "Previous" | roseyTag: "ui:previous" }}
       >{{ paginationPrevText if paginationPrevText else 'Previous'}}previous</a
     >
     {% endif %} {% if pagination.href.next %}
-    <a class="" href="{{ pagination.href.next }}{{ paginationAnchor }}"{{ paginationNextText | default: "Next" | roseyTag }}>
+    <a class="" href="{{ pagination.href.next }}{{ paginationAnchor }}"{{ "common" | roseyRoot }}{{ paginationNextText | default: "Next" | roseyTag: "ui:next" }}>
       {{ paginationNextText if paginationNextText else 'Next' }}next
     </a>
     {% endif %}

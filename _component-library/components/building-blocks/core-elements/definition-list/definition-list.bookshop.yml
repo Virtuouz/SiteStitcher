@@ -11,11 +11,14 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: definition-list-95b6cc61-39e1-4f47-acac-f05391bdf1ed
+  _uuid:
   content:
     items:
-      - term: Term 1
+      - _uuid:
+        term: Term 1
         definition: Definition for term 1
-      - term: Term 2
+      - _uuid:
+        term: Term 2
         definition: Definition for term 2
   styles:
     layout: stacked

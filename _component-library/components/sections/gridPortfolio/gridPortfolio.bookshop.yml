@@ -12,11 +12,13 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: gridPortfolio-9b2e5a96-dac1-4edc-8a4f-453b8192a405
+  _uuid:
   content:
     sectionId:
     heading: bookshop:structure:headingBlocks
     images: 
-      - image: bookshop:generic/image
+      - _uuid:
+        image: bookshop:generic/image
         title: 
         description:
   styles:

@@ -11,6 +11,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: defaultMemberCard-e2405779-d231-4e9e-b771-f88b13a6b3fa
+  _uuid:
   content:
     name:
     titleOrDescription:

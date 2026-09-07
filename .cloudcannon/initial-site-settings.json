@@ -14,7 +14,7 @@
       },
       {
         "key": "CLOUDCANNON_SYNC_PATHS",
-        "value": "/rosey/,/src/rosey-translations/"
+        "value": "/src/rosey/"
       }
     ],
     "node_version":"file",

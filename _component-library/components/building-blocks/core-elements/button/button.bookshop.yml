@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: button-bb8dd06c-cfbb-4535-a2cf-be1fe80ae7a4
+  _uuid:
   content:
     text: "My Button"
     link: "#"

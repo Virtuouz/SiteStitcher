@@ -12,7 +12,7 @@
 {% assign imagePath = imagePath | pathExists %}
 {% if env_bookshop_live or meta.env == 'cloudcannon' or imagePath contains '.gif' %}
 {% comment %} Div wrap to simulate block level element of picture that real short code generates {% endcomment %}
-<picture><img class="{{imageComponentclasses}}" src="{{ imagePath }}" alt="{{ imageAlt }}"{{ imageAlt | roseyAttrs: "alt" }}></picture>
+<picture><img class="{{imageComponentclasses}}" src="{{ imagePath }}" alt="{{ imageAlt }}"{{ _uuid | roseyNs }}{{ imageAlt | roseyAttrs: "alt", "alt" }}></picture>
 
 
 

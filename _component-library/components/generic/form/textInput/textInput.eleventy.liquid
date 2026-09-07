@@ -1,6 +1,6 @@
 
 <div class="" {% if hidden %}style="display:none"{% endif %}>
-  <label class="block text-xs uppercase font-bold text-{{color_group}}-textcolor" for="{{ id }}">{{ label | roseyWrap }}{% if required %}
+  <label class="block text-xs uppercase font-bold text-{{color_group}}-textcolor" for="{{ id }}"{{ id | roseyNs }}>{{ label | roseyWrap: "label" }}{% if required %}
       *{% endif %}
       <input
 
@@ -8,7 +8,7 @@
     type="text"
     id="{{ id }}"
     name="{{ label }}"
-    placeholder="{{ placeholder }}"{{ placeholder | roseyAttrs: "placeholder" }}
+    placeholder="{{ placeholder }}"{{ placeholder | roseyAttrs: "placeholder", "placeholder" }}
     {% if required %}
     required{% endif %}
     {% if helperText %}

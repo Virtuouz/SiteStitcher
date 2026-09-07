@@ -19,7 +19,10 @@
     "test:componentUse": "node ./tests/validateUsedComponents.js",
     "test:siteJsonSync": "node ./tests/validateSiteFile.js",
     "syncPermalinks": "node ./utils/syncPermalinks.js",
-    "rosey": "node ./utils/rosey.js"
+    "rosey": "node ./utils/rosey.js",
+    "rosey:sync": "node ./utils/syncRoseyLocales.js",
+    "test:roseySync": "node ./utils/syncRoseyLocales.js --check",
+    "test:roseyIds": "node ./tests/validateRoseyIds.js"
   },
   "keywords": [],
   "author": "",
@@ -57,7 +60,7 @@
     "netlify-plugin-cache": "^1.0.3",
     "node-fetch": "^3.3.2",
     "rosey": "^2.3.10",
-    "rosey-cloudcannon-connector": "^1.2.2",
+    "rosey-cloudcannon-connector": "^2.0.1",
     "sass": "^1.75.0",
     "uuid": "^9.0.1",
     "wawoff2": "^2.0.1"

@@ -19,13 +19,13 @@
   {%- if listType == "ordered" -%}
     <ol class="{{ listClass | strip }}">
       {%- for item in content.items -%}
-        <li{{ item.text | roseyTag }}>{{ item.text }}</li>
+        <li{{ item._uuid | roseyNs }}{{ item.text | roseyTag: "text" }}>{{ item.text }}</li>
       {%- endfor -%}
     </ol>
   {%- elsif listType == "icon" or listType == "check" -%}
     <ul class="{{ listClass | strip }}">
       {%- for item in content.items -%}
-        <li class="c-list__item">
+        <li class="c-list__item"{{ item._uuid | roseyNs }}>
           <span class="c-list__icon" {{ iconStyle }}>
             {%- if listType == "check" -%}
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
@@ -35,14 +35,14 @@
               {% bookshop "building-blocks/core-elements/icon" content: icon %}
             {%- endif -%}
           </span>
-          <span class="c-list__text"{{ item.text | roseyTag }}>{{ item.text }}</span>
+          <span class="c-list__text"{{ item.text | roseyTag: "text" }}>{{ item.text }}</span>
         </li>
       {%- endfor -%}
     </ul>
   {%- else -%}
     <ul class="{{ listClass | strip }}">
       {%- for item in content.items -%}
-        <li{{ item.text | roseyTag }}>{{ item.text }}</li>
+        <li{{ item._uuid | roseyNs }}{{ item.text | roseyTag: "text" }}>{{ item.text }}</li>
       {%- endfor -%}
     </ul>
   {%- endif -%}

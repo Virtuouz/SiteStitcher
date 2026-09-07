@@ -4,7 +4,7 @@
       {% if pagination.href.previous %}
         <a 
         data-umami-event="previous-{{page.url}}-blogPagination"
-        class="hover:underline" href="{{ pagination.href.previous }}{{ paginationNumber }}"{{ paginationPrevText | default: "Previous" | roseyTag }}>
+        class="hover:underline" href="{{ pagination.href.previous }}{{ paginationNumber }}"{{ "common" | roseyRoot }}{{ paginationPrevText | default: "Previous" | roseyTag: "ui:previous" }}>
           {% if paginationPrevText %}
             {{ paginationPrevText }}
           {% else %}
@@ -15,7 +15,7 @@
       {% if pagination.href.next %}
         <a 
         data-umami-event="Next-{{page.url}}-blogPagination"
-        class="hover:underline" href="{{ pagination.href.next }}{{ paginationAnchor }}"{{ paginationNextText | default: "Next" | roseyTag }}>
+        class="hover:underline" href="{{ pagination.href.next }}{{ paginationAnchor }}"{{ "common" | roseyRoot }}{{ paginationNextText | default: "Next" | roseyTag: "ui:next" }}>
           {% if paginationNextText %}
             {{ paginationNextText }}
           {% else %}

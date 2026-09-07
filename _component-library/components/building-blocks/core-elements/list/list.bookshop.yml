@@ -11,11 +11,15 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: list-09fe1d59-035e-4e92-a14e-90ebf7054da9
+  _uuid:
   content:
     items:
-      - text: List item 1
-      - text: List item 2
-      - text: List item 3
+      - _uuid:
+        text: List item 1
+      - _uuid:
+        text: List item 2
+      - _uuid:
+        text: List item 3
   styles:
     type: unordered
     icon:

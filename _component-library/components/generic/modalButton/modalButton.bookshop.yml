@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: modalButton-ce57d451-a7dc-4222-9ef8-c7536c294970
+  _uuid:
   id:
   resource: bookshop:structure:resource
   form_color_group: primary

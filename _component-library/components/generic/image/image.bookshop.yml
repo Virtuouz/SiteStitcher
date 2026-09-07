@@ -14,6 +14,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: image-c1cbbc3b-f7dc-4577-8f8f-c37dd7943db2
+  _uuid:
   imagePath:
   imageAlt:
   yAxisPosition:

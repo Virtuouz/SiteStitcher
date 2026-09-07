@@ -5,7 +5,7 @@
         border-2 border-{{color_group}}-{{styles.highlightColor}}color
     {% endif %}
 {% endcapture %}
-<div class="flex flex-col justify-between min-h-[400px] max-w-[390px] min-w-[250px] w-full py-7 px-6 {{theme.container_rounding}} bg-{{styles.card_color_group}}-{{styles.colorFromGroup}}color text-{{styles.card_color_group}}-highcontrast-{{styles.colorFromGroup}}color flex-1 {{highlightClasses}}">
+<div class="flex flex-col justify-between min-h-[400px] max-w-[390px] min-w-[250px] w-full py-7 px-6 {{theme.container_rounding}} bg-{{styles.card_color_group}}-{{styles.colorFromGroup}}color text-{{styles.card_color_group}}-highcontrast-{{styles.colorFromGroup}}color flex-1 {{highlightClasses}}"{{ _uuid | roseyNs }}>
   <div>
     <div>
       {% capture heading %}
@@ -21,11 +21,11 @@
             {% endcapture %}
       {% assign heading = heading | ymlify %}
       {% bookshop "generic/heading" bind: heading %}
-      <p class="text-sm opacity-70"{{ content.shortDescription | roseyTag }}>{{ content.shortDescription }}</p>
+      <p class="text-sm opacity-70"{{ content.shortDescription | roseyTag: "short-description" }}>{{ content.shortDescription }}</p>
     </div>
     <div class="mt-10">
-      <p class="text-3xl"{{ content.price | roseyTag }}>{{ content.price }}</p>
-      <p class="opacity-70"{{ content.priceDescription | roseyTag }}>{{ content.priceDescription }}</p>
+      <p class="text-3xl"{{ content.price | roseyTag: "price" }}>{{ content.price }}</p>
+      <p class="opacity-70"{{ content.priceDescription | roseyTag: "price-description" }}>{{ content.priceDescription }}</p>
     </div>
     <div class="c-pricingCard mt-10 border-t-2  pt-10">
       {% if content.description %}

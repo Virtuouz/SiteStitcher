@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: pricingCard-08dbe090-cbb3-4828-9200-82e365b515ad
+  _uuid:
   content:
     heading:
     shortDescription:

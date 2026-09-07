@@ -16,7 +16,14 @@
                 set localStorage.banner_{{ banner.id | slug | remove: '-' }} to true
                 add .hidden to me
             end">
-                <div{{ banner.html | roseyMarkdown }}>{{ banner.html }}</div>
+                {%- comment -%}
+                  Rosey: inherits the "common" root opened on #navbar in
+                  site-head.html, so the site-wide banner is key
+                  common:banner:html — one entry, translated once, however many
+                  pages it appears on. roseyMarkdown gives editors a rich-text
+                  input, matching the `type: html` input the source has.
+                {%- endcomment -%}
+                <div{{ "banner" | roseyNs }}><div{{ banner.html | roseyMarkdown: "html" }}>{{ banner.html }}</div></div>
                 <button class="absolute top-2 -right-5 sm:-right-8" id="banner_button_{{ banner.id | slug | remove: '-' }}">{% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"x-mark" iconType:"solid" iconSize:'small' roundedBorder:false classOverride: iconClass %}</button>
             </header>
         </div>

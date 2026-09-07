@@ -11,6 +11,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: countdown-3f8a1c2e-9d47-4b6a-ae52-7c1f0d8e5b94
+  _uuid:
   content:
     date: 
     completionText:

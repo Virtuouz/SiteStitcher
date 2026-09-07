@@ -1,6 +1,6 @@
 <!doctype html>
 <html
-  lang="en"
+  lang="{{ rosey.defaultLanguage }}"
   class="mx-auto my-0 max-w-[1440px] scroll-pt-32 scroll-smooth overflow-x-hidden"
 >
   <head>
@@ -33,7 +33,14 @@
     data-umami-scroll-thresholds="20,40,60,80,100"
     class="mx-4 sm:mx-10  flex flex-col h-screen text-{{site.color_group}}-textcolor bg-{{site.color_group}}-backgroundcolor text-lg "
   >
-  
+  {%- comment -%}
+    RCC snapshot boundary. The connector clones everything inside it to preview a
+    locale in the Visual Editor, so it has to wrap the header and footer too —
+    chrome outside the boundary still translates at build time, but an editor
+    would not see it change when switching locale. It cannot be <body> itself:
+    that hosts the connector's own UI and CloudCannon's infrastructure.
+  {%- endcomment -%}
+  {% if rosey.enabled %}<div data-rcc class="contents">{% endif %}
     {% include "partials/site-head.html" %}
 
     <main
@@ -47,12 +54,35 @@
       log :height.height
       end'{% comment %}Rosey: scopes every key in the page body to this page, so
       identical copy on two pages gets two independently editable translations.
-      Site chrome uses the "common" namespace instead - see rosey/rcc.yaml.{% endcomment %}{{ title | roseyNs }}
+      Keyed on the URL, not the title: a root has to stay stable, and retitling a
+      page would otherwise re-key every string on it and orphan the translations.
+      Site chrome opens the shared "common" root instead, so it is translated
+      once for the whole site - see partials/site-head.html.
+
+      The home page needs naming explicitly: its URL is "/", which sanitises to
+      an empty root, and an empty data-rosey-root RESETS the namespace rather
+      than setting one - every key on the home page would end up unprefixed and
+      liable to collide with an unscoped key elsewhere.{% endcomment %}{% capture pageRoot %}{% if page.url == "/" %}index{% else %}{{ page.url }}{% endif %}{% endcapture %}{{ pageRoot | roseyRoot }}
     >
       {% bookshop_include "hero" hero: hero %} {% bookshop_include "page"
       content_blocks: content_blocks %} {% block content %}{% endblock %}
     </main>
-    {% include "partials/site-foot.html" %} 
+    {% include "partials/site-foot.html" %}
+  {% if rosey.enabled %}</div>{% endif %}
+  {%- comment -%}
+    The RCC editor client: draws the locale switcher and the stale-translation
+    panel inside CloudCannon's Visual Editor. `inEditorMode` is false for every
+    real visitor, so this costs them one `if`. A URL rather than a bare
+    specifier because nothing bundles this HTML; `install-client` puts the file
+    there during the Rosey postbuild.
+  {%- endcomment -%}
+  {% if rosey.enabled %}<script>
+      if (window?.inEditorMode) {
+        import("/_rcc/client.mjs").catch((error) =>
+          console.error("RCC: /_rcc/client.mjs failed to load — did install-client run?", error),
+        );
+      }
+    </script>{% endif %}
     {% bookshop "util/textContrastScript"  %}
     {% mermaid_js %}
     <script>

@@ -17,13 +17,23 @@ assign currentUrl = site.url | append: page.url %} {%comment %}{# If the page’
 {% if metaTitle %} {% assign pageTitle = metaTitle %} {% endif %} {% if not metaDesc
 %} {% assign metaDesc = summary %} {% endif %}
 
-<title{{ pageTitle | roseyTag }}>{{ pageTitle }}</title>
+{%- comment -%}
+  Rosey: <head> sits outside the "common" root and the page root on <main>, so
+  these keys are used exactly as written. Per-page strings therefore carry the
+  page path themselves, while the shared social-image alt text below stays
+  unprefixed and is translated once for the whole site.
+{%- endcomment -%}
+{% capture metaScope %}meta:{% if page.url == "/" %}index{% else %}{{ page.url }}{% endif %}{% endcapture %}
+{% capture keyTitle %}{{ metaScope }}:title{% endcapture %}
+{% capture keyDesc %}{{ metaScope }}:description{% endcapture %}
+
+<title{{ pageTitle | roseyTag: keyTitle }}>{{ pageTitle }}</title>
 <link rel="canonical" href="{{ currentUrl }}" />
 
 <meta name="view-transition" content="same-origin" />
 
 <meta property="og:site_name" content="{{ siteTitle }}" />
-<meta property="og:title" content="{{ pageTitle }}"{{ pageTitle | roseyAttrs: "content" }} />
+<meta property="og:title" content="{{ pageTitle }}"{{ pageTitle | roseyAttrs: "content", keyTitle }} />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="{{ currentUrl }}" />
 
@@ -31,12 +41,12 @@ assign currentUrl = site.url | append: page.url %} {%comment %}{# If the page’
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="og:image" content="{{ socialShareImage }}" />
 <meta name="twitter:image" content="{{ socialShareImage }}" />
-<meta property="og:image:alt" content="Page image for {{ site.name }}"{{ "Page image" | roseyAttrs: "content" }} />
-<meta name="twitter:image:alt" content="Page image for {{ site.name }}"{{ "Page image" | roseyAttrs: "content" }} />
+<meta property="og:image:alt" content="Page image for {{ site.name }}"{{ "Page image" | roseyAttrs: "content", "common:social-image-alt" }} />
+<meta name="twitter:image:alt" content="Page image for {{ site.name }}"{{ "Page image" | roseyAttrs: "content", "common:social-image-alt" }} />
 {% endif %} {% if metaDesc %}
-<meta name="description" content="{{ metaDesc }}"{{ metaDesc | roseyAttrs: "content" }} />
-<meta name="twitter:description" content="{{ metaDesc }}"{{ metaDesc | roseyAttrs: "content" }} />
-<meta property="og:description" content="{{ metaDesc }}"{{ metaDesc | roseyAttrs: "content" }} />
+<meta name="description" content="{{ metaDesc }}"{{ metaDesc | roseyAttrs: "content", keyDesc }} />
+<meta name="twitter:description" content="{{ metaDesc }}"{{ metaDesc | roseyAttrs: "content", keyDesc }} />
+<meta property="og:description" content="{{ metaDesc }}"{{ metaDesc | roseyAttrs: "content", keyDesc }} />
 {% endif %}
 
 {% include "partials/favicon.html" %}

@@ -492,12 +492,16 @@ module.exports = async function (eleventyConfig) {
   eleventyConfig.addFilter("roseyTag", roseyFilters.roseyTag);
   eleventyConfig.addFilter("roseyWrap", roseyFilters.roseyWrap);
   eleventyConfig.addFilter("roseyNs", roseyFilters.roseyNs);
+  eleventyConfig.addFilter("roseyRoot", roseyFilters.roseyRoot);
   eleventyConfig.addFilter("roseyMarkdown", roseyFilters.roseyMarkdown);
   eleventyConfig.addFilter("roseyAttrs", roseyFilters.roseyAttrs);
 
-  // Editor-facing Rosey translation files live under src/ so they resolve
-  // against `source: src` in cloudcannon.config.yml. They are not site input.
-  eleventyConfig.ignores.add("src/rosey-translations/**");
+  // Rosey's working directory lives under src/ so CloudCannon can address the
+  // locale files against `source: src`, but base.json and the locales are
+  // translation data, not site input. Rosey reads them straight off disk after
+  // Eleventy has finished.
+  eleventyConfig.ignores.add("src/rosey/**");
+
 
   // Load and flatten tokens
   const tokens = loadTokens();

@@ -11,6 +11,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: simple-text-1c8646ad-649f-484b-b04d-2cbbb58ff2d9
+  _uuid:
   content:
     text: "My text goes here."
   styles:

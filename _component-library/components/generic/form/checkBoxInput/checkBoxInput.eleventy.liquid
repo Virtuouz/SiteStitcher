@@ -9,7 +9,7 @@
       {% if checked %}
       checked{% endif %}
       {% if required %}
-      required{% endif %} /> <p{{ label | roseyTag }}>{{ label }}</p> {% if required %}
+      required{% endif %} /> <p{{ id | roseyNs }}{{ label | roseyTag: "label" }}>{{ label }}</p> {% if required %}
       *{% endif %}
   </label>
 </div>

@@ -9,7 +9,7 @@ transition #modal-{{id}} opacity to 1 over 0.2s
 "
   class=" {% if ghostButton %} border-2 border-{{color_group}}-{{colorFromGroup}}color {% else %}bg-{{color_group}}-{{colorFromGroup}}color text-{{color_group}}-highcontrast-{{colorFromGroup}}color
   
-  {% endif %}  px-3 py-2 {{theme.button_rounding}} font-bold text-sm uppercase transition-all hover:scale-105 "{{ text | roseyTag }}>
+  {% endif %}  px-3 py-2 {{theme.button_rounding}} font-bold text-sm uppercase transition-all hover:scale-105 "{{ _uuid | roseyNs }}{{ text | roseyTag: "label" }}>
   {{ text }}</button>
 <dialog id="modal-{{id}}" class="fixed top-0 z-[920] h-full w-full overflow-scroll p-4 opacity-0 open:bg-slate-950 open:bg-opacity-60 open:backdrop-blur-lg sm:p-10">
   <div class="flex flex-col gap-10">

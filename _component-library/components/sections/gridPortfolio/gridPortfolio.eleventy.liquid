@@ -2,7 +2,7 @@
 {% assign counter = 1 %}
 
 
-<div class="c-gridPortfolio componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+<div class="c-gridPortfolio componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor"{{ _uuid | roseyNs }}>
   <section class="basecontainer w-full">
 
     {% if content.sectionId %}
@@ -23,13 +23,13 @@
               {% bookshop "generic/imageModal" image: imageContent.image classes: "aspect-[3/4]" id: imageId %}
               {% if imageContent.title and imageContent.title != "" %}
                 <div class="absolute left-4 right-4 top-1/2 {{theme.container_rounding}} bg-{{styles.color_group}}-backgroundcolor text-{{styles.color_group}}-textcolor bg-opacity-70  bg-blur-sm bg-saturate-200 -translate-y-1/2 opacity-0 transition duration-300 group-hover:opacity-100 text-center p-6 lg:py-12">
-                  <h5 class="font-medium text-xl"{{ imageContent.title | roseyTag }}>{{ imageContent.title }}</h5>
-                  <p class="mb-0"{{ imageContent.description | roseyTag }}>{{ imageContent.description }}</p>
+                  <h5 class="font-medium text-xl"{{ imageContent._uuid | roseyNs }}{{ imageContent.title | roseyTag: "title" }}>{{ imageContent.title }}</h5>
+                  <p class="mb-0"{{ imageContent._uuid | roseyNs }}{{ imageContent.description | roseyTag: "description" }}>{{ imageContent.description }}</p>
                 </div>
               {% elsif imageContent.description and imageContent.description != "" %}
                 <div class="absolute left-4 right-4 top-1/2 {{theme.container_rounding}} bg-{{styles.color_group}}-backgroundcolor text-{{styles.color_group}}-textcolor bg-opacity-70  bg-blur-sm bg-saturate-200 -translate-y-1/2 opacity-0 transition duration-300 group-hover:opacity-100 text-center p-6 lg:py-12">
-                  <h5 class="font-medium text-xl"{{ imageContent.title | roseyTag }}>{{ imageContent.title }}</h5>
-                  <p class="mb-0"{{ imageContent.description | roseyTag }}>{{ imageContent.description }}</p>
+                  <h5 class="font-medium text-xl"{{ imageContent._uuid | roseyNs }}{{ imageContent.title | roseyTag: "title" }}>{{ imageContent.title }}</h5>
+                  <p class="mb-0"{{ imageContent._uuid | roseyNs }}{{ imageContent.description | roseyTag: "description" }}>{{ imageContent.description }}</p>
                 </div>
               {% endif %}
             </div>
@@ -49,13 +49,13 @@
               {% bookshop "generic/imageModal" image: imageContent.image classes: "aspect-[3/4]" id: imageId %}
               {% if imageContent.title and imageContent.title != "" %}
                 <div class="absolute left-4 right-4 top-1/2 {{theme.container_rounding}} bg-{{styles.color_group}}-backgroundcolor text-{{styles.color_group}}-textcolor bg-opacity-70  bg-blur-sm bg-saturate-200 -translate-y-1/2 opacity-0 transition duration-300 group-hover:opacity-100 text-center p-6 lg:py-12">
-                  <h5 class="font-medium text-xl"{{ imageContent.title | roseyTag }}>{{ imageContent.title }}</h5>
-                  <p class="mb-0"{{ imageContent.description | roseyTag }}>{{ imageContent.description }}</p>
+                  <h5 class="font-medium text-xl"{{ imageContent._uuid | roseyNs }}{{ imageContent.title | roseyTag: "title" }}>{{ imageContent.title }}</h5>
+                  <p class="mb-0"{{ imageContent._uuid | roseyNs }}{{ imageContent.description | roseyTag: "description" }}>{{ imageContent.description }}</p>
                 </div>
               {% elsif imageContent.description and imageContent.description != "" %}
                 <div class="absolute left-4 right-4 top-1/2 {{theme.container_rounding}} bg-{{styles.color_group}}-backgroundcolor text-{{styles.color_group}}-textcolor bg-opacity-70  bg-blur-sm bg-saturate-200 -translate-y-1/2 opacity-0 transition duration-300 group-hover:opacity-100 text-center p-6 lg:py-12">
-                  <h5 class="font-medium text-xl"{{ imageContent.title | roseyTag }}>{{ imageContent.title }}</h5>
-                  <p class="mb-0"{{ imageContent.description | roseyTag }}>{{ imageContent.description }}</p>
+                  <h5 class="font-medium text-xl"{{ imageContent._uuid | roseyNs }}{{ imageContent.title | roseyTag: "title" }}>{{ imageContent.title }}</h5>
+                  <p class="mb-0"{{ imageContent._uuid | roseyNs }}{{ imageContent.description | roseyTag: "description" }}>{{ imageContent.description }}</p>
                 </div>
               {% endif %}
             </div>
@@ -76,13 +76,13 @@
               {% bookshop "generic/imageModal" image: imageContent.image classes: "aspect-[3/4]" id: imageId %}
               {% if imageContent.title and imageContent.title != "" %}
                 <div class="absolute left-4 right-4 top-1/2 {{theme.container_rounding}} bg-{{styles.color_group}}-backgroundcolor text-{{styles.color_group}}-textcolor bg-opacity-70  bg-blur-sm bg-saturate-200 -translate-y-1/2 opacity-0 transition duration-300 group-hover:opacity-100 text-center p-6 lg:py-12">
-                  <h5 class="font-medium text-xl"{{ imageContent.title | roseyTag }}>{{ imageContent.title }}</h5>
-                  <p class="mb-0"{{ imageContent.description | roseyTag }}>{{ imageContent.description }}</p>
+                  <h5 class="font-medium text-xl"{{ imageContent._uuid | roseyNs }}{{ imageContent.title | roseyTag: "title" }}>{{ imageContent.title }}</h5>
+                  <p class="mb-0"{{ imageContent._uuid | roseyNs }}{{ imageContent.description | roseyTag: "description" }}>{{ imageContent.description }}</p>
                 </div>
               {% elsif imageContent.description and imageContent.description != "" %}
                 <div class="absolute left-4 right-4 top-1/2 {{theme.container_rounding}} bg-{{styles.color_group}}-backgroundcolor text-{{styles.color_group}}-textcolor bg-opacity-70  bg-blur-sm bg-saturate-200 -translate-y-1/2 opacity-0 transition duration-300 group-hover:opacity-100 text-center p-6 lg:py-12">
-                  <h5 class="font-medium text-xl"{{ imageContent.title | roseyTag }}>{{ imageContent.title }}</h5>
-                  <p class="mb-0"{{ imageContent.description | roseyTag }}>{{ imageContent.description }}</p>
+                  <h5 class="font-medium text-xl"{{ imageContent._uuid | roseyNs }}{{ imageContent.title | roseyTag: "title" }}>{{ imageContent.title }}</h5>
+                  <p class="mb-0"{{ imageContent._uuid | roseyNs }}{{ imageContent.description | roseyTag: "description" }}>{{ imageContent.description }}</p>
                 </div>
               {% endif %}
 

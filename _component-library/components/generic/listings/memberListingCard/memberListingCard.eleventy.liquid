@@ -40,16 +40,17 @@
 data-umami-event="{{content.name}}-{{page.url}}-memberCard"
 href="{{ listingUrl }}">{% endif %}
 
-<li class="c-memberListingCard max-w-[350px] flex flex-col justify-center {% if listingUrl and listingUrl != '' %} cursor-pointer{% endif %}">
+{% capture cardRoot %}item:{{ listingUrl }}{% endcapture %}
+<li class="c-memberListingCard max-w-[350px] flex flex-col justify-center {% if listingUrl and listingUrl != '' %} cursor-pointer{% endif %}"{{ cardRoot | roseyRoot }}>
   <div class="block relative">
     
     {% if tagToUse and tagToUse != '' %}
 
-      <div class="z-10 absolute top-5 right-5 inline-block px-2 py-0.5 text-xs font-medium border-2 rounded-full transition {{tagClasses}} "{{ tagToUse | roseyTag }}>{{ tagToUse }}</div>
+      <div class="z-10 absolute top-5 right-5 inline-block px-2 py-0.5 text-xs font-medium border-2 rounded-full transition {{tagClasses}} "{{ "common" | roseyRoot }}{% capture statusKey %}listing-status:{{ tagToUse | slug }}{% endcapture %}{{ tagToUse | roseyTag: statusKey }}>{{ tagToUse }}</div>
     {% endif %}
       {% if expires  %}
         <div class="absolute bottom-5 right-5 p-2 z-10 bg-white text-slate-800 {{theme.container_rounding}}">
-          <p {{ "Expires at:" | roseyTag }}>Expires at:</p>
+          <p {{ "common" | roseyRoot }}{{ "Expires at:" | roseyTag: "ui:expires-at" }}>Expires at:</p>
                 <time
           _="on load
           set happeningDate to Date.parse('{{listingExpiration | date: "%Y-%m-%dT%H:%M:%S%z"}}')
@@ -77,8 +78,8 @@ href="{{ listingUrl }}">{% endif %}
       {% endif %}
 
       <div class="p-3 bg-{{color_group}}-{{colorFromGroup}}color bg-opacity-90 text-{{color_group}}-highcontrast-{{colorFromGroup}}color {{theme.container_rounding}} shadow-[0px_2px_8px_0px_rgba(0,0,0,0.15)] text-center">
-        <h3 class="text-[1.375rem] font-bold opacity-85 px-4{% if listingUrl and listingUrl != '' %} hover:underline {% endif %}"{{ listingTitle | roseyTag }}>{{ listingTitle }}</h3>
-        <p class="opacity-75"{{ keyInformation | roseyTag }}>{{ keyInformation }}</p>
+        <h3 class="text-[1.375rem] font-bold opacity-85 px-4{% if listingUrl and listingUrl != '' %} hover:underline {% endif %}"{{ listingTitle | roseyTag: "title" }}>{{ listingTitle }}</h3>
+        <p class="opacity-75"{{ keyInformation | roseyTag: "key-information" }}>{{ keyInformation }}</p>
       </div>
     </div>
   {% endif %}

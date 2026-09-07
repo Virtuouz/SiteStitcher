@@ -9,6 +9,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: styledText-1f3be651-5715-4b53-aa2c-7fe549899c89
+  _uuid:
   text: "hello"
   style: .green .label
 

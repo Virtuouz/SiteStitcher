@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: bigText-398d7844-7b44-4e40-aa42-8cfc28c6b2d4
+  _uuid:
   content:
     showNote: true
     headline: >-

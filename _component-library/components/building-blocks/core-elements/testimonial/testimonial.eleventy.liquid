@@ -10,7 +10,7 @@
   {%- endcase -%}
 {%- endcapture -%}
 
-<figure class="c-testimonial flex flex-col gap-4 {{ alignClass | strip }}">
+<figure class="c-testimonial flex flex-col gap-4 {{ alignClass | strip }}"{{ _uuid | roseyNs }}>
   {%- if content.fiveStarRating -%}
     <div class="c-testimonial__stars flex gap-1" aria-label="5 out of 5 stars">
       {%- for i in (1..5) -%}
@@ -22,7 +22,7 @@
   {%- endif -%}
 
   <blockquote class="c-testimonial__quote text-lg italic">
-    <span class="c-testimonial__quote-mark" aria-hidden="true">"</span>{% comment %}Rosey: wrapped so the key excludes the decorative quote marks.{% endcomment %}{{ content.text | roseyWrap }}<span class="c-testimonial__quote-mark" aria-hidden="true">"</span>
+    <span class="c-testimonial__quote-mark" aria-hidden="true">"</span>{% comment %}Rosey: wrapped so the key excludes the decorative quote marks.{% endcomment %}{{ content.text | roseyWrap: "quote" }}<span class="c-testimonial__quote-mark" aria-hidden="true">"</span>
   </blockquote>
 
   <figcaption class="c-testimonial__author flex items-center gap-3">
@@ -36,10 +36,10 @@
     {%- endif -%}
     <div class="c-testimonial__author-info">
       {%- if content.authorName -%}
-        <cite class="c-testimonial__name not-italic font-semibold"{{ content.authorName | roseyTag }}>{{ content.authorName }}</cite>
+        <cite class="c-testimonial__name not-italic font-semibold"{{ content.authorName | roseyTag: "author-name" }}>{{ content.authorName }}</cite>
       {%- endif -%}
       {%- if content.authorDescription -%}
-        <p class="c-testimonial__role text-sm opacity-75"{{ content.authorDescription | roseyTag }}>{{ content.authorDescription }}</p>
+        <p class="c-testimonial__role text-sm opacity-75"{{ content.authorDescription | roseyTag: "author-role" }}>{{ content.authorDescription }}</p>
       {%- endif -%}
     </div>
   </figcaption>

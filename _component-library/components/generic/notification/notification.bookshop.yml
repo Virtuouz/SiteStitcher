@@ -9,6 +9,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: notification-d979462f-fbda-4dcf-8631-b43d99c5c9d4
+  _uuid:
   styles:
     color_group: "primary"
   heading: "Hello World!"

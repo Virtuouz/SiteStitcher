@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: textBlock-0b312f24-1509-4d49-991b-889f4d113886
+  _uuid:
   text: >-
     ### Your rich text content
 

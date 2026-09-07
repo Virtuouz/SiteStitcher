@@ -34,7 +34,7 @@
 <a
   href="{{ content.link | default: '#' }}"
   class=" {{ buttonClasses | strip }}"
-  data-contrast="true"
+  data-contrast="true"{{ _uuid | roseyNs }}
 >
   {%- if content.iconName and content.iconPosition == "before" -%}
     {% bookshop "building-blocks/core-elements/icon" content: { name: content.iconName } styles: { size: "sm", background: false } %}
@@ -43,7 +43,7 @@
   {%- unless content.hideText -%}
     {%- assign buttonText = content.text | default: "Button" -%}
     {%- comment -%}Wrapped so the key captures the label, not the sibling icon.{%- endcomment -%}
-    {{ buttonText | roseyWrap }}
+    {{ buttonText | roseyWrap: "label" }}
   {%- endunless -%}
 
   {%- if content.iconName and content.iconPosition == "after" -%}

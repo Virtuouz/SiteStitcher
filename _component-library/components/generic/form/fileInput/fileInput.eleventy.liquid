@@ -11,7 +11,7 @@
 {% endif %}
 
 <div class="">
-  <label class="block text-xs uppercase font-bold text-{{color_group}}-textcolor" for="{{ id }}">{{ label | roseyWrap }}{% if required %}
+  <label class="block text-xs uppercase font-bold text-{{color_group}}-textcolor" for="{{ id }}"{{ id | roseyNs }}>{{ label | roseyWrap: "label" }}{% if required %}
       *{% endif %}
       <input
     class="block text-base appearance-none {{theme.container_rounding}} font-normal w-full border border-{{color_group}}-textcolor py-1 px-2 bg-{{color_group}}-backgroundcolor hover:border-{{color_group}}-accentcolor"

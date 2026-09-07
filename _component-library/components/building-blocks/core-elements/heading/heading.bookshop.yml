@@ -11,6 +11,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: heading-b92860ef-0328-48dc-aca7-eb70608b09c4
+  _uuid:
   content:
     text: "My Heading"
     level: h2

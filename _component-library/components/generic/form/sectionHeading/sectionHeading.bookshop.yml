@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: sectionHeading-5ad4f225-44b2-40a7-ab8e-4a79bdea7260
+  _uuid:
   text: Form section
   
 

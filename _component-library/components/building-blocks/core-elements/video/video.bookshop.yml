@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: video-11b8c88f-1e7f-4e16-82c0-1a45c614762f
+  _uuid:
   type: youtube
   id:
   title:

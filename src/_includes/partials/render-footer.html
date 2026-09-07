@@ -1,8 +1,14 @@
+{%- comment -%}
+  Rosey: shares the `nav` namespace and URL-derived keys with the header (see
+  render-nav.html), under the "common" root opened by site-foot.html. A link
+  that appears in both the header and the footer is therefore one key, and is
+  translated once.
+{%- endcomment -%}
 {% assign level=level | plus: 1 %}
 
 {% if entry.links.size > 0 %}
   <div class="pl-3 flex flex-col min-w-[200px] self-start">
-    <p class="font-bold opacity-90"{{ entry.title | roseyTag }}>{{ entry.title }}</p>
+    <p class="font-bold opacity-90"{{ entry.title | roseyTag: entry.title }}>{{ entry.title }}</p>
     <ul class="mt-2 flex flex-col gap-1 ">
       {% for child in entry.links %}
         {% render "partials/render-footer.html", entry:child, level: level, page:page %}
@@ -15,7 +21,7 @@
           data-umami-event="{{entry.title}}-footer"
           {{ entry.url | linkFilter: page.url }}
           class=" data-[state=active]:link hover:text-sopris-green block rounded pt-0 pb-2 pl-3 pr-4  transition-colors hover:bg-gray-700 dark:border-gray-700  md:hover:bg-transparent md:dark:hover:bg-transparent"
-          href="{{ entry.url }}"{{ entry.title | roseyTag }}>
+          href="{{ entry.url }}"{{ entry.title | roseyTag: entry.url }}>
           {{ entry.title }}
         </a>
       </li>

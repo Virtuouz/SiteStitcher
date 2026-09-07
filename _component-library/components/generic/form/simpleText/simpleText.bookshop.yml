@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: simpleText-b6172947-286c-4be1-907f-4f7d08c987a8
+  _uuid:
   text: Description text to compliment the form
 
 # Overrides any fields in the blueprint when viewing this component in the component browser

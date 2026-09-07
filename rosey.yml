@@ -1,0 +1,57 @@
+# Rosey configuration — the single source of truth for this site's i18n.
+#
+# Read by three things, which is why it lives here rather than in src/_data:
+#   * the Rosey CLI          (`rosey generate` / `build` / `check`)
+#   * the CloudCannon Connector (`write-locales`, which falls back to this file)
+#   * `src/_data/rosey.mjs`, which exposes it to templates as `{{ rosey }}`
+#
+# Precedence for every key below is: CLI flag > ROSEY_* env var > this file.
+#
+# Rosey does nothing unless ROSEY_ENABLED=true. With the flag unset the build
+# output is byte-identical to a site without Rosey installed.
+
+# The Eleventy output directory. Rosey scans this for `data-rosey` attributes.
+source: dist
+
+# Rosey's working directory. `base.json` (the extracted source strings) and
+# `locales/` (one JSON file per language) have to be siblings here: the
+# connector's `write-locales` takes a single --source and looks for
+# `<source>/base.json` and `<source>/locales/` under it.
+#
+# It sits under src/ rather than at the repo root because cloudcannon.config.yml
+# sets `source: src`, so every `data_config` path resolves inside src/. Editors
+# open the locale files through those entries, which is how the connector finds
+# a locale at all. Eleventy is told to ignore the directory in .eleventy.js.
+base: src/rosey/base.json
+base_urls: src/rosey/base.urls.json
+locales: src/rosey/locales
+
+# Joins namespace segments into a key: `common:nav:home`.
+separator: ":"
+tag: data-rosey
+
+# The language the site is AUTHORED in — the "original" content that lives in
+# src/. This is NOT assumed to be English. A Spanish-first site sets `es` here
+# and lists `en` under `languages`, making English a translation like any other.
+#
+# The original is served from the site root (`/`) and every locale in
+# `languages` from `/<code>/`. Changing this value re-labels the root; it does
+# not move any content.
+default_language: en
+
+# Locales to translate INTO. Each one needs a matching `data_config` entry in
+# cloudcannon.config.yml so editors can open it — `npm run rosey:sync` writes
+# those for you. Empty means Rosey builds a single-language site.
+languages: []
+
+# Adding a locale is a developer step, not a CMS one: this file sits at the repo
+# root, outside cloudcannon.config.yml's `source: src`, so CloudCannon cannot
+# open it. To add one:
+#
+#   1. add the code to `languages` above
+#   2. run `npm run rosey:sync` — creates src/rosey/locales/<code>.json and the
+#      matching `data_config` entry in cloudcannon.config.yml
+#   3. commit both
+#
+# Editors then translate that locale in the Visual Editor. `npm run rosey:sync
+# -- --check` fails the build if the three ever drift apart.

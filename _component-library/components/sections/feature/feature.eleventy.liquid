@@ -21,7 +21,7 @@
 {% endcapture %}
 {% assign heading = heading | ymlify %}
 
-<section class="c-feature componentcontainer w-full py-20 bg-{{styles.color_group}}-backgroundcolor text-{{styles.color_group}}-textcolor">
+<section class="c-feature componentcontainer w-full py-20 bg-{{styles.color_group}}-backgroundcolor text-{{styles.color_group}}-textcolor"{{ _uuid | roseyNs }}>
     {% if content.sectionId %}
         {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
     {% endif %}
@@ -37,7 +37,7 @@
                                 {% if item.icon %}
                                     <span class="material-symbols-outlined text-{{styles.color_group}}-primarycolor">{{item.icon}}</span>
                                 {% endif %}
-                                <span{{ item.text | roseyTag }}>{{item.text}}</span>
+                                <span{{ item._uuid | roseyNs }}{{ item.text | roseyTag: "text" }}>{{item.text}}</span>
                             </li>
                         {% endfor %}
                     </ul>
@@ -59,7 +59,7 @@
                                 {% if item.icon %}
                                     <span class="material-symbols-outlined text-4xl text-{{styles.color_group}}-primarycolor">{{item.icon}}</span>
                                 {% endif %}
-                                <span class="font-medium"{{ item.text | roseyTag }}>{{item.text}}</span>
+                                <span class="font-medium"{{ item._uuid | roseyNs }}{{ item.text | roseyTag: "text" }}>{{item.text}}</span>
                             </li>
                         {% endfor %}
                     </ul>
@@ -82,7 +82,7 @@
                                     {% if item.icon %}
                                         <span class="material-symbols-outlined text-{{styles.color_group}}-primarycolor">{{item.icon}}</span>
                                     {% endif %}
-                                    <span{{ item.text | roseyTag }}>{{item.text}}</span>
+                                    <span{{ item._uuid | roseyNs }}{{ item.text | roseyTag: "text" }}>{{item.text}}</span>
                                 </li>
                             {% endfor %}
                         </ul>

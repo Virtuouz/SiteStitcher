@@ -1,6 +1,6 @@
 
 <div class=" relative" {% if hidden %}style="display:none"{% endif %}>
-  <label class="block text-xs uppercase font-bold text-{{color_group}}-textcolor" for="{{ id }}"{{ label | roseyTag }}>{{ label }} {% if required %}
+  <label class="block text-xs uppercase font-bold text-{{color_group}}-textcolor" for="{{ id }}"{{ id | roseyNs }}{{ label | roseyTag: "label" }}>{{ label }} {% if required %}
 *{% endif %}</label>
   <select 
   class="text-base appearance-none {{theme.container_rounding}} w-full border border-{{color_group}}-textcolor py-1 px-2 bg-{{color_group}}-backgroundcolor hover:border-{{color_group}}-accentcolor"
@@ -10,7 +10,7 @@
     required{% endif %}
     {% if helperText %}aria-describedby="{{ id }}--helper"{% endif %}>
         {% for option in options %}
-            <option value="{{ option.name }}"{{ option.name | roseyTag }}>{{ option.name }}</option>
+            {% capture optionKey %}option:{{ option.name | slug }}{% endcapture %}<option value="{{ option.name }}"{{ option.name | roseyTag: optionKey }}>{{ option.name }}</option>
         {% endfor %}
   </select>
   <div class="absolute top-[26px] right-2 pointer-events-none">{% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"chevron-down" iconType:"solid" iconSize:'micro' roundedBorder:false themeColor:true %}</div>

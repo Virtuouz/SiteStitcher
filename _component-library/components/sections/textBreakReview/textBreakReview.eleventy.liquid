@@ -43,7 +43,7 @@
                     <div class="font-medium sm:font-bold text-2xl">
                       <span class="absolute text-5xl -left-6 -top-2">"</span>
                       {{ review.review }}</div>
-                    <div{{ review.name | roseyTag }}>{{ review.name }}</div>
+                    <div{% capture reviewRoot %}review:{{ review.name | slug }}{% endcapture %}{{ reviewRoot | roseyRoot }}{{ review.name | roseyTag: "name" }}>{{ review.name }}</div>
                   </div>
                 </div>
               </div>

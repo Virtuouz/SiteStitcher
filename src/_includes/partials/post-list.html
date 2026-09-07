@@ -1,11 +1,11 @@
 <div id="post-list">
     {% if postListHeadline %}
-    <h2{{ postListHeadline | roseyTag }}>{{ postListHeadline }}</h2>
+    <h2{{ postListHeadline | roseyTag: "post-list-headline" }}>{{ postListHeadline }}</h2>
     {% endif %}
     <div>
         <ol class="flow padding-0">
             {% for item in postListItems %}
-            <li><a class="text-subheadline" href="{{ item.url }}"{{ item.data.title | roseyTag }} >{{ item.data.title }}</a></li>
+            <li><a class="text-subheadline" {% capture itemRoot %}item:{{ item.url }}{% endcapture %}href="{{ item.url }}"{{ itemRoot | roseyRoot }}{{ item.data.title | roseyTag: "title" }} >{{ item.data.title }}</a></li>
             {% endfor %}
         </ol>
     </div>

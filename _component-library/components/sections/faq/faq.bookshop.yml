@@ -11,13 +11,15 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: faq-681e1b95-8001-4b43-88c8-d09ec9e7f444
+  _uuid:
   content:
     sectionId:
     heading: bookshop:structure:headingBlocks
     categories:
       - name:
         faq:
-        - heading:
+        - _uuid:
+          heading:
           description: 
           opened: false
   styles:

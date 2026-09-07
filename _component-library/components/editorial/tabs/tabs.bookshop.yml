@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: tabs-f6a34c81-d272-46f9-8943-dd8302f3f82a
+  _uuid:
   tabs:
     - title: 
       editorials: [bookshop:structure:editorial_blocks!(generic/textBlock)]

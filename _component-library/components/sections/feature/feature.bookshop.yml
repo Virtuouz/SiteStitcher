@@ -9,6 +9,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: feature-ea81f3f9-543f-4433-8214-595880238b42
+  _uuid:
   layout: "imageRight"
   content:
     eyebrow: "Feature"
@@ -17,9 +18,11 @@ blueprint:
     buttons: [bookshop:structure:buttons]
     image: bookshop:structure:imgvid
     listItems:
-      - text: "Feature point 1"
+      - _uuid:
+        text: "Feature point 1"
         icon: "check"
-      - text: "Feature point 2"
+      - _uuid:
+        text: "Feature point 2"
         icon: "check"
   styles:
     color_group: "primary"

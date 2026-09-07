@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: text-5b5d504c-0a73-42df-b117-dfab46bd5360
+  _uuid:
   content:
     text: >-
       My text goes here. You can use **bold**, *italic*, and [links](https://example.com).

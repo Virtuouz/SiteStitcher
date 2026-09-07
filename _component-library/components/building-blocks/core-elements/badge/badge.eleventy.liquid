@@ -17,7 +17,7 @@
   {%- endcase -%}
 {%- endcapture -%}
 
-<span class="c-badge c-badge--{{ variant }} c-badge--{{ color }} {{ sizeClass | strip }}">
+<span class="c-badge c-badge--{{ variant }} c-badge--{{ color }} {{ sizeClass | strip }}"{{ _uuid | roseyNs }}>
   {%- if icon -%}
     <span class="c-badge__icon">
       {%- case icon -%}
@@ -46,5 +46,5 @@
       {%- endcase -%}
     </span>
   {%- endif -%}
-  <span class="c-badge__text"{{ text | roseyTag }}>{{ text }}</span>
+  <span class="c-badge__text"{{ text | roseyTag: "text" }}>{{ text }}</span>
 </span>

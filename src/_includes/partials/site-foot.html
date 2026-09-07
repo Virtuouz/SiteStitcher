@@ -24,7 +24,7 @@
             data-umami-event="{{entry.title}}-footer"
             {{ entry.url | linkFilter: page.url }}
             class="data-[state=active]:link hover:text-sopris-green block rounded pt-0 pb-2 pl-3 pr-4 transition-colors hover:bg-gray-700 dark:border-gray-700  md:hover:bg-transparent md:dark:hover:bg-transparent"
-            href="{{ entry.url }}">
+            href="{{ entry.url }}"{{ entry.title | roseyTag: entry.url }}>
             {{ entry.title }}
           </a>
         </li>
@@ -41,7 +41,7 @@
               data-umami-event="{{megaEntry.title}}-footer"
               {{ megaEntry.url | linkFilter: page.url }}
               class="data-[state=active]:link hover:text-sopris-green block rounded pt-0 pb-2 pl-3 pr-4 transition-colors hover:bg-gray-700 dark:border-gray-700  md:hover:bg-transparent md:dark:hover:bg-transparent"
-              href="{{ megaEntry.url }}">
+              href="{{ megaEntry.url }}"{{ megaEntry.title | roseyTag: megaEntry.url }}>
               {{ megaEntry.title }}
             </a>
           </li>
@@ -57,7 +57,7 @@
       {% capture megaGroupedSections %}
         {{ megaGroupedSections }}
         <div class="flex flex-col min-w-[200px]">
-          <p class="font-bold opacity-90 ">{{ entry.title }}</p>
+          <p class="font-bold opacity-90 "{{ entry.title | roseyTag: entry.title }}>{{ entry.title }}</p>
           <ul class="mt-2 flex flex-col gap-1">
             {{ localLinks }}
           </ul>
@@ -67,7 +67,13 @@
   {% endif %}
 {% endfor %}
 
-<footer{{ "common" | roseyNs: true }}
+{%- comment -%}
+  Rosey: opens the same shared "common" root as the header, so every string here
+  is one key across the whole site and is translated once rather than once per
+  page. The link lists reuse the header's `nav` namespace (see
+  render-footer.html) so a link in both is a single translation.
+{%- endcomment -%}
+<footer{{ "common" | roseyRoot }}
   class="cs-w-full pt-40 bg-{{site.footer_color_group}}-backgroundcolor flex flex-col items-center justify-center text-{{site.footer_color_group}}-textcolor"
 >
   <div class="basecontainer w-full">
@@ -83,21 +89,25 @@
           {% endif %}
         </a>
         <ul class="mt-4 flex flex-wrap overflow-hidden gap-x-4 gap-y-1">
+          {% comment %}Rosey: key off the host and path, not the raw URL — the
+          scheme's "//" would otherwise sanitise into a stray namespace segment
+          and produce keys like common:https:example-com.{% endcomment %}
           {% for socialLink in site.socialMediaLinks %}
+          {% capture socialKey %}social:{{ socialLink.linkUrl | split: "//" | last }}{% endcapture %}
           <li class="hover:underline after:absolute after:content-['|'] after:scale-150 relative before:content-[' '] after:left-[-11px] after:text-lg">
             <a 
               data-umami-event="{{socialLink.label}}-socialLink-footer"
-              href="{{ socialLink.linkUrl }}" target="_blank"{{ socialLink.label | roseyTag }}>{{socialLink.label}}</a>
+              href="{{ socialLink.linkUrl }}" target="_blank"{{ socialLink.label | roseyTag: socialKey }}>{{socialLink.label}}</a>
           </li>
           {% endfor %}
         </ul>
       </div>
       
       {% if disableNav != true %}
-      <div class="flex flex-wrap gap-10 justify-around w-full text-base">
+      <div class="flex flex-wrap gap-10 justify-around w-full text-base"{{ "nav" | roseyNs }}>
 {% if groupedLinks != "" %}
   <div class="flex flex-col min-w-[200px]">
-    <p class="font-bold opacity-90 "{{ "Links" | roseyTag }}>Links</p>
+    <p class="font-bold opacity-90 "{{ "Links" | roseyTag: "links-heading" }}>Links</p>
     <ul class="mt-2 flex flex-col gap-1">
       {{ groupedLinks }}
     </ul>
@@ -120,22 +130,22 @@
       <li class="hover:underline after:absolute after:content-['|'] after:scale-150 relative before:content-[' '] after:left-[-11px] after:text-lg">
         <a 
           data-umami-event="TermsAndConditions-footer"
-          href="{{ site.termsAndConditionsUrl }}" target="_blank"{{ "Terms & Conditions" | roseyTag }}>Terms & Conditions</a>
+          href="{{ site.termsAndConditionsUrl }}" target="_blank"{{ "Terms & Conditions" | roseyTag: "terms-and-conditions" }}>Terms & Conditions</a>
       </li>
       {% endif %}
       {% if site.privacyPolicyUrl and site.privacyPolicyUrl != "" %}
       <li class="hover:underline after:absolute after:content-['|'] after:scale-150 relative before:content-[' '] after:left-[-11px] after:text-lg">
         <a 
           data-umami-event="PrivacyPolicy-footer"
-          href="{{ site.privacyPolicyUrl }}" target="_blank"{{ "Privacy Policy" | roseyTag }}>Privacy Policy</a>
+          href="{{ site.privacyPolicyUrl }}" target="_blank"{{ "Privacy Policy" | roseyTag: "privacy-policy" }}>Privacy Policy</a>
       </li>
       {% endif %}
     </ul>
     <p class="text-center text-sm" data-type="neutral">
-      {{ "Powered by Vynxlabs. Like it?" | roseyWrap }}
+      {{ "Powered by Vynxlabs. Like it?" | roseyWrap: "colophon" }}
       <a 
         data-umami-event="vynxlabs-link-footer"
-        href="https://vynxlabs.com/" class="underline"{{ "Let's build one for you!" | roseyTag }}>Let's build one for you!</a>
+        href="https://vynxlabs.com/" class="underline"{{ "Let's build one for you!" | roseyTag: "colophon-cta" }}>Let's build one for you!</a>
     </p>
   </div>
 </footer>

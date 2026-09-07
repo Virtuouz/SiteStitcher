@@ -9,7 +9,7 @@
 data-umami-event="{{content.name}}-{{page.url}}-memberCard"
 href="{{ content.link }}">{% endif %}
 
-<div class="c-defaultMemberCard max-w-[350px] flex flex-col justify-center {% if content.link and content.link != '' %} cursor-pointer{% endif %}">
+<div class="c-defaultMemberCard max-w-[350px] flex flex-col justify-center {% if content.link and content.link != '' %} cursor-pointer{% endif %}"{{ _uuid | roseyNs }}>
   {% bookshop "generic/image" bind: content.image class: imageClasses %}
   {% if content.name or content.titleOrDescription %}
     <div class="sm:px-6 px-4 -mt-[30px] {% if content.link and content.link != '' %} relative z-10{% endif %}">
@@ -18,8 +18,8 @@ href="{{ content.link }}">{% endif %}
       {% endif %}
 
       <div class="p-3 bg-{{style.color_group}}-{{style.colorFromGroup}}color bg-opacity-90 text-{{style.color_group}}-highcontrast-{{style.colorFromGroup}}color {{theme.container_rounding}} shadow-[0px_2px_8px_0px_rgba(0,0,0,0.15)] text-center">
-        <h3 class="text-[1.375rem] font-bold opacity-85 px-4{% if content.link and content.link != '' %} hover:underline {% endif %}"{{ content.name | roseyTag }}>{{ content.name }}</h3>
-        <p class="opacity-75"{{ content.titleOrDescription | roseyTag }}>{{ content.titleOrDescription }}</p>
+        <h3 class="text-[1.375rem] font-bold opacity-85 px-4{% if content.link and content.link != '' %} hover:underline {% endif %}"{{ content.name | roseyTag: "name" }}>{{ content.name }}</h3>
+        <p class="opacity-75"{{ content.titleOrDescription | roseyTag: "role" }}>{{ content.titleOrDescription }}</p>
       </div>
     </div>
   {% endif %}

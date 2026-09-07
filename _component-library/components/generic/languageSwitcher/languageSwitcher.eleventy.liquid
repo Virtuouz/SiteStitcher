@@ -1,28 +1,44 @@
 {%- comment -%}
   Language Switcher
 
-  Renders nothing unless Rosey is enabled (ROSEY_ENABLED=true) and at least one
-  locale is configured in rosey/rcc.yaml.
+  The switcher visitors see. Distinct from the floating locale switcher the
+  CloudCannon Connector draws inside the Visual Editor, which is editor-only and
+  never reaches the built site.
+
+  Renders nothing unless Rosey is enabled and at least one locale is configured
+  under `languages` in /rosey.yml.
+
+  The original language is served from the site root because utils/rosey.js
+  builds with --default-language-at-root, so its link is page.url unprefixed.
+  Which language that IS comes from rosey.yml's `default_language` — it is not
+  assumed to be English, so a Spanish-first site shows "ES" here for the root
+  and lists "EN" alongside it as a translation.
 
   Every link carries data-rosey-ignore. Rosey rewrites root-relative hrefs to the
   current locale when it builds each locale's copy of the site; without the
   ignore, each link would be rewritten to point at the locale you are already in
   and the switcher would do nothing.
 
-  The default locale is served from the site root because utils/rosey.js builds
-  with --default-language-at-root, so its link is page.url unprefixed.
+  data-rcc-ignore keeps the connector from swapping these labels when an editor
+  previews a locale: a language switcher that renames its own options as you
+  switch is unusable.
 {%- endcomment -%}
 
-{%- if rosey.enabled and rosey.locales.size > 0 -%}
-  <div class="c-languageSwitcher flex items-center gap-2 text-sm" role="group" aria-label="Language">
+{%- if rosey.enabled and rosey.languages.size > 0 -%}
+  <div
+    class="c-languageSwitcher flex items-center gap-2 text-sm"
+    role="group"
+    aria-label="Language"
+    data-rcc-ignore
+  >
     <a
       href="{{ page.url }}"
       data-rosey-ignore
-      hreflang="{{ rosey.defaultLocale }}"
-      lang="{{ rosey.defaultLocale }}"
+      hreflang="{{ rosey.defaultLanguage }}"
+      lang="{{ rosey.defaultLanguage }}"
       class="c-languageSwitcher__link uppercase hover:underline"
-    >{{ rosey.defaultLocale }}</a>
-    {%- for locale in rosey.locales -%}
+    >{{ rosey.defaultLanguage }}</a>
+    {%- for locale in rosey.languages -%}
       <a
         href="/{{ locale }}{{ page.url }}"
         data-rosey-ignore

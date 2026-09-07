@@ -13,6 +13,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: image-d8bc54fc-b00d-4f57-84f2-01a099fb12b2
+  _uuid:
   content:
     source:
     alt:

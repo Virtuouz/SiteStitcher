@@ -2,7 +2,7 @@
 spec:
   structures:
   label: "Language Switcher"
-  description: Links to each locale configured in rosey/rcc.yaml. Renders nothing unless Rosey is enabled.
+  description: Links to the original language and each locale configured under `languages` in rosey.yml. Renders nothing unless Rosey is enabled.
   icon: translate
   tags: []
 

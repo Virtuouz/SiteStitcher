@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: upcomingHappening-fecfa290-d5e0-49c4-ac0d-3fc71564856b
+  _uuid:
   contents:
     sectionId:
     showNote: true

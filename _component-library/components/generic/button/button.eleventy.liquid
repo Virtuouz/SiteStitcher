@@ -5,7 +5,7 @@
   data-contrast="true"
   type="submit" class=" {% if ghostButton %} border-2 border-{{color_group}}-{{colorFromGroup}}color {% else %}bg-{{color_group}}-{{colorFromGroup}}color text-{{color_group}}-highcontrast-{{colorFromGroup}}color
   
-  {% endif %}  px-3 py-2 {{theme.button_rounding}} font-bold text-sm uppercase transition-all hover:scale-105 "{{ text | roseyTag }}>
+  {% endif %}  px-3 py-2 {{theme.button_rounding}} font-bold text-sm uppercase transition-all hover:scale-105 "{{ _uuid | roseyNs }}{{ text | roseyTag: "label" }}>
   {{ text }}</button>{% else %}
   <a
     data-umami-event="{{text}}-{{page.url}}-btn"
@@ -16,7 +16,7 @@
   {% endif %}  px-3 py-2  {{theme.button_rounding}} font-bold text-sm uppercase transition-all hover:scale-105 "
     {% if openInNewTab %}
     target="_blank"
-    {% endif %}{{ text | roseyTag }}>{{ text }}</a>{% endif %}
+    {% endif %}{{ _uuid | roseyNs }}{{ text | roseyTag: "label" }}>{{ text }}</a>{% endif %}
  
 {% comment %}
 rounded-none

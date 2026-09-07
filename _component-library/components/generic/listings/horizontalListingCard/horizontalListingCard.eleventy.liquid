@@ -33,15 +33,16 @@
 {% capture imageClasses %}
     {{theme.image_rounding}} min-w-[300px] w-full h-full aspect-[4/3] md:aspect-[20/5] object-cover object-center transition-all duration-300 scale-100 hover:scale-[1.03]
   {% endcapture %}
-<li class="c-horizontalListingCard  items-stretch h-min flex-1 flex flex-wrap md:flex-nowrap gap-x-4  min-w-[300px] md:min-w-[350px] ">
+{% capture cardRoot %}item:{{ listingUrl }}{% endcapture %}
+<li class="c-horizontalListingCard  items-stretch h-min flex-1 flex flex-wrap md:flex-nowrap gap-x-4  min-w-[300px] md:min-w-[350px] "{{ cardRoot | roseyRoot }}>
   <a href="{{ listingUrl }}" class=" flex-1 block relative basis-3/5">
     {% if tagToUse and tagToUse != '' %}
 
-      <div class="z-10 absolute top-5 right-5 inline-block px-2 py-0.5 text-xs font-medium border-2 rounded-full transition {{tagClasses}} "{{ tagToUse | roseyTag }}>{{ tagToUse }}</div>
+      <div class="z-10 absolute top-5 right-5 inline-block px-2 py-0.5 text-xs font-medium border-2 rounded-full transition {{tagClasses}} "{{ "common" | roseyRoot }}{% capture statusKey %}listing-status:{{ tagToUse | slug }}{% endcapture %}{{ tagToUse | roseyTag: statusKey }}>{{ tagToUse }}</div>
     {% endif %}
       {% if expires  %}
         <div class="absolute bottom-5 right-5 p-2 z-10 bg-white text-slate-800 {{theme.container_rounding}}">
-          <p {{ "Expires at:" | roseyTag }}>Expires at:</p>
+          <p {{ "common" | roseyRoot }}{{ "Expires at:" | roseyTag: "ui:expires-at" }}>Expires at:</p>
                 <time
           _="on load
           set happeningDate to Date.parse('{{listingExpiration | date: "%Y-%m-%dT%H:%M:%S%z"}}')
@@ -66,7 +67,7 @@
   <div class="basis-2/5 flex-1 {{theme.container_rounding}} bg-{{color_group}}-{{colorFromGroup}}color text-{{color_group}}-highcontrast-{{colorFromGroup}}color min-h-[300px]  p-4   flex flex-col justify-between">
     <div>
       <a href="{{ listingUrl }}" class="hover:underline">
-          <h5 class="font-bold text-2xl mt-1"{{ listingTitle | roseyTag }}>{{ listingTitle }}</h5>
+          <h5 class="font-bold text-2xl mt-1"{{ listingTitle | roseyTag: "title" }}>{{ listingTitle }}</h5>
       </a>
       <ul class=" flex flex-wrap gap-x-4 overflow-hidden opacity-70">
         {% for tag in listingTags %}
@@ -75,13 +76,13 @@
               <a
                 data-umami-event="{{tag | slug}}-{{listingTitle}}-{{page.url}}-tags"
                 class="font-bold text-sm"
-                href="/tag/{{ tag | slug }}/"{{ tag | roseyTag }}>{{ tag | capitalize }}</a>
+                href="/tag/{{ tag | slug }}/"{{ "common" | roseyRoot }}{% capture tagKey %}tag:{{ tag | slug }}{% endcapture %}{{ tag | roseyTag: tagKey }}>{{ tag | capitalize }}</a>
             </li>
           {% endif %}
         {% endfor %}
       </ul>
       <div class="text-base mt-4">{% if keyInformation and keyInformation != ''  %}{% bookshop "generic/textBlock" text: keyInformation %}{% endif %}</div>
     </div>
-    <a class="underline" href="{{ listingUrl }}"{{ "Learn more" | roseyTag }}>Learn more</a>
+    <a class="underline" href="{{ listingUrl }}"{{ "common" | roseyRoot }}{{ "Learn more" | roseyTag: "ui:learn-more" }}>Learn more</a>
   </div>
 </li>

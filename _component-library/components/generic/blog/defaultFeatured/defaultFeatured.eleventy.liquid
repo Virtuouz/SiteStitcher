@@ -13,24 +13,25 @@
 w-full {{theme.image_rounding}} transition-all duration-300 scale-100 hover:scale-[1.01] object-cover md:aspect-video aspect-[3/2]
 {% endcapture %}
 
-<div class="w-full col-span-1 md:col-span-2 lg:col-span-3">
+{% capture cardRoot %}item:{{ url }}{% endcapture %}
+<div class="w-full col-span-1 md:col-span-2 lg:col-span-3"{{ cardRoot | roseyRoot }}>
   <ul class=" flex text-{{color_group}}-secondarycolor flex flex-wrap gap-x-4 overflow-hidden opacity-70">
   {% for tag in blogTags %}
     {% if tag != 'undefined' %}
       <li class="hover:underline after:absolute after:content-['·'] after:scale-150  after:left-2 relative before:content-[' '] after:left-[-10px] after:text-lg ">
       <a 
       data-umami-event="{{tag | slug}}-{{blogTitle}}-{{page.url}}-tags"
-      class="font-bold" href="/tag/{{ tag | slug }}/"{{ tag | roseyTag }}>{{ tag | capitalize | replace: ' ', '' }}</a>
+      class="font-bold" href="/tag/{{ tag | slug }}/"{{ "common" | roseyRoot }}{% capture tagKey %}tag:{{ tag | slug }}{% endcapture %}{{ tag | roseyTag: tagKey }}>{{ tag | capitalize | replace: ' ', '' }}</a>
     </li>
     {% endif %}
   {% endfor %}
 </ul>
   <h2 class="text-4xl md:text-5xl hover:underline"><a 
   data-umami-event="{{blogTitle}}-{{page.url}}-blogCardHeading"
-  href="{{url}}"{{ blogTitle | roseyTag }}>{{ blogTitle }}</a></h2>
+  href="{{url}}"{{ blogTitle | roseyTag: "title" }}>{{ blogTitle }}</a></h2>
   <div class="opacity-70 mt-4 md:mt-10 flex justify-between flex-wrap">
       <div class="flex gap-2">
-          <p>{{ "Written by" | roseyWrap }} {{ author }}</p>
+          <p{{ "common" | roseyRoot }}>{{ "Written by" | roseyWrap: "ui:written-by" }} {{ author }}</p>
           <div>·</div>
           <p>{{ length }}</p>
       </div>

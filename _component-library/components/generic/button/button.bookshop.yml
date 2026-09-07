@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: button-5a055703-3064-4c18-af21-4c4ef537e497
+  _uuid:
   url: "#"
   openInNewTab: false
   text: "Button text"

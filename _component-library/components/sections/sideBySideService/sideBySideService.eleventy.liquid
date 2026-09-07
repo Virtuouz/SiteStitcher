@@ -18,12 +18,12 @@
                         imageAlt: {{ service.data.imageAltText }}
                   {% endcapture %}
                 {% if service.data.category and service.data.category !="" %}
-                    <p{{ service.data.category | roseyTag }}>{{service.data.category}}</p>
+                    {% capture serviceRoot %}item:{{ service.url }}{% endcapture %}<p{{ serviceRoot | roseyRoot }}{{ service.data.category | roseyTag: "category" }}>{{service.data.category}}</p>
                 {% endif %}
                 {% if service.data.category %}
                     
                 {% endif %}
-              <p{{ service.data.title | roseyTag }}>{{service.data.title}}</p>
+              {% capture serviceRoot %}item:{{ service.url }}{% endcapture %}<p{{ serviceRoot | roseyRoot }}{{ service.data.title | roseyTag: "title" }}>{{service.data.title}}</p>
               {% capture imageClasses %}
                 w-full {{theme.image_rounding}} object-cover aspect-[3/2]
               {% endcapture %}

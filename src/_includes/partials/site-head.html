@@ -19,9 +19,17 @@ logo for {{site.name}}
 
 {% assign logoAltText= logoAltText | removeExtraWhitespace | strip%}
 
-<div id="navbar" class="fixed left-0 top-0 z-[850] w-full transition-all duration-300">
+{%- comment -%}
+  Rosey: the header opens the shared "common" root, which both prefixes every key
+  below it and stops Rosey walking further up into the page namespace. The header
+  renders identically on every page, so each of these keys resolves to a single
+  entry in the locale file and an editor translates the navigation exactly once,
+  not once per page. The footer does the same. It sits on #navbar rather than
+  <nav> so the site-wide banner, a sibling of <nav>, is covered too.
+{%- endcomment -%}
+<div id="navbar" class="fixed left-0 top-0 z-[850] w-full transition-all duration-300"{{ "common" | roseyRoot }}>
   {% include "partials/banner.html" %}
-  <nav{{ "common" | roseyNs: true }}
+  <nav{{ "nav" | roseyNs }}
   
     class=" transition-all duration-300  h-auto md:h-auto w-full bg-{{site.nav_color_group}}-backgroundcolor bg-opacity-70 text-{{site.nav_color_group}}-textcolor  backdrop-blur-sm flex "
   >
@@ -80,7 +88,7 @@ logo for {{site.name}}
   
       "
         >
-          <span class="sr-only"{{ "Open main menu" | roseyTag }}>Open main menu</span>
+          <span class="sr-only"{{ "Open main menu" | roseyTag: "open-main-menu" }}>Open main menu</span>
           <div class="logic-x hidden">{% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "x-mark" iconType: "outline" iconSize: 'small' roundedBorder: false themeColor: true %}</div>
           <div class="logic-hamburger">{% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "bars-4" iconType: "outline" iconSize: 'small' roundedBorder: false themeColor: true %}</div>
   
@@ -94,13 +102,13 @@ logo for {{site.name}}
           {% if site.contactInfo.location and site.contactInfo.location != "" %}
           <div class="flex gap-1 items-center">
             {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "map-pin" iconType: "outline" iconSize: 'micro' roundedBorder: false themeColor: true %}
-            <p>{{ site.contactInfo.location }}</p>
+            <p{{ site.contactInfo.location | roseyTag: "contact:location" }}>{{ site.contactInfo.location }}</p>
           </div>
           {% endif %}
           {% if site.contactInfo.hours and site.contactInfo.hours != "" %}
           <div class="flex gap-1 items-center">
             {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "clock" iconType: "outline" iconSize: 'micro' roundedBorder: false themeColor: true %}
-            <p>{{ site.contactInfo.hours }}</p>
+            <p{{ site.contactInfo.hours | roseyTag: "contact:hours" }}>{{ site.contactInfo.hours }}</p>
           </div>
           {% endif %}
   

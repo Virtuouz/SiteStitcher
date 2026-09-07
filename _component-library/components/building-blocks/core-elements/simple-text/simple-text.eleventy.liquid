@@ -26,7 +26,7 @@
 {%- endcapture -%}
 
 {%- if content.text -%}
-  <p class="c-simple-text {{ alignClass | strip }} {{ sizeClass | strip }}"{{ content.text | roseyMarkdown }}>
+  <p class="c-simple-text {{ alignClass | strip }} {{ sizeClass | strip }}"{{ _uuid | roseyNs }}{{ content.text | roseyMarkdown: "text" }}>
     {%- if env_bookshop_live -%}
       {{ content.text | markdownify | remove: "<p>" | remove: "</p>" }}
     {%- else -%}

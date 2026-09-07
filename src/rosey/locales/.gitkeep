@@ -1,0 +1,11 @@
+Rosey locale files live here, one JSON file per language listed under
+`languages` in /rosey.yml.
+
+Created by `npm run rosey:sync` and kept in sync with ../base.json by
+`rosey-cloudcannon-connector write-locales` on every build. Editors translate
+them inline in CloudCannon's Visual Editor, or through the Translations
+collection.
+
+Removing a language from rosey.yml archives its file into ../locales-disabled/
+rather than deleting it, so the translations survive and come back if the
+language is re-enabled.

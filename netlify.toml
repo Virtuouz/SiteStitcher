@@ -4,8 +4,9 @@
   publish = "dist"
   command = "npm run eleventy && npm run rosey"
   [build.environment]
-  # Rosey internationalization. Set to "true" to tag content during the build
-  # and emit per-locale copies of the site. Locales live in rosey/rcc.yaml.
+  # Rosey internationalization. Set to "true" to emit per-locale copies of the
+  # site. The original language and the locales to translate into are both
+  # configured in rosey.yml.
   ROSEY_ENABLED = "false"
 [[plugins]]
 package = "netlify-plugin-cache"

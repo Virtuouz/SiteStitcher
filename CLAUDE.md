@@ -111,35 +111,81 @@ Defined in `.eleventy.js`:
 
 ### Internationalization (Rosey)
 
-Off by default, behind the `ROSEY_ENABLED` env var. With it unset, the build output is
-byte-identical to a site without Rosey. Locales are configured in `rosey/rcc.yaml` and ship
-as an empty list.
+Off by default, behind the `ROSEY_ENABLED` env var. With it unset the build output
+is byte-identical to a site without Rosey. Uses **Rosey v2** with the
+**CloudCannon Connector v2** (inline translating in the Visual Editor).
 
-Pipeline: `npm run eleventy` (tags content) then `npm run rosey` (`utils/rosey.js` runs
-`rosey generate` → `rosey-cloudcannon-connector generate` → `rosey build
---default-language-at-root`). English stays at `/`, locales are served from `/<locale>/`.
-Editors translate via the CloudCannon **Translations** collection
-(`src/rosey-translations/`).
+All configuration lives in `/rosey.yml`: `default_language` (the language the
+site is AUTHORED in) and `languages` (the locales to translate into). Nothing in
+this codebase assumes English — a Spanish-first site sets `default_language: es`
+and lists `en` under `languages`, and English becomes a translation like any
+other. The original is served from `/`, every locale from `/<code>/`.
+
+Adding a locale:
+
+```bash
+# 1. add the code to `languages` in rosey.yml, then
+npm run rosey:sync   # creates src/rosey/locales/<code>.json + the data_config entry
+```
+
+`npm run rosey:sync` is the only thing that edits the generated `data_config`
+block in `cloudcannon.config.yml` (between `# rosey:locales:start/end` markers) —
+never edit that block by hand. Removing a language archives its locale file to
+`src/rosey/locales-disabled/` rather than deleting it, so translations survive.
+`npm run test:roseySync` fails if the three ever drift apart.
+
+Pipeline: `npm run eleventy` (tags content) then `npm run rosey`, which runs
+`rosey generate` → `rcc write-locales` → `rcc install-client` → `rosey build` →
+`rosey check`. Editors translate inline in the Visual Editor via the connector's
+locale switcher, or through the CloudCannon **Translations** collection
+(`src/rosey/locales/`).
 
 **Every new component that renders text must be tagged.** Use the filters in
-`src/filters/rosey-filters.js` — all return `""` when the flag is off, so tagging never
-changes default output:
+`src/filters/rosey-filters.js` — all return `""` when the flag is off, so tagging
+never changes default output:
 
 | Filter | Use for | Example |
 |---|---|---|
-| `roseyTag` | text that is the element's only content | `<h2{{ text \| roseyTag }}>{{ text }}</h2>` |
-| `roseyWrap` | text sharing an element with sibling markup (icon, control) | `<a>{% icon %}{{ text \| roseyWrap }}</a>` |
-| `roseyMarkdown` | blocks rendered through `markdownify` (gives editors a rich-text input) | `<div{{ text \| roseyMarkdown }}>{{ text \| markdownify }}</div>` |
-| `roseyAttrs` | translatable attributes | `<img alt="{{ alt }}"{{ alt \| roseyAttrs: "alt" }}>` |
-| `roseyNs` | opening a namespace | `{{ "common" \| roseyNs: true }}` |
+| `roseyTag` | text that is the element's only content | `<h2{{ text \| roseyTag: "heading" }}>{{ text }}</h2>` |
+| `roseyWrap` | text sharing an element with sibling markup (icon, control) | `<a>{% icon %}{{ text \| roseyWrap: "label" }}</a>` |
+| `roseyMarkdown` | blocks rendered through `markdownify` (gives editors a rich-text input) | `<div{{ text \| roseyMarkdown: "body" }}>{{ text \| markdownify }}</div>` |
+| `roseyAttrs` | translatable attributes | `<img alt="{{ alt }}"{{ alt \| roseyAttrs: "alt", "alt" }}>` |
+| `roseyNs` | adding a namespace segment | `<section{{ _uuid \| roseyNs }}>` |
+| `roseyRoot` | opening a root namespace (also stops upward traversal) | `<footer{{ "common" \| roseyRoot }}>` |
 
-Prefer `roseyWrap` over an `{% if rosey.enabled %}` block: `{% render %}` gives partials an
-isolated scope where `rosey.enabled` is invisible, but filters always resolve.
+Prefer these filters over an `{% if rosey.enabled %}` block: `{% render %}` gives
+partials an isolated scope where `rosey.enabled` is invisible, but filters always
+resolve.
 
-Namespacing: `<main>` in `base.html` opens a per-page namespace from the page title, so
-identical copy on two pages stays independently translatable. Site chrome (header, footer)
-uses the `common` namespace so it is translated once — `namespace_pages` in `rosey/rcc.yaml`.
-Do not tag editor placeholder strings ("Add content to this section"); they are not site copy.
+**Keys are static, never derived from content.** A key is the `:`-joined chain of
+`data-rosey-root` / `data-rosey-ns` values above an element plus its own
+`data-rosey`, so a leaf key only has to be unique inside its own component. This
+is what lets the connector mark a translation *stale* when the source text
+changes, instead of orphaning it under a new key the way v1's slugified-text keys
+did. The piped value is still the text, used only to skip tagging empty elements.
+
+**Every component that renders text needs a per-instance namespace.** Add `_uuid:`
+to its blueprint and emit `{{ _uuid | roseyNs }}` on its root element; repeating
+items inside a component each need their own `_uuid` too. `_uuid` is declared once
+globally in `cloudcannon.config.yml` with `instance_value: UUID`, so CloudCannon
+fills it in as blocks are added — do not put a literal UUID in a blueprint.
+`_componentId` is NOT a substitute: it identifies a component *type*, so every
+instance shares one. Form inputs reuse their existing per-instance `id` instead.
+`npm run test:roseyIds` reports content blocks missing a `_uuid`.
+
+**Anything global must be translated once, not once per page.** Site chrome opens
+the shared `common` root (`{{ "common" | roseyRoot }}` on the header in
+`site-head.html` and the footer in `site-foot.html`), so `common:nav:home` is a
+single key across the whole site. Use `common:` for anything that reads the same
+everywhere: fixed UI strings (`common:ui:learn-more`, `common:ui:previous`), the
+site-wide banner, the tag taxonomy (`common:tag:<slug>`), countdown unit labels.
+Collection cards instead root on the item they render
+(`{% capture cardRoot %}item:{{ url }}{% endcapture %}`), so a post's title is one
+translation wherever its card appears. `<main>` opens a per-page root from the
+page URL — not the title, which would re-key the page when someone retitles it.
+
+Do not tag editor placeholder strings ("Add content to this section"); they are
+not site copy.
 
 ## Technology Preferences
 

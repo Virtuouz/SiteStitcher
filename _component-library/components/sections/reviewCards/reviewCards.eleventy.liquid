@@ -34,9 +34,9 @@
 
                     </div>
                     <div>
-                      <h4 class="text-xl opacity-80 font-medium"{{ review.name | roseyTag }}>{{ review.name }}</h4>
+                      <h4 class="text-xl opacity-80 font-medium"{% capture reviewRoot %}review:{{ review.name | slug }}{% endcapture %}{{ reviewRoot | roseyRoot }}{{ review.name | roseyTag: "name" }}>{{ review.name }}</h4>
                       <p class="text-sm opacity-60">
-                        <i{{ review.titleOrDescription | roseyTag }}>{{ review.titleOrDescription }}</i>
+                        <i{% capture reviewRoot %}review:{{ review.name | slug }}{% endcapture %}{{ reviewRoot | roseyRoot }}{{ review.titleOrDescription | roseyTag: "role" }}>{{ review.titleOrDescription }}</i>
                       </p>
                     </div>
                   </div>

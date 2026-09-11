@@ -4,7 +4,12 @@ const yaml = require("js-yaml");
 const matter = require("gray-matter");
 
 const componentsDir = "./_component-library/components";
-const pagesDirs = ["./src/pages", "./src/services", "./src/happenings", "./src/listings"];
+const pagesDirs = [
+  "./src/pages",
+  "./src/services",
+  "./src/happenings",
+  "./src/listings",
+];
 const componentBlueprints = {};
 const componentsInUse = [];
 let hasWarnings = false;
@@ -92,6 +97,9 @@ const validateAndResolveParameters = (
     if (key === "_bookshop_name") {
       continue; // Skip _bookshop_name key
     }
+    if (key === "_uuid" && usedParameters[key] === null) {
+      usedParameters[key] = crypto.randomUUID();
+    }
 
     const paramValue = usedParameters[key];
     const blueprintValue = blueprintParameters[key];
@@ -172,10 +180,15 @@ const validateAndResolveParameters = (
       if (
         blueprintParameters[key] === null ||
         blueprintParameters[key] === undefined ||
-      (typeof blueprintParameters[key] === 'string' && blueprintParameters[key].includes("bookshop:")) || 
-      (Array.isArray(blueprintParameters[key]) && blueprintParameters[key][0]?.includes("bookshop:")) 
+        (typeof blueprintParameters[key] === "string" &&
+          blueprintParameters[key].includes("bookshop:")) ||
+        (Array.isArray(blueprintParameters[key]) &&
+          blueprintParameters[key][0]?.includes("bookshop:"))
       ) {
         blueprintParameters[key] = null; // Set to null to allow cloud cannon to handle inputs in the UI
+        if (key === "_uuid" && blueprintParameters[key] === null) {
+          usedParameters[key] = crypto.randomUUID();
+        }
         usedParameters[key] = blueprintParameters[key]; // Add missing parameter
       } else {
         usedParameters[key] = blueprintParameters[key];

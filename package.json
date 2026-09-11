@@ -11,6 +11,7 @@
     "bookshop-sass:build": "bookshop-sass -b _component-library -o dist/css/bookshop.css",
     "browser": "npx @bookshop/browser",
     "eleventy": "node ./utils/copyGlideAssets.js && node ./utils/processFonts.mjs && node ./utils/fetch-theme-variables.js && node ./utils/generateFavicon.js && npm run sass:build && npm run bookshop-sass:build && npx eleventy",
+    "cc:build": "npm run eleventy && node ./utils/stubCloudCannonInfo.js && npx @bookshop/generate && npm run rosey",
     "build": "node ./utils/fetch-theme-variables.js && sass --no-source-map src/assets/styles:dist/css && sass --no-source-map src/assets/styles:dist/css && npx eleventy",
     "tailwind": "npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --watch",
     "unlighthouse": "unlighthouse-ci --site sopriscuisine.com --build-static --root ./dist --output-path ./sopriscuisine",

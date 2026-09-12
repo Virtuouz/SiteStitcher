@@ -9,6 +9,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: memberListingCard-90d04fd7-554e-486a-8e69-c215f273d82f
+  _uuid:
   listingTitle: ""
   listingUrl: "#"
   keyInformation: ""

@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: blogCardsPartial-f53e2221-04b4-4696-b7c6-ee7e0b52a924
+  _uuid:
   contents:
     sectionId:
     showNote: true

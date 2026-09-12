@@ -9,6 +9,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: horizontalListingCard-d6da3caf-9667-4b18-a108-7fc0874fb6d3
+  _uuid:
   listingTitle: ""
   listingUrl: "#"
   keyInformation: ""

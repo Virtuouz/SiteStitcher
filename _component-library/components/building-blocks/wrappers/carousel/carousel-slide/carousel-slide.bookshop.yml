@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: carousel-slide-ccfe1fd6-c720-4b11-abd1-ad474f24e0a9
+  _uuid:
   slideContentSections:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser

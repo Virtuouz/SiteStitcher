@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: textBreakReview-9ec5a449-69e1-49ed-aa59-0349a4cde163
+  _uuid:
   content:
     sectionId:
     heading: bookshop:structure:headingBlocks

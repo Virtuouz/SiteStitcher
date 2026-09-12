@@ -11,6 +11,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: button-group-452cc7cc-f39d-4142-a296-c778e9fc9d66
+  _uuid:
   content:
     label:
     buttons:

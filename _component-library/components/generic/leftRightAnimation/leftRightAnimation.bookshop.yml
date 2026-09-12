@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: leftRightAnimation-a9e207d1-7362-4bb3-b7ce-877bcd456987
+  _uuid:
   content:
     entries:
       - entry:

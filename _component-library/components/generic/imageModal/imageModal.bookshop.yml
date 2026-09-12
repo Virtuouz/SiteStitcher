@@ -9,6 +9,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: imageModal-aa2331c4-0755-44a3-ab1a-2f78b8d57ad4
+  _uuid:
   id: 
   image: bookshop:generic/image!
   classes:

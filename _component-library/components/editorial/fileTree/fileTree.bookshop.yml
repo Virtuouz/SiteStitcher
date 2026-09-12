@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: fileTree-204c69ce-88ca-45e9-9546-53544cdf8f4d
+  _uuid:
   treeCode: >-
     . root
 

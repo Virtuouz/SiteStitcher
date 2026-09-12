@@ -9,6 +9,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: pagination-29269ce3-a589-4f1d-8679-699b568d7dd1
+  _uuid:
   pagination:
   color_group: primary
 

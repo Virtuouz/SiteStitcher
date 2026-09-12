@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: feature-201314fc-975f-4bf0-98a5-23a724356266
+  _uuid:
   content:
     label:
     sectionId:

@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: largeEmbed-dd808347-075e-48e1-a674-6306644097ed
+  _uuid:
   content:
     sectionId:
     showNote: true

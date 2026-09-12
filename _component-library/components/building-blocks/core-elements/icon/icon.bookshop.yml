@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: icon-43bf13aa-6ed8-4d3a-bc0f-3078b1d5348a
+  _uuid:
   content:
     name: star
     type: solid

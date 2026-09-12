@@ -9,6 +9,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: checkBoxInput-72a5bfdd-911e-48e4-b89c-828b903f0378
+  _uuid:
   groupName:
   label:
   id:

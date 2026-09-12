@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: textInput-c93e5b13-0af4-4308-af72-64efb41b1579
+  _uuid:
   label: ""
   placeholder: ""
   id:

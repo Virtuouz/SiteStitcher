@@ -14,6 +14,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: videoEmbed-93efa737-df6f-4d12-b90b-fd39baa3b5bb
+  _uuid:
   platform: youtube
   videoId:
   thumbOnly:

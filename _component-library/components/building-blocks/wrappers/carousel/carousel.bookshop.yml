@@ -11,6 +11,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: carousel-56b7182c-6826-4cae-a2a2-bac82ef1a713
+  _uuid:
   content:
     label:
     slides:

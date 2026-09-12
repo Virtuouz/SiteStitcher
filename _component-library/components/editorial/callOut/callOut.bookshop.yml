@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: callOut-6435a731-b56f-4899-8faf-a6a6e7a81255
+  _uuid:
   type: info
   editorials: [bookshop:structure:editorial_blocks!(generic/textBlock)]
 

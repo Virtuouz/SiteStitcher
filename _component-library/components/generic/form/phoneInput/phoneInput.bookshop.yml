@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: phoneInput-4fdb4a87-dc2c-4070-9b11-7549f52d4abc
+  _uuid:
   label: ""
   id:
   required: false

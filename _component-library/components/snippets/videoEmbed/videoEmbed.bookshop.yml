@@ -9,6 +9,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: videoEmbed-8fd13744-6667-44bc-9a35-50ea3ebbd0b9
+  _uuid:
   platform: youtube
   videoId:
 

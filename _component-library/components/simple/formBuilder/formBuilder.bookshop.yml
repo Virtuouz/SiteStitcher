@@ -11,6 +11,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: formBuilder-1be2b859-3776-47b6-a974-0189cb33295e
+  _uuid:
   sectionId:
   inboxKey:
   formName:

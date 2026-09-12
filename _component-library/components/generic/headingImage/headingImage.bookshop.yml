@@ -11,6 +11,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: headingImage-826e00da-876c-4b32-87f9-7f3c94c5a4e3
+  _uuid:
   content:
     highlightEyebrow: false
     eyebrow: >-

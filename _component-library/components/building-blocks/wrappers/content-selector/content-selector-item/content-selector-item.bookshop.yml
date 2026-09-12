@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: content-selector-item-169c181f-ab6d-499f-b302-ee865a817b48
+  _uuid:
   title: Tab Title
   contentSections:
 

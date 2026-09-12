@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: sideBySideService-16331f06-e239-4def-acc2-72e36568f080
+  _uuid:
   content:
     sectionId:
     heading: bookshop:generic/heading!

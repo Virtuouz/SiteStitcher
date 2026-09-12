@@ -9,6 +9,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: IdScrollEvent-6953b245-8fee-410f-9fda-1b06d22d7b80
+  _uuid:
   sectionId: 
 
 # Overrides any fields in the blueprint when viewing this component in the component browser

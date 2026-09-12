@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: pricing-d9b36329-2fd4-4c80-b271-cd3477212c1d
+  _uuid:
   content:
     label:
     sectionId:

@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: informationCards-8b479207-cb46-43d4-935c-54de4e1f3dd0
+  _uuid:
   content:
     sectionId:
     heading: bookshop:structure:headingBlocks

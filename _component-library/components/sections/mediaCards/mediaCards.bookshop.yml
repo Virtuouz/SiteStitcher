@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: mediaCards-38a4f583-ed3a-4e2c-a58d-1dfb80c4c86e
+  _uuid:
   content:
     sectionId:
     heading: bookshop:structure:headingBlocks

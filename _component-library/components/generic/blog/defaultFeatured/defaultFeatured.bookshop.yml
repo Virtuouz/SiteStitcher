@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: defaultFeatured-e7f8e744-dbc3-4a0c-873a-6cd107f66561
+  _uuid:
   blogTitle: "something about blog"
   url: "#"
   author: "Jane Doe"

@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: emailInput-c344a86b-60c9-4329-bd1c-f2a5106f53d8
+  _uuid:
   label: ""
   id:
   required: false

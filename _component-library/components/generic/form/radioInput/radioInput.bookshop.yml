@@ -9,6 +9,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: radioInput-7d4ddae1-e19c-41af-8abb-a6a42cd27333
+  _uuid:
   label: ""
   groupName:
   checked: false

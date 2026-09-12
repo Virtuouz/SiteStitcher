@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: members-08b932da-6575-4a93-a176-bb10f9428326
+  _uuid:
   content:
     sectionId:
     heading: bookshop:structure:headingBlocks

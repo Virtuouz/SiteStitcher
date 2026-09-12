@@ -9,6 +9,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: snippet-countdown-b2c3d4e5-f6a7-8901-bcde-f23456789012
+  _uuid:
   date:
   completionText:
   showLabels: true

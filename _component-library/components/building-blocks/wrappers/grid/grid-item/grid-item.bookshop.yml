@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: grid-item-fac34be6-c177-4b25-b21b-ebc2963a1ac5
+  _uuid:
   gridContentSections:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser

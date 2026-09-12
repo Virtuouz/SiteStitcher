@@ -9,6 +9,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: languageSwitcher-0f2a6c1d-9e47-4b28-8c53-6a0d7f1b4e92
+  _uuid:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

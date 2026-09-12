@@ -9,6 +9,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: defaultCard-1a811cf8-d035-4758-a517-87f70a445a9d
+  _uuid:
   happeningTitle: "something about blog"
   url: "#"
   cancelled: false

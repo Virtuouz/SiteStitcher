@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: leftRight-eeb30bac-09e7-41ba-a9ab-424fd98ea4b8
+  _uuid:
   content:
     heading: bookshop:generic/heading!
     image: bookshop:generic/image

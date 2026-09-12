@@ -11,6 +11,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: listingsAll-f427e5b0-8adb-4d27-951b-7263d0ecfc27
+  _uuid:
   content:
     sectionId:
     showNote: true

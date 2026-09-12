@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: reviewCards-e9ca074f-936e-4ba6-ba53-c94ee8c1d42b
+  _uuid:
   content:
     sectionId:
     heading: bookshop:structure:headingBlocks

@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: dateInput-ac0d6300-996a-4b20-b5a8-9f5aa2a5da0b
+  _uuid:
   label: ""
   id:
   required: false

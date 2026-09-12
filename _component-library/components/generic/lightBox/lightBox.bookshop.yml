@@ -9,6 +9,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: lightBox-80a8152a-35d0-4766-935a-13677a057e1f
+  _uuid:
   id:
   images: [bookshop:generic/image]
   

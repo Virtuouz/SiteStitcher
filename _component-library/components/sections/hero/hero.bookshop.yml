@@ -9,6 +9,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: hero-e1254a95-6096-4734-abf4-2b79135c8326
+  _uuid:
   layout: "simple"
   content:
     eyebrow: "Welcome"

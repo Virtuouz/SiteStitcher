@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: countrySelectInput-a777c3a0-e2fc-4494-a49a-6ff2e2e7f7b2
+  _uuid:
   label: ""
   id:
   required: false

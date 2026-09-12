@@ -9,6 +9,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: helperText-8342fd7b-6a97-486e-b3c8-619f6608431f
+  _uuid:
   helperText: Helper text
   id:
 

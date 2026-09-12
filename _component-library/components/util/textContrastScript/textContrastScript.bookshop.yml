@@ -9,6 +9,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: textContrastScript-98e5e186-2e9b-460b-82d1-10cd6cd8846e
+  _uuid:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

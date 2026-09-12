@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: checkBoxGroup-9e657b90-e711-4911-90ec-1011971b203e
+  _uuid:
   label: ""
   id:
   checkboxes:

@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: sectionBreak-96d1a218-977c-413d-aa9a-d8e05efe0d7e
+  _uuid:
   line: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser

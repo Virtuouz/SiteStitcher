@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: selectInput-e804fa54-01d6-46c7-8861-f19b5f12ac64
+  _uuid:
   label: ""
   id:
   hidden: false

@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: largeImage-f0c8cd51-f15e-4a9a-8112-dab31ed13de8
+  _uuid:
   content:
     sectionId:
     heading: bookshop:structure:headingBlocks

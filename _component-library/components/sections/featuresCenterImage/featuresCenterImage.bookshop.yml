@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: featuresCenterImage-03cb7e7e-2f8b-444d-bc8d-6543ef9ec720
+  _uuid:
   content:
     showNote: true
     sectionId:

@@ -11,6 +11,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: overlapHero-a6b07e09-a318-4421-b350-f3d54654a169
+  _uuid:
   content:
     sectionId:
     backgroundImage: bookshop:generic/image

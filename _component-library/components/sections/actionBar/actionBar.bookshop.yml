@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: actionBar-4c432c0e-c257-41cf-b1e6-ba42c804052e
+  _uuid:
   content:
     buttons: [bookshop:structure:buttons]
   styles:

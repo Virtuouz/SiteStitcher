@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: pricingCardsSection-ad4a1a49-2213-46ca-9cc2-271fa7e16efa
+  _uuid:
   content:
     sectionId:
     heading: bookshop:structure:headingBlocks

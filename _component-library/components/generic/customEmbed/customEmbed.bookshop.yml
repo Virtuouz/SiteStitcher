@@ -13,6 +13,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: customEmbed-d6bcbc9f-d276-417d-9faf-ae0cc8361c0c
+  _uuid:
   embed:
   ratio: auto
 

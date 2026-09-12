@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: coloredCTA-8dd43b36-5bc2-4b3b-912d-f1de497e8467
+  _uuid:
   content:
     sectionId:
     CallToAction: bookshop:generic/heading!

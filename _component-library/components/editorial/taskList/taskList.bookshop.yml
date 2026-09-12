@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: taskList-a38e6637-9e60-4fce-868c-9ff8f28d0d3b
+  _uuid:
   tasks:
     - checked: false
       text: "To do"

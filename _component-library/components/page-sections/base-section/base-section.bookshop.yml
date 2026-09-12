@@ -13,6 +13,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: base-section-2add31ca-afd4-40e8-8e20-7085e953a50c
+  _uuid:
   content:
     label:
     sectionId:

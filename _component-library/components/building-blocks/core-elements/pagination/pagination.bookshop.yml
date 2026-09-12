@@ -11,6 +11,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: pagination-fa7e6d70-ad8c-4128-bb1f-a2905352d2d7
+  _uuid:
   content:
     previousUrl:
     nextUrl:

@@ -14,6 +14,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: video-5910ef9b-7c52-47b3-8b27-aed151ce438f
+  _uuid:
   videoUrl:
   yAxisPosition:
   class:

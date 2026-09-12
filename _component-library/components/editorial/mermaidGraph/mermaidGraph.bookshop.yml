@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: mermaidGraph-193b3b13-ce68-4c2f-927e-66a29cd19b2d
+  _uuid:
   mermaidCode: >-
     graph TD;
 

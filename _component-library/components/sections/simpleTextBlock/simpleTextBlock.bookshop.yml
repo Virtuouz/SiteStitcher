@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: simpleTextBlock-1a5ab00c-5c73-435e-abf1-efdfaf30e675
+  _uuid:
   content:
     sectionId:
     heading: bookshop:structure:headingBlocks

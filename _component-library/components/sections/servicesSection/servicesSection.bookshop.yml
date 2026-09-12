@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: servicesSection-d06c51f7-7385-4443-8423-400d3f52e2e9
+  _uuid:
   content:
     sectionId:
     heading: bookshop:structure:headingBlocks

@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: editorial-content-5353bf19-41ae-461f-a615-d67fc92d28c5
+  _uuid:
   content:
     label:
     sectionId:

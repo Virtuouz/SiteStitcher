@@ -9,6 +9,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: gen-imageModal-c49df043-0e10-45b2-bf0a-fa8bb144e2c5
+  _uuid:
   id:
   imagePath:
   imageAlt:

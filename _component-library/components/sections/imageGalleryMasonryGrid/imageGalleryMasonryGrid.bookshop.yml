@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: imageGalleryMasonryGrid-b57fa547-e183-452f-9df4-9eb71a1838c3
+  _uuid:
   content:
     sectionId:
     heading: bookshop:structure:headingBlocks

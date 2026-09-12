@@ -9,6 +9,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: imageGrid-8c64a460-1996-456b-b00d-7dfc3959795c
+  _uuid:
   imageSets:
     - images: [bookshop:generic/image]
   imageClasses:

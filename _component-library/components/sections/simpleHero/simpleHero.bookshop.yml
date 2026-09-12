@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: simpleHero-8c1dcda7-535f-4605-9e3c-86685737f008
+  _uuid:
   sectionId:
   heading: bookshop:generic/heading!
 

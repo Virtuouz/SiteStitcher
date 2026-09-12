@@ -11,6 +11,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: embed-7ffa46c7-cad1-4731-93a1-9fa8a2c5aad6
+  _uuid:
   content:
     html:
   styles:

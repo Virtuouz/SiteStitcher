@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: timeInput-3d9b6e7a-2152-4724-834a-806bb4ef3308
+  _uuid:
   label: ""
   placeholder: ""
   id:

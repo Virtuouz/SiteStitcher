@@ -11,6 +11,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: heroLibraryIcon-4b751a44-6efd-4fea-adee-f441e40b558f
+  _uuid:
   heroLibraryIconName: academic-cap
   iconSize: small
   iconType: solid

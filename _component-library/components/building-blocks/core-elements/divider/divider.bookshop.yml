@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: divider-280fbbfc-9414-40e8-9c95-ba89610185e1
+  _uuid:
   variant: solid
   width: full
   thickness: thin

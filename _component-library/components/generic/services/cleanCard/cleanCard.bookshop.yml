@@ -9,6 +9,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: cleanCard-a3789a3f-7ccb-4d70-9c6f-cdf3da71d7de
+  _uuid:
   url:
   title:
   image:

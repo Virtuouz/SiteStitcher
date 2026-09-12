@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: imageCompare-678dab75-3cc4-4a4b-abf0-e4d153b8b625
+  _uuid:
   content:
     sectionId:
     showNote: true

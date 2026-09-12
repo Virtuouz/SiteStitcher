@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: tags-e18b3ebc-ef8f-4406-b127-c6278297bc6b
+  _uuid:
   styles:
     tagColors: colorful
 

@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: testimonials-b4686af7-9f3f-4f66-bddf-ea4552caf7ab
+  _uuid:
   content:
     label:
     sectionId:

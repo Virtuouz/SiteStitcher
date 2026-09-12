@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: accordion-1748c75d-edad-4a11-9208-d3f69ac47a0f
+  _uuid:
   accordions:
     - title: 
       opened: false

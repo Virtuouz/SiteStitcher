@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: basicFormWithImage-b16bbb75-8c89-4b2f-bc9e-9df31c66c0f3
+  _uuid:
   content:
     sectionId:
     heading: bookshop:structure:headingBlocks

@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: servingMagicValley-0e7f6f6a-65b7-4dbb-b9ed-3f555b72bbf0
+  _uuid:
   content:
     sectionId:
     heading: bookshop:generic/headingHorizontal!

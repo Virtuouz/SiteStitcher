@@ -9,6 +9,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: defaultFeatured-f5c01888-47f7-4df0-a9c9-4eae3cadbf2a
+  _uuid:
   happeningTitle: "something about blog"
   url: "#"
   happeningDatetime: "2020-01-01"

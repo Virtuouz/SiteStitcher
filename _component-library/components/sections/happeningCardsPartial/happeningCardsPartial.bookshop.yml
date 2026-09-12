@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: happeningCardsPartial-4ae77905-bd3b-4cf0-b581-90eeb9c924cc
+  _uuid:
   contents:
     sectionId:
     showNote: true

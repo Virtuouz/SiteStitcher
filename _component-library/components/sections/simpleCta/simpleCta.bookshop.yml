@@ -12,6 +12,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: simpleCta-55aa4315-260d-4b9f-a7e6-f4c494799681
+  _uuid:
   content:
     sectionId:
     CallToAction: bookshop:structure:headingBlocks

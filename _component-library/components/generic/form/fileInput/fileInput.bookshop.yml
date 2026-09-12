@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: fileInput-334e762b-1261-4493-8378-e08935b7d011
+  _uuid:
   label: ""
   id:
   customAccept: false

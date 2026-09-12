@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   _componentId: spacer-9f3a1b2c-33d9-477a-9ab5-27ae7f0fbbd1
+  _uuid:
   size: md
   responsiveSize:
 

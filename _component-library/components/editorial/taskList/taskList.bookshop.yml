@@ -12,7 +12,8 @@ blueprint:
   _componentId: taskList-a38e6637-9e60-4fce-868c-9ff8f28d0d3b
   _uuid:
   tasks:
-    - checked: false
+    - _uuid:
+      checked: false
       text: "To do"
 
 # Overrides any fields in the blueprint when viewing this component in the component browser

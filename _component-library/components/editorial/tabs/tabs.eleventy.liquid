@@ -1,7 +1,7 @@
 <div class="tabs-tabs-wrapper" data-id="{{a | uuidFilter}}">
   <div class="tabs-tabs-header">
     {% for tab in tabs %}
-    <button type="button" class="tabs-tab-button {% if tabs.first == tab %}active{% endif %} "  data-tab="{{ forloop.index }}" data-id="{{tab.title | slug}}" {% if tabs.first == tab %}data-active{% endif %}{% capture tabKey %}tab:{{ tab.title | slug }}{% endcapture %}{{ _uuid | roseyNs }}{{ tab.title | roseyTag: tabKey }} >{{ tab.title }}</button>
+    <button type="button" class="tabs-tab-button {% if tabs.first == tab %}active{% endif %} "  data-tab="{{ forloop.index }}" data-id="{{tab.title | slug}}" {% if tabs.first == tab %}data-active{% endif %}{% capture tabKey %}{{ _uuid }}:tab:{{ tab.title | slug }}{% endcapture %}{{ tab.title | roseyTag: tabKey }} >{{ tab.title }}</button>
     {% endfor %}
   </div>
   <div class="tabs-tabs-container">

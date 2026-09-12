@@ -22,9 +22,9 @@
 {%- if content.items.size > 0 -%}
   <dl class="{{ listClass | strip }}">
     {%- for item in content.items -%}
-      <div class="c-definition-list__item">
-        <dt class="c-definition-list__term {{ weightClass | strip }}"{{ item._uuid | roseyNs }}{{ item.term | roseyTag: "term" }}>{{ item.term }}</dt>
-        <dd class="c-definition-list__definition"{{ item._uuid | roseyNs }}{{ item.definition | roseyTag: "definition" }}>{{ item.definition }}</dd>
+      <div class="c-definition-list__item"{{ item._uuid | roseyNs }}>
+        <dt class="c-definition-list__term {{ weightClass | strip }}"{{ item.term | roseyTag: "term" }}>{{ item.term }}</dt>
+        <dd class="c-definition-list__definition"{{ item.definition | roseyTag: "definition" }}>{{ item.definition }}</dd>
       </div>
     {%- endfor -%}
   </dl>

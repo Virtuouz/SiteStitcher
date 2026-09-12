@@ -16,4 +16,5 @@ styles:
 {%- endcapture -%}
 {%- assign countdownObj = countdownData | ymlify -%}
 {% capture output %}{% bookshop "building-blocks/core-elements/countdown" bind: countdownObj %}{% endcapture %}
-{{ output | removeExtraWhitespace | strip }}
+{%- comment -%} roseyStrip: a snippet sits inside an already-tagged rich-text region. {%- endcomment -%}
+{{ output | roseyStrip | removeExtraWhitespace | strip }}

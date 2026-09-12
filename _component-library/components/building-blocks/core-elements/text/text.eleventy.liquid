@@ -12,7 +12,9 @@
 {%- endcapture -%}
 
 {%- if content.text -%}
-  <div class="c-text cs-docs cs-docs--{{ color_group | default: 'primary' }} w-full {{ alignClass | strip }}"{{ _uuid | roseyNs }}{{ content.text | roseyMarkdown: "text" }}>
+  {%- comment -%} Rosey: root element is the tagged one, so _uuid is folded into the key. {%- endcomment -%}
+  {%- capture textKey -%}{{ _uuid }}:text{%- endcapture -%}
+  <div class="c-text cs-docs cs-docs--{{ color_group | default: 'primary' }} w-full {{ alignClass | strip }}"{{ content.text | roseyMarkdown: textKey }}>
     {%- if env_bookshop_live -%}
       {{ content.text | markdownify }}
     {%- else -%}

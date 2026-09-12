@@ -1,6 +1,6 @@
-<div class="c-helperText flex gap-2 text-sm text-{{color_group}}-textcolor">
+<div class="c-helperText flex gap-2 text-sm text-{{color_group}}-textcolor"{{ id | roseyNs }}>
     {% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"information-circle" iconType:"outline" iconSize:'micro' roundedBorder:false themeColor:true %}
     <div class="{{ c }}__helper__text" id="{{ id }}--helper" role="tooltip">
-{% bookshop "generic/textBlock" text: helperText %}
+{% bookshop "generic/textBlock" text: helperText _uuid: "" roseyKey: "helper-text" %}
     </div>
 </div>

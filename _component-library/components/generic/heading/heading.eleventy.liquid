@@ -35,17 +35,17 @@
 {% endcapture %}
 
 
-<header class="c-heading w-full flex flex-col justify-center {{contentAlignment}} {{textClass}} {{margin}}">
+<header class="c-heading w-full flex flex-col justify-center {{contentAlignment}} {{textClass}} {{margin}}"{{ _uuid | roseyNs }}>
   <div class="{{textAlignment}} max-w-[700px]">
     {% if content.eyebrow %}
-      <div class=" {% if content.highlightEyebrow %} text-{{color_group}}-accentcolor {% endif %} ">{% bookshop "generic/textBlock" text: content.eyebrow %}</div>
+      <div class=" {% if content.highlightEyebrow %} text-{{color_group}}-accentcolor {% endif %} ">{% bookshop "generic/textBlock" text: content.eyebrow _uuid: "" roseyKey: "eyebrow" %}</div>
     {% endif %}
     <{{content.headingHierarchy | default: "h2" }}  class="cs-visualInterest {{headingClasses}} font-bold mt-1 {{headingSize}}" style="--c-visualColor: {{styles.visualInterestColor}}">
-      {% bookshop "generic/textBlock" text: content.headline %}
+      {% bookshop "generic/textBlock" text: content.headline _uuid: "" roseyKey: "headline" %}
       </{{content.headingHierarchy | default: "h2" }}>
       <div class="mt-4 cs-headingLink">
         {% if content.description %}
-          {% bookshop "generic/textBlock" text: content.description %}{% endif %}
+          {% bookshop "generic/textBlock" text: content.description _uuid: "" roseyKey: "description" %}{% endif %}
       </div>
       {% if content.buttons %}
         <div class="mt-3 flex w-full gap-8 flex-wrap {{buttonAlignment}}">

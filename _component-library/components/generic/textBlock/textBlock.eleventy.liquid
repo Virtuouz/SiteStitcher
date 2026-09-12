@@ -1,9 +1,22 @@
+{%- comment -%}
+  Rosey: the tagged <div> is this component's root, so the block's _uuid is
+  folded into the key instead of being emitted as data-rosey-ns on the same
+  element (the build and the editor would resolve different keys otherwise).
+
+  `roseyKey` is an optional, template-only param. Parents that render several
+  textBlocks as sub-fields (heading: eyebrow / headline / description) pass a
+  distinct key per include together with `_uuid: ""`, so the blocks neither all
+  key as `text` nor inherit the parent's _uuid a second time:
+
+    {% bookshop "generic/textBlock" text: content.headline _uuid: "" roseyKey: "headline" %}
+{%- endcomment -%}
+{%- capture textBlockKey -%}{{ _uuid }}:{{ roseyKey | default: "text" }}{%- endcapture -%}
 {% if text and env_bookshop_live %}
-    <div  class="c-textBlock w-full"{{ _uuid | roseyNs }}{{ text | roseyMarkdown: "text" }}>    
+    <div  class="c-textBlock w-full"{{ text | roseyMarkdown: textBlockKey }}>
         {{ text | markdownify  }}
     </div>
 {% elsif text %}
-<div class="c-textBlock w-full"{{ _uuid | roseyNs }}{{ text | roseyMarkdown: "text" }}>    
+<div class="c-textBlock w-full"{{ text | roseyMarkdown: textBlockKey }}>
         {{ text | renderContent | markdownify  }}
     </div>
 {% endif %}

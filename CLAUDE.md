@@ -152,10 +152,42 @@ never changes default output:
 | `roseyAttrs` | translatable attributes | `<img alt="{{ alt }}"{{ alt \| roseyAttrs: "alt", "alt" }}>` |
 | `roseyNs` | adding a namespace segment | `<section{{ _uuid \| roseyNs }}>` |
 | `roseyRoot` | opening a root namespace (also stops upward traversal) | `<footer{{ "common" \| roseyRoot }}>` |
+| `roseyStrip` | snippet wrappers: removes every tag from rendered output | `{{ output \| roseyStrip \| strip }}` |
 
 Prefer these filters over an `{% if rosey.enabled %}` block: `{% render %}` gives
 partials an isolated scope where `rosey.enabled` is invisible, but filters always
 resolve.
+
+**The filters exist twice and must stay identical.** The Visual Editor shows
+Bookshop's in-browser re-render, not `dist/`, and the RCC client reads
+`data-rosey*` from that live DOM. `src/filters/rosey-filters.js` (Eleventy) and
+`_component-library/bookshop/rosey.js` (Bookshop live) are both thin gates over
+`_component-library/bookshop/rosey-markup.js`. Add any new `rosey*` filter to
+both; `npm run test:roseyParity` fails otherwise.
+
+**Never put `roseyNs` / `roseyRoot` on the same element as `roseyTag` /
+`roseyMarkdown`.** Rosey (the build) applies an element's own namespace before
+building its key; the RCC editor client starts from the parent and ignores it, so
+the two save and read different keys. Put the namespace on an untagged ancestor
+(the component root is usually free), fold it into the key when the tagged element
+*is* the root (`{% capture k %}{{ _uuid }}:text{% endcapture %}<div{{ text |
+roseyMarkdown: k }}>`), or keep the root on the element and move the tag onto an
+inner span with `roseyWrap` (`<p{{ "common" | roseyRoot }}>{{ "Read more" |
+roseyWrap: "ui:read-more" }}</p>`). `npm run test:roseyKeys` checks the built site
+for this, for nested tags, and for one key carrying two different strings.
+
+**One key, one string.** A component included several times as a sub-field
+(`generic/textBlock` for a heading's eyebrow / headline / description) must get a
+distinct key per include and must not inherit the parent's `_uuid` a second time:
+`{% bookshop "generic/textBlock" text: content.headline _uuid: "" roseyKey:
+"headline" %}`. Repeated array items get their own `_uuid` on an untagged per-item
+wrapper. The same key must always render the same text — derive shared labels
+(tags, countdown units) one way everywhere.
+
+**Snippets and editor-only notices are never tagged.** A snippet renders inside a
+rich-text region that is already one translation, so its wrapper pipes the output
+through `roseyStrip`; `generic/notification` and `generic/styledText` carry no
+tags at all.
 
 **Keys are static, never derived from content.** A key is the `:`-joined chain of
 `data-rosey-root` / `data-rosey-ns` values above an element plus its own
@@ -179,6 +211,9 @@ the shared `common` root (`{{ "common" | roseyRoot }}` on the header in
 single key across the whole site. Use `common:` for anything that reads the same
 everywhere: fixed UI strings (`common:ui:learn-more`, `common:ui:previous`), the
 site-wide banner, the tag taxonomy (`common:tag:<slug>`), countdown unit labels.
+Nav and footer links are keyed by their label (`common:nav:<label-slug>`,
+content-as-key), not their URL: placeholder links and Home all point at `/`, which
+sanitises to an empty key.
 Collection cards instead root on the item they render
 (`{% capture cardRoot %}item:{{ url }}{% endcapture %}`), so a post's title is one
 translation wherever its card appears. `<main>` opens a per-page root from the

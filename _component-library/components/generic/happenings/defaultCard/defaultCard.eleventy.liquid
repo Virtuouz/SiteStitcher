@@ -41,7 +41,7 @@ w-full {{theme.image_rounding}} transition-all duration-300 scale-100 hover:scal
         <li class="hover:underline after:absolute after:content-['·'] after:scale-150  after:left-2 relative before:content-[' '] after:left-[-10px] after:text-lg ">
         <a 
         data-umami-event="{{tag | slug}}-{{happeningTitle}}-{{page.url}}-tags"
-        class="font-bold" href="/tag/{{ tag | slug }}/"{{ "common" | roseyRoot }}{% capture tagKey %}tag:{{ tag | slug }}{% endcapture %}{{ tag | roseyTag: tagKey }}>{{ tag | capitalize | replace: ' ', '' }}</a>
+        class="font-bold capitalize" href="/tag/{{ tag | slug }}/"{{ "common" | roseyRoot }}>{% capture tagKey %}tag:{{ tag | slug }}{% endcapture %}{{ tag | roseyWrap: tagKey }}</a>
       </li>
     {% endif %}
     {% endfor %}

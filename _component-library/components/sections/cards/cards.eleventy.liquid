@@ -72,7 +72,10 @@
                 {% endif %}
 
                 {% comment %} Render Card {% endcomment %}
-                <div class="flex flex-col h-full bg-{{styles.color_group}}-surfacecolor rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+                {% comment %}Rosey: a hand-written card is scoped by its own _uuid; a card built
+                from a collection item has none, so it roots on the item URL like the other
+                collection cards do — its title is then one translation wherever it appears.{% endcomment %}
+                <div class="flex flex-col h-full bg-{{styles.color_group}}-surfacecolor rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"{% if cardData._uuid %}{{ cardData._uuid | roseyNs }}{% elsif cardData.url %}{% capture cardRoot %}item:{{ cardData.url }}{% endcapture %}{{ cardRoot | roseyRoot }}{% endif %}>
                     {% if cardData.image.imagePath %}
                         <a href="{{cardData.url}}" class="block aspect-video overflow-hidden">
                              {% bookshop "generic/image" bind: cardData.image class: "w-full h-full object-cover hover:scale-105 transition-transform duration-500" %}
@@ -85,11 +88,11 @@
                         {% endif %}
                         
                         <a href="{{cardData.url}}" class="block">
-                            <h3 class="text-xl font-bold mb-3 hover:opacity-80"{{ cardData._uuid | roseyNs }}{{ cardData.title | roseyTag: "title" }}>{{ cardData.title }}</h3>
+                            <h3 class="text-xl font-bold mb-3 hover:opacity-80"{{ cardData.title | roseyTag: "title" }}>{{ cardData.title }}</h3>
                         </a>
                         
                         {% if cardData.description %}
-                            <p class="opacity-90 mb-4 flex-grow"{{ cardData._uuid | roseyNs }}{{ cardData.description | roseyTag: "description" }}>{{ cardData.description }}</p>
+                            <p class="opacity-90 mb-4 flex-grow"{{ cardData.description | roseyTag: "description" }}>{{ cardData.description }}</p>
                         {% endif %}
                         
                         {% if cardData.url %}

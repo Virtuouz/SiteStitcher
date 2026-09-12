@@ -12,7 +12,7 @@
 <div class="c-checkBoxGroup" {% if hidden %}style="display:none"{% endif %}>
     <fieldset class="border  border-{{color_group}}-textcolor {{theme.container_rounding}} p-2 hover:border-{{color_group}}-accentcolor" role="group" {% if helper_text %}aria-describedby="{{ id }}--helper"{% endif %}>
         {% if label and label != '' %}
-            <legend class="text-xs text-{{color_group}}-textcolor uppercase font-bold "{{ id | roseyNs }}{{ label | roseyTag: "label" }}>{{ label }}</legend>
+            <legend class="text-xs text-{{color_group}}-textcolor uppercase font-bold "{{ id | roseyNs }}>{{ label | roseyWrap: "label" }}</legend>
         {% endif %}
         <div class="flex   {{ arrangementClasses }}">
             {% for checkbox in checkboxes %}

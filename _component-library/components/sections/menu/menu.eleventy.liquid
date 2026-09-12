@@ -56,7 +56,7 @@
         
         <ul class="categories {{ category_slug }} {% if env_bookshop_live and menuGroup == content.menuGroups.first %}{% else %} hidden  {% endif %} flex flex-wrap justify-around lg:justify-between gap-10">
           {% for menuItem in menuGroup.group %}
-            <li class="h-30 flex min-w-min max-w-xl flex-shrink flex-grow basis-[450px] gap-4">
+            <li class="h-30 flex min-w-min max-w-xl flex-shrink flex-grow basis-[450px] gap-4"{{ menuItem._uuid | roseyNs }}>
               {% if menuItem.image %}
                 <div class="min-w-[125px] sm:min-w-[150px] max-w-[150px] ">
                    {% capture imageClasses %}
@@ -67,13 +67,13 @@
               {% endif %}
               <div class="flex-shrink flex-grow">
             <div class="flex justify-between gap-2">
-              <h4 class="text-xl font-semibold"{{ menuItem._uuid | roseyNs }}{{ menuItem.label | roseyTag: "label" }}>{{ menuItem.label }}</h4>
+              <h4 class="text-xl font-semibold"{{ menuItem.label | roseyTag: "label" }}>{{ menuItem.label }}</h4>
               <div
                 class="h-2.5 flex-1 self-center border-b border-t border-{{styles.color_group}}-textcolor opacity-40"
               ></div>
               <p class="">{{ menuItem.price }}</p>
             </div>
-                <p{{ menuItem._uuid | roseyNs }}{{ menuItem.description | roseyTag: "description" }}>{{ menuItem.description }}</p>
+                <p{{ menuItem.description | roseyTag: "description" }}>{{ menuItem.description }}</p>
               </div>
             </li>
           {% endfor %}

@@ -7,6 +7,16 @@
  * Every filter returns "" unless ROSEY_ENABLED === "true", so a default build
  * is byte-for-byte identical to one without Rosey installed.
  *
+ * ## This file is one of two — keep them in step
+ *
+ * The Visual Editor does not show the built HTML. Bookshop re-renders every
+ * component in the browser and the RCC client reads `data-rosey*` from THAT
+ * live DOM, so `_component-library/bookshop/rosey.js` registers the same
+ * filters for Bookshop's Liquid engine. Both are thin gates over the shared,
+ * environment-free builders in `_component-library/bookshop/rosey-markup.js`.
+ * Add any new `rosey*` filter to both; `npm run test:roseyParity` fails if the
+ * two ever diverge.
+ *
  * ## Keys are static, not derived from content
  *
  * Under the v1 connector a key was the slugified source text, so editing a
@@ -34,74 +44,36 @@
  * `data-rosey-root` also stops upward traversal, which is what makes shared
  * chrome shared: the header and footer open `common`, so `common:nav:home` is
  * one key on every page and is translated once. See `roseyRoot`.
+ *
+ * ## Never put -ns / -root on the tagged element itself
+ *
+ * Rosey's generator applies an element's OWN `data-rosey-ns` / `data-rosey-root`
+ * before building its key; the RCC editor client starts from the parent and
+ * ignores them. So `<div data-rosey-ns="abc" data-rosey="text">` is
+ * `page:abc:text` to the build but `page:text` to the editor, and an edit is
+ * saved under a key the build never reads. Either put the namespace on an
+ * untagged ancestor, or fold it into the key:
+ *
+ *     <section{{ _uuid | roseyNs }}><h2{{ text | roseyTag: "heading" }}>       ancestor
+ *     {% capture k %}{{ _uuid }}:text{% endcapture %}<div{{ text | roseyMarkdown: k }}>   folded
+ *     <p{{ "common" | roseyRoot }}>{{ "Read more" | roseyWrap: "ui:read-more" }}</p>      root + inner span
+ *
+ * `npm run test:roseyKeys` checks the built site for violations.
  */
+
+const markup = require("../../_component-library/bookshop/rosey-markup.js");
 
 const ENABLED_FLAG = "true";
 
 /** Rosey joins namespace segments with this; see `separator` in rosey.yml. */
-const SEPARATOR = ":";
+const SEPARATOR = markup.SEPARATOR;
 
 function isEnabled() {
   return process.env.ROSEY_ENABLED === ENABLED_FLAG;
 }
 
-/**
- * Keys end up as JSON object keys, YAML-ish CloudCannon input names and HTML
- * attribute values, so keep them to an unambiguous character set. `:` survives
- * because a call site is allowed to write its own nesting ("nav:home").
- *
- * This normalises rather than rejects: a stray space or capital in a key is a
- * typo, not a reason to fail a build, and silently emitting two different keys
- * for what an author wrote as one string would be worse.
- */
-function sanitizeKey(key) {
-  if (key === null || key === undefined) {
-    return "";
-  }
-  return String(key)
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9:_-]+/g, "-")
-    .replace(/-{2,}/g, "-")
-    // Keys are often assembled from paths ("meta:/about/:title"), which leaves a
-    // hyphen stranded on either side of a separator once the slashes are
-    // replaced. Tidy those first, then collapse the empty segments they leave
-    // behind, so the key reads as "meta:about:title".
-    .replace(new RegExp(`-*${SEPARATOR}-*`, "g"), SEPARATOR)
-    .replace(new RegExp(`${SEPARATOR}{2,}`, "g"), SEPARATOR)
-    .replace(/^[-:]+|[-:]+$/g, "");
-}
-
-/**
- * For a normal double-quoted attribute value. Sanitised keys can't contain any
- * of these, but namespace values are interpolated from content (`_uuid`, page
- * URLs), so escape defensively.
- */
-function escapeForAttribute(value) {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
-}
-
-/**
- * For the JSON payload of `data-rosey-attrs-explicit`, which sits inside a
- * SINGLE-quoted attribute. Its double quotes are structural and must stay raw;
- * only `&` and `'` would break out of the attribute.
- */
-function escapeForJsonAttribute(value) {
-  return String(value).replaceAll("&", "&amp;").replaceAll("'", "&#39;");
-}
-
-/**
- * Is this value worth tagging? Rosey records a key for every tagged element, so
- * tagging an empty one adds a permanently-untranslatable entry to base.json and
- * an empty row to every locale file.
- */
-function hasContent(text) {
-  return text !== null && text !== undefined && String(text).trim() !== "";
-}
+/** Normalises a key. Exported because other tooling builds keys the same way. */
+const sanitizeKey = markup.sanitizeKey;
 
 /**
  * Marks an element for translation. The key is static and scoped by the
@@ -114,20 +86,15 @@ function hasContent(text) {
  * @param {string} key  Static key, unique within the current namespace.
  */
 function roseyTag(text, key) {
-  if (!isEnabled() || !hasContent(text)) {
-    return "";
-  }
-  const roseyKey = sanitizeKey(key);
-  if (!roseyKey) {
-    return "";
-  }
-  return ` data-rosey="${escapeForAttribute(roseyKey)}"`;
+  return isEnabled() ? markup.tag(text, key) : "";
 }
 
 /**
  * Returns `text` wrapped in a tagged span, for text that shares an element with
  * sibling markup (an icon, a decorative quote mark, a form control) where
- * tagging the parent would swallow that markup into the translation.
+ * tagging the parent would swallow that markup into the translation — and for
+ * text whose element carries a `roseyRoot` / `roseyNs` of its own, which must
+ * not also carry the tag (see the header).
  *
  *   <a href="...">{% icon %}{{ label | roseyWrap: "label" }}</a>
  *
@@ -137,12 +104,10 @@ function roseyTag(text, key) {
  * registered filters always are.
  */
 function roseyWrap(text, key) {
-  const value = text === null || text === undefined ? "" : String(text);
-  const tag = roseyTag(text, key);
-  if (!tag) {
-    return value;
+  if (!isEnabled()) {
+    return text === null || text === undefined ? "" : String(text);
   }
-  return `<span${tag}>${value}</span>`;
+  return markup.wrap(text, key);
 }
 
 /**
@@ -164,10 +129,7 @@ function roseyWrap(text, key) {
  * @param {string} value Namespace segment, usually a block `_uuid`.
  */
 function roseyNs(value) {
-  if (!isEnabled() || !hasContent(value)) {
-    return "";
-  }
-  return ` data-rosey-ns="${escapeForAttribute(sanitizeKey(value))}"`;
+  return isEnabled() ? markup.ns(value) : "";
 }
 
 /**
@@ -187,23 +149,7 @@ function roseyNs(value) {
  * @param {string} value Root namespace. `common` for site-wide chrome.
  */
 function roseyRoot(value) {
-  if (!isEnabled()) {
-    return "";
-  }
-  // `data-rosey-root=""` is not a no-op — it RESETS the namespace, dropping every
-  // key below it to the global scope where it can collide with anything. So an
-  // empty root is only ever emitted when the caller explicitly asks for one by
-  // passing nothing. A non-empty value that sanitises away (a URL of "/", say)
-  // emits no attribute at all, leaving the ancestor namespace in place: keeping
-  // the wrong-but-scoped namespace beats silently globalising the page.
-  if (value === null || value === undefined || String(value).trim() === "") {
-    return ` data-rosey-root=""`;
-  }
-  const root = sanitizeKey(value);
-  if (!root) {
-    return "";
-  }
-  return ` data-rosey-root="${escapeForAttribute(root)}"`;
+  return isEnabled() ? markup.root(value) : "";
 }
 
 /**
@@ -221,11 +167,7 @@ function roseyRoot(value) {
  * rendered markup, not the markdown source.
  */
 function roseyMarkdown(text, key) {
-  const tag = roseyTag(text, key);
-  if (!tag) {
-    return "";
-  }
-  return `${tag} data-type="block"`;
+  return isEnabled() ? markup.markdown(text, key) : "";
 }
 
 /**
@@ -240,24 +182,34 @@ function roseyMarkdown(text, key) {
  * @param {string} key           Static key for the translation.
  */
 function roseyAttrs(text, attributeName, key) {
-  if (!isEnabled() || !attributeName || !hasContent(text)) {
-    return "";
+  return isEnabled() ? markup.attrs(text, attributeName, key) : "";
+}
+
+/**
+ * Strips every Rosey attribute from a rendered fragment. For snippet wrappers
+ * (`_snippets` in cloudcannon.config.yml): a snippet renders inside a rich-text
+ * region that is already tagged as ONE translation, and a tag nested inside a
+ * tag gives Rosey two overlapping keys and the editor two stacked inputs.
+ *
+ *   {% capture output %}{% bookshop "…/countdown" bind: obj %}{% endcapture %}
+ *   {{ output | roseyStrip | removeExtraWhitespace | strip }}
+ */
+function roseyStrip(html) {
+  if (!isEnabled()) {
+    return html === null || html === undefined ? "" : String(html);
   }
-  const roseyKey = sanitizeKey(key);
-  if (!roseyKey) {
-    return "";
-  }
-  const explicit = JSON.stringify({ [String(attributeName)]: roseyKey });
-  return ` data-rosey-attrs-explicit='${escapeForJsonAttribute(explicit)}'`;
+  return markup.strip(html);
 }
 
 module.exports = {
   isEnabled,
   sanitizeKey,
+  SEPARATOR,
   roseyTag,
   roseyWrap,
   roseyNs,
   roseyRoot,
   roseyMarkdown,
   roseyAttrs,
+  roseyStrip,
 };

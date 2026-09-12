@@ -2,7 +2,7 @@
   {% if platform == 'youtube' %}
     <lite-youtube {% if thumbOnly %} thumbOnly class=" object-cover object-center w-full h-full" {% endif %} videoid="{{videoId}}" style="background-image: url('https://i.ytimg.com/vi/{{videoId}}/hqdefault.jpg');">
   <a href="https://youtube.com/watch?v={{videoId}}" class="lty-playbtn" title="Play Video"{{ "common" | roseyRoot }}{{ "Play Video" | roseyAttrs: "title", "ui:play-video" }}>
-    <span class="lyt-visually-hidden"{{ "common" | roseyRoot }}{{ "Play Video: Crayon Physics Deluxe - Trailer HD" | roseyTag: "ui:play-video-label" }}>Play Video: Crayon Physics Deluxe - Trailer HD</span>
+    <span class="lyt-visually-hidden"{{ "Play Video: Crayon Physics Deluxe - Trailer HD" | roseyTag: "ui:play-video-label" }}>Play Video: Crayon Physics Deluxe - Trailer HD</span>
   </a>
 </lite-youtube>
     {% elsif platform == 'vimeo' %}

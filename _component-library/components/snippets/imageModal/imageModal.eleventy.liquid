@@ -1,3 +1,4 @@
 {% capture imageModal %}{% bookshop 'snippets/generator/gen-imageModal' imagePath: imagePath imageAlt: imageAlt %}{% endcapture %}
-{{imageModal | removeExtraWhitespace | strip }}
+{%- comment -%} roseyStrip: a snippet sits inside an already-tagged rich-text region. {%- endcomment -%}
+{{imageModal | roseyStrip | removeExtraWhitespace | strip }}
     

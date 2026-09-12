@@ -169,7 +169,7 @@
             end
           "
         >
-          <span class="text-sm opacity-80"{{ "common" | roseyRoot }}{{ "On This Page" | roseyTag: "ui:on-this-page" }}>On This Page</span>
+          <span class="text-sm opacity-80"{{ "common" | roseyRoot }}>{{ "On This Page" | roseyWrap: "ui:on-this-page" }}</span>
           <span id="toc-dropdown-arrow" class="transition-transform duration-300">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -225,7 +225,7 @@
       {% if tocExists %}
       <aside class="hidden xl:block w-72 shrink-0"> 
         <div class="sticky overflow-y-auto max-h-[80vh] top-24 flex flex-col gap-4">
-          <p class="text-sm font-semibold opacity-75"{{ "common" | roseyRoot }}{{ "On this page" | roseyTag: "ui:on-this-page-lower" }}>On this page</p>
+          <p class="text-sm font-semibold opacity-75"{{ "common" | roseyRoot }}>{{ "On this page" | roseyWrap: "ui:on-this-page-lower" }}</p>
           <div class="opacity-80 text-sm">
             {{ bookshopTOC }}
             {{ contentTOC }}

@@ -17,7 +17,7 @@ w-full {{theme.image_rounding}} transition-all duration-300 scale-100 hover:scal
 <div class="w-full "{{ cardRoot | roseyRoot }}>
   <div class="flex justify-between text-sm opacity-70">
     <div class="">
-      <p{{ "common" | roseyRoot }}{{ "Written by" | roseyTag: "ui:written-by" }}>Written by</p>
+      <p{{ "common" | roseyRoot }}>{{ "Written by" | roseyWrap: "ui:written-by" }}</p>
       <p>{{ author }}</p>
     </div>
     <div class="text-right">
@@ -36,7 +36,7 @@ w-full {{theme.image_rounding}} transition-all duration-300 scale-100 hover:scal
         <li class="hover:underline after:absolute after:content-['·'] after:scale-150  after:left-2 relative before:content-[' '] after:left-[-10px] after:text-lg ">
         <a 
         data-umami-event="{{tag | slug}}-{{blogTitle}}-{{page.url}}-tags"
-        class="font-bold" href="/tag/{{ tag | slug }}/"{{ "common" | roseyRoot }}{% capture tagKey %}tag:{{ tag | slug }}{% endcapture %}{{ tag | roseyTag: tagKey }}>{{ tag | capitalize | replace: ' ', '' }}</a>
+        class="font-bold capitalize" href="/tag/{{ tag | slug }}/"{{ "common" | roseyRoot }}>{% capture tagKey %}tag:{{ tag | slug }}{% endcapture %}{{ tag | roseyWrap: tagKey }}</a>
       </li>
     {% endif %}
     {% endfor %}

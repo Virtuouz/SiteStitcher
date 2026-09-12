@@ -23,7 +23,10 @@
     "rosey": "node ./utils/rosey.js",
     "rosey:sync": "node ./utils/syncRoseyLocales.js",
     "test:roseySync": "node ./utils/syncRoseyLocales.js --check",
-    "test:roseyIds": "node ./tests/validateRoseyIds.js"
+    "test:roseyIds": "node ./tests/validateRoseyIds.js",
+    "test:roseyKeys": "node ./tests/validateRoseyKeys.js",
+    "test:roseyParity": "node ./tests/validateRoseyFilterParity.js",
+    "test:roseyEditor": "node ./tests/checkVisualEditorRosey.mjs"
   },
   "keywords": [],
   "author": "",

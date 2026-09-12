@@ -1,6 +1,6 @@
-<ul class="task-list-container">
+<ul class="task-list-container"{{ _uuid | roseyNs }}>
     {% for task in tasks %}
-  <li class="task-list-item">
+  <li class="task-list-item"{{ task._uuid | roseyNs }}>
     <p><input
         type="checkbox"
         class="task-list-item-checkbox"
@@ -9,7 +9,7 @@
         checked="checked"
         {% endif %}
         disabled="disabled"><label class="task-list-item-label" for="task-item-{{ forloop.index }}">
-            {% bookshop "generic/textBlock" text: task.text %}
+            {% bookshop "generic/textBlock" text: task.text _uuid: "" roseyKey: "text" %}
         </label>
     </p>
   </li>

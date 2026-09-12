@@ -495,6 +495,7 @@ module.exports = async function (eleventyConfig) {
   eleventyConfig.addFilter("roseyRoot", roseyFilters.roseyRoot);
   eleventyConfig.addFilter("roseyMarkdown", roseyFilters.roseyMarkdown);
   eleventyConfig.addFilter("roseyAttrs", roseyFilters.roseyAttrs);
+  eleventyConfig.addFilter("roseyStrip", roseyFilters.roseyStrip);
 
   // Rosey's working directory lives under src/ so CloudCannon can address the
   // locale files against `source: src`, but base.json and the locales are

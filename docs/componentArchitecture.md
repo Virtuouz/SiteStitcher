@@ -994,3 +994,20 @@ The heading for the content panel.
 * Background color
 * Top partial color
 * bottom partial color
+
+# Translation (Rosey)
+
+Authoring rules live in `CLAUDE.md` → *Internationalization (Rosey)*. The two that
+break silently if missed:
+
+* **Never put `roseyNs` / `roseyRoot` on the element that carries `roseyTag` /
+  `roseyMarkdown`.** The build and the Visual Editor resolve different keys for
+  that element, so editor translations land where the build never reads them.
+  Namespace an untagged ancestor, fold `_uuid` into the key, or move the tag to an
+  inner `roseyWrap` span.
+* **A sub-field include needs its own key.** `{% bookshop "generic/textBlock"
+  text: content.headline _uuid: "" roseyKey: "headline" %}` — otherwise every
+  textBlock in the parent keys as `text` and shares one translation.
+
+`ROSEY_ENABLED=true npm run cc:build && npm run test:roseyKeys` checks the built
+site; `npm run test:roseyParity` checks the Eleventy and Bookshop filters agree.

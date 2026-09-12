@@ -46,11 +46,11 @@ href="{{ listingUrl }}">{% endif %}
     
     {% if tagToUse and tagToUse != '' %}
 
-      <div class="z-10 absolute top-5 right-5 inline-block px-2 py-0.5 text-xs font-medium border-2 rounded-full transition {{tagClasses}} "{{ "common" | roseyRoot }}{% capture statusKey %}listing-status:{{ tagToUse | slug }}{% endcapture %}{{ tagToUse | roseyTag: statusKey }}>{{ tagToUse }}</div>
+      <div class="z-10 absolute top-5 right-5 inline-block px-2 py-0.5 text-xs font-medium border-2 rounded-full transition {{tagClasses}} "{{ "common" | roseyRoot }}>{% capture statusKey %}listing-status:{{ tagToUse | slug }}{% endcapture %}{{ tagToUse | roseyWrap: statusKey }}</div>
     {% endif %}
       {% if expires  %}
         <div class="absolute bottom-5 right-5 p-2 z-10 bg-white text-slate-800 {{theme.container_rounding}}">
-          <p {{ "common" | roseyRoot }}{{ "Expires at:" | roseyTag: "ui:expires-at" }}>Expires at:</p>
+          <p{{ "common" | roseyRoot }}>{{ "Expires at:" | roseyWrap: "ui:expires-at" }}</p>
                 <time
           _="on load
           set happeningDate to Date.parse('{{listingExpiration | date: "%Y-%m-%dT%H:%M:%S%z"}}')

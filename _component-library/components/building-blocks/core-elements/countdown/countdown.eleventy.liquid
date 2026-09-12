@@ -131,9 +131,10 @@
   "
 >
   {%- if content.completionText and content.completionText != '' -%}
+    {%- capture completionKey -%}{{ _uuid }}:completion{%- endcapture -%}
     <p
       id="{{ 'completion-' | append: uuid }}"
-      class="c-countdown__completion hidden font-bold {{ completionClass | strip }}"{{ _uuid | roseyNs }}{{ content.completionText | roseyTag: "completion" }}
+      class="c-countdown__completion hidden font-bold {{ completionClass | strip }}"{{ content.completionText | roseyTag: completionKey }}
     >{{ content.completionText }}</p>
     
       
@@ -141,13 +142,13 @@
 
   <div
     id="{{ 'timer-' | append: uuid }}"
-    class="c-countdown__timer flex items-center flex-wrap overflow-hidden {{ gapClass | strip }}"
+    class="c-countdown__timer flex items-center flex-wrap overflow-hidden {{ gapClass | strip }}"{{ "common" | roseyRoot }}
   >
     {%- if showDays -%}
       <div class="c-countdown__segment flex flex-col  {% if variant == 'boxed' %} {{ boxedSegmentClass | strip }}{% elsif variant == 'separated' %}{{separatorClass |strip}}{% endif %}">
         <span id="{{ 'val-days-' | append: uuid }}" class="c-countdown__value {{ valueClass | strip }} font-bold tabular-nums">--</span>
         {%- if showLabels -%}
-          <span class="c-countdown__label {{ labelClass | strip }} uppercase tracking-wider opacity-80"{{ "common" | roseyRoot }}{{ "Days" | roseyTag: "countdown:days" }}>Days</span>
+          <span class="c-countdown__label {{ labelClass | strip }} uppercase tracking-wider opacity-80"{{ "Days" | roseyTag: "countdown:days" }}>Days</span>
         {%- endif -%}
       </div>
     {%- endif -%}
@@ -156,7 +157,7 @@
       <div class="c-countdown__segment flex flex-col  {% if variant == 'boxed' %} {{ boxedSegmentClass | strip }}{% elsif variant == 'separated' %}{{separatorClass |strip}}{% endif %}">
         <span id="{{ 'val-hours-' | append: uuid }}" class="c-countdown__value {{ valueClass | strip }} font-bold tabular-nums">--</span>
         {%- if showLabels -%}
-          <span class="c-countdown__label {{ labelClass | strip }} uppercase tracking-wider opacity-80"{{ "common" | roseyRoot }}{{ "Hours" | roseyTag: "countdown:hours" }}>Hours</span>
+          <span class="c-countdown__label {{ labelClass | strip }} uppercase tracking-wider opacity-80"{{ "Hours" | roseyTag: "countdown:hours" }}>Hours</span>
         {%- endif -%}
       </div>
     {%- endif -%}
@@ -165,7 +166,7 @@
       <div class="c-countdown__segment flex flex-col  {% if variant == 'boxed' %} {{ boxedSegmentClass | strip }}{% elsif variant == 'separated' %}{{separatorClass |strip}}{% endif %}">
         <span id="{{ 'val-min-' | append: uuid }}" class="c-countdown__value {{ valueClass | strip }} font-bold tabular-nums">--</span>
         {%- if showLabels -%}
-          <span class="c-countdown__label {{ labelClass | strip }} uppercase tracking-wider opacity-80"{{ "common" | roseyRoot }}{{ "Minutes" | roseyTag: "countdown:minutes" }}>Minutes</span>
+          <span class="c-countdown__label {{ labelClass | strip }} uppercase tracking-wider opacity-80"{{ "Minutes" | roseyTag: "countdown:minutes" }}>Minutes</span>
         {%- endif -%}
       </div>
     {%- endif -%}
@@ -174,7 +175,7 @@
       <div class="c-countdown__segment flex flex-col  {% if variant == 'boxed' %} {{ boxedSegmentClass | strip }}{% elsif variant == 'separated' %}{{separatorClass |strip}}{% endif %}">
         <span id="{{ 'val-sec-' | append: uuid }}" class="c-countdown__value {{ valueClass | strip }} font-bold tabular-nums">--</span>
         {%- if showLabels -%}
-          <span class="c-countdown__label {{ labelClass | strip }} uppercase tracking-wider opacity-80"{{ "common" | roseyRoot }}{{ "Seconds" | roseyTag: "countdown:seconds" }}>Seconds</span>
+          <span class="c-countdown__label {{ labelClass | strip }} uppercase tracking-wider opacity-80"{{ "Seconds" | roseyTag: "countdown:seconds" }}>Seconds</span>
         {%- endif -%}
       </div>
     {%- endif -%}

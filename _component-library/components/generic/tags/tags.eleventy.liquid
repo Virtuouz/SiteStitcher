@@ -22,8 +22,7 @@
   bg-red-100 text-red-700 border-red-700 hover:bg-red-200
   {% else %}
     {{tag | tagColorFilter: blacklist}} 
-{% endif %} "{{ "common" | roseyRoot }}{% capture tagKey %}tag:{{ tag | slug }}{% endcapture %}{{ tag | roseyTag: tagKey }}>
-        {{ tag }}</a>
+{% endif %} "{{ "common" | roseyRoot }}>{% capture tagKey %}tag:{{ tag | slug }}{% endcapture %}{{ tag | roseyWrap: tagKey }}</a>
     {% endif %}
   {% endfor %}
 </div>

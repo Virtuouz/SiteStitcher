@@ -19,7 +19,7 @@
   {%- if listType == "ordered" -%}
     <ol class="{{ listClass | strip }}">
       {%- for item in content.items -%}
-        <li{{ item._uuid | roseyNs }}{{ item.text | roseyTag: "text" }}>{{ item.text }}</li>
+        {%- capture itemKey -%}{{ item._uuid }}:text{%- endcapture -%}<li{{ item.text | roseyTag: itemKey }}>{{ item.text }}</li>
       {%- endfor -%}
     </ol>
   {%- elsif listType == "icon" or listType == "check" -%}
@@ -42,7 +42,7 @@
   {%- else -%}
     <ul class="{{ listClass | strip }}">
       {%- for item in content.items -%}
-        <li{{ item._uuid | roseyNs }}{{ item.text | roseyTag: "text" }}>{{ item.text }}</li>
+        {%- capture itemKey -%}{{ item._uuid }}:text{%- endcapture -%}<li{{ item.text | roseyTag: itemKey }}>{{ item.text }}</li>
       {%- endfor -%}
     </ul>
   {%- endif -%}

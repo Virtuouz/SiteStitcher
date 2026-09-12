@@ -26,7 +26,9 @@
 {%- endcapture -%}
 
 {%- if content.text -%}
-  <p class="c-simple-text {{ alignClass | strip }} {{ sizeClass | strip }}"{{ _uuid | roseyNs }}{{ content.text | roseyMarkdown: "text" }}>
+  {%- comment -%} Rosey: root element is the tagged one, so _uuid is folded into the key. {%- endcomment -%}
+  {%- capture textKey -%}{{ _uuid }}:text{%- endcapture -%}
+  <p class="c-simple-text {{ alignClass | strip }} {{ sizeClass | strip }}"{{ content.text | roseyMarkdown: textKey }}>
     {%- if env_bookshop_live -%}
       {{ content.text | markdownify | remove: "<p>" | remove: "</p>" }}
     {%- else -%}

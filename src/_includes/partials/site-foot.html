@@ -24,7 +24,7 @@
             data-umami-event="{{entry.title}}-footer"
             {{ entry.url | linkFilter: page.url }}
             class="data-[state=active]:link hover:text-sopris-green block rounded pt-0 pb-2 pl-3 pr-4 transition-colors hover:bg-gray-700 dark:border-gray-700  md:hover:bg-transparent md:dark:hover:bg-transparent"
-            href="{{ entry.url }}"{{ entry.title | roseyTag: entry.url }}>
+            href="{{ entry.url }}"{{ entry.title | roseyTag: entry.title }}>
             {{ entry.title }}
           </a>
         </li>
@@ -41,7 +41,7 @@
               data-umami-event="{{megaEntry.title}}-footer"
               {{ megaEntry.url | linkFilter: page.url }}
               class="data-[state=active]:link hover:text-sopris-green block rounded pt-0 pb-2 pl-3 pr-4 transition-colors hover:bg-gray-700 dark:border-gray-700  md:hover:bg-transparent md:dark:hover:bg-transparent"
-              href="{{ megaEntry.url }}"{{ megaEntry.title | roseyTag: megaEntry.url }}>
+              href="{{ megaEntry.url }}"{{ megaEntry.title | roseyTag: megaEntry.title }}>
               {{ megaEntry.title }}
             </a>
           </li>
@@ -70,8 +70,8 @@
 {%- comment -%}
   Rosey: opens the same shared "common" root as the header, so every string here
   is one key across the whole site and is translated once rather than once per
-  page. The link lists reuse the header's `nav` namespace (see
-  render-footer.html) so a link in both is a single translation.
+  page. The link lists reuse the header's `nav` namespace and label-derived
+  keys (see render-nav.html) so a link in both is a single translation.
 {%- endcomment -%}
 <footer{{ "common" | roseyRoot }}
   class="cs-w-full pt-40 bg-{{site.footer_color_group}}-backgroundcolor flex flex-col items-center justify-center text-{{site.footer_color_group}}-textcolor"

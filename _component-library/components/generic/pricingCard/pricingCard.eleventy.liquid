@@ -29,7 +29,7 @@
     </div>
     <div class="c-pricingCard mt-10 border-t-2  pt-10">
       {% if content.description %}
-        {% bookshop "generic/textBlock" text: content.description %}{% endif %}
+        {% bookshop "generic/textBlock" text: content.description _uuid: "" roseyKey: "description" %}{% endif %}
     </div>
   </div>
   {% if content.buttons %}

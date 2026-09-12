@@ -1,10 +1,12 @@
 {%- comment -%}
-  Rosey: keys are derived from each entry's URL rather than its title, so
-  retitling a link marks its translations stale instead of silently orphaning
-  them under a new key. Group headings have no URL and fall back to the title.
-  Everything here inherits the "common" root opened in site-head.html, so a nav
-  label is one key for the whole site — and the footer reuses the same `nav`
-  namespace, so a link that appears in both is translated once, not twice.
+  Rosey: links are keyed by their label (content-as-key), e.g.
+  common:nav:dates-and-deadlines. A URL cannot be the key: placeholder entries
+  and the home link all point at "/", which sanitises to an empty key and so to
+  no tag at all. The trade-off is that renaming a label starts its translation
+  afresh rather than flagging it stale, which the RCC docs accept for short link
+  text. Everything here inherits the "common" root opened in site-head.html, so
+  a nav label is one key for the whole site — and the footer reuses the same
+  `nav` namespace, so a link that appears in both is translated once, not twice.
 {%- endcomment -%}
 {% assign level=level | plus: 1%}
 
@@ -35,7 +37,7 @@ blogPosts.size > 0 %}
   data-umami-event="{{entry.title}}-navbar"
   {{entry.url | linkFilter: page.url}}
     class="data-[state=active]:link data-[state=active]:decoration-{{color_group}}-accentcolor  block rounded py-2 pl-3 pr-4   transition-colors   md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
-    href="{{ entry.url }}"{{ entry.title | roseyTag: entry.url }}
+    href="{{ entry.url }}"{{ entry.title | roseyTag: entry.title }}
     >{{ entry.title }}</a
   >
 </li>
@@ -45,7 +47,7 @@ blogPosts.size > 0 %}
   data-umami-event="{{entry.title}}-navbar"
   {{entry.url | linkFilter: page.url}}
     class="data-[state=active]:link data-[state=active]:decoration-{{color_group}}-accentcolor font-normal underline md:no-underline  block rounded py-2 pl-3 pr-4 md:w-max   transition-colors   md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
-    href="{{ entry.url }}"{{ entry.title | roseyTag: entry.url }}
+    href="{{ entry.url }}"{{ entry.title | roseyTag: entry.title }}
     >{{ entry.title }}</a
   >
 </li>
@@ -84,7 +86,7 @@ blogPosts.size > 0 %}
       submenu.classList.remove('md:scale-y-100');
       submenu.classList.add('md:invisible');
       end then set opened to false
-      "{{ entry.title | roseyTag: entry.url }} 
+      "{{ entry.title | roseyTag: entry.title }} 
         >{{ entry.title }}</button
       >
     </li>
@@ -150,7 +152,7 @@ blogPosts.size > 0 %}
         data-umami-event="{{subEntry.title}}-navbar"
         {{subEntry.url | linkFilter: page.url}}
           class="data-[state=active]:link data-[state=active]:decoration-{{color_group}}-accentcolor block font-normal underline md:no-underline  rounded py-2 pl-3 pr-4 md:w-max   transition-colors   md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
-          href="{{ subEntry.url }}"{{ subEntry.title | roseyTag: subEntry.url }}
+          href="{{ subEntry.url }}"{{ subEntry.title | roseyTag: subEntry.title }}
           >{{ subEntry.title }}</a
         >
       </li>
@@ -223,7 +225,7 @@ blogPosts.size > 0 %}
       submenu.classList.remove('md:scale-y-100');
       submenu.classList.add('md:invisible');
       end then set opened to false
-      "{{ entry.title | roseyTag: entry.url }} 
+      "{{ entry.title | roseyTag: entry.title }} 
         >{{ entry.title }}</button
       >
     </li>

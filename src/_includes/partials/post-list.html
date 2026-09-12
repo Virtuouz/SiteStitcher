@@ -5,7 +5,7 @@
     <div>
         <ol class="flow padding-0">
             {% for item in postListItems %}
-            <li><a class="text-subheadline" {% capture itemRoot %}item:{{ item.url }}{% endcapture %}href="{{ item.url }}"{{ itemRoot | roseyRoot }}{{ item.data.title | roseyTag: "title" }} >{{ item.data.title }}</a></li>
+            <li><a class="text-subheadline" {% capture itemRoot %}item:{{ item.url }}{% endcapture %}href="{{ item.url }}"{{ itemRoot | roseyRoot }}>{{ item.data.title | roseyWrap: "title" }}</a></li>
             {% endfor %}
         </ol>
     </div>

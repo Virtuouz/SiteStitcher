@@ -3,7 +3,7 @@ name: Weekly Template Update and Test
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * 0'  # Runs every Sunday at midnight UTC
+    - cron: "0 0 * * 0" # Runs every Sunday at midnight UTC
 
 permissions:
   contents: write
@@ -21,7 +21,7 @@ jobs:
       - name: Use Node.js v20.3.0
         uses: actions/setup-node@v3
         with:
-          node-version: 'v20.3.0'
+          node-version: "v20.3.0"
 
       - name: Cache Node.js modules
         id: cache-node-modules
@@ -60,6 +60,7 @@ jobs:
                   "$file" == .github/* || \
                   "$file" == netlify/* || \
                   "$file" == src/_data-ref/* || \
+                  "$file" == src/_data/rosey.mjs \
                   "$file" == src/_includes/* || \
                   "$file" == src/assets/styles/* || \
                   "$file" == src/filters/* || \
@@ -105,7 +106,6 @@ jobs:
           if [ -n "$(git status --porcelain)" ]; then
             git commit -m "Sync components and site file"
           fi
-          
 
       - name: Merge changes into main
         if: success()
